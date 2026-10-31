@@ -1,0 +1,45 @@
+{
+ "resultCount": 4,
+ "results": [
+  {
+   "wrapperType": "track",
+   "kind": "podcast",
+   "collectionId": 1200361736,
+   "artistName": "The New York Times",
+   "collectionName": "The Daily",
+   "feedUrl": "https://feeds.simplecast.com/Sl5CSM3S",
+   "trackCount": 2748,
+   "primaryGenreName": "Daily News"
+  },
+  {
+   "wrapperType": "track",
+   "kind": "podcast",
+   "collectionId": 1469394914,
+   "artistName": "The Wall Street Journal & Spotify Studios",
+   "collectionName": "The Journal.",
+   "feedUrl": "https://video-api.shdsvc.dowjones.io/api/podcasts/feed/the%20journal",
+   "trackCount": 1870,
+   "primaryGenreName": "Daily News"
+  },
+  {
+   "wrapperType": "track",
+   "kind": "podcast",
+   "collectionId": 1222114325,
+   "artistName": "NPR",
+   "collectionName": "Up First from NPR",
+   "feedUrl": "https://feeds.npr.org/510318/podcast.xml",
+   "trackCount": 1420,
+   "primaryGenreName": "Daily News"
+  },
+  {
+   "wrapperType": "track",
+   "kind": "podcast",
+   "collectionId": 1346207297,
+   "artistName": "Vox",
+   "collectionName": "Today, Explained",
+   "feedUrl": "https://feeds.megaphone.fm/VMP5705694065",
+   "trackCount": 2000,
+   "primaryGenreName": "Daily News"
+  }
+ ]
+}

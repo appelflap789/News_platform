@@ -1,0 +1,12 @@
+# secrets and local data
+.env
+data/
+
+# Python
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Node (frontend/dist is kept on purpose: it lets the app run without Node)
+frontend/node_modules/
