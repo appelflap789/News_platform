@@ -21,6 +21,13 @@ built). Read both before changing anything. Neither depends on an earlier conver
   folder (and add it to `WSLENV`), or the throwaway server downloads the 240 MB embedding model again.
 - Dashboard changes need a build with Windows npm: `cmd.exe /c "npm run build"` inside `frontend/`.
 - Backend changes need a restart of the platform (`start.bat`); there is no hot reload.
+- The code is on GitHub, **public**: https://github.com/appelflap789/News_platform, branch `main` (first pushed
+  31 October 2026). Commit and push only when the owner asks. Use Windows Git
+  (`"/mnt/c/Program Files/Git/cmd/git.exe"`): it has the owner's identity and Git Credential Manager; WSL's git
+  has neither. `.gitignore` keeps `.env`, `data/`, `.venv` and `node_modules` out; `frontend/dist` is committed on
+  purpose. Before committing a new test fixture, look for the owner's IP address in it: a YouTube watch page
+  carries it in its stream links (`ip=`), and `tests/fixtures/youtube/watch.html` had it until it was replaced
+  with `192.0.2.1`.
 
 ## When the user gives you a website and asks for a scraper
 
