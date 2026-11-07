@@ -1,6 +1,7 @@
-// Home, as shelves: your topics (all of them), your favorites (two rows) and the latest items (two rows; "Show
-// more" opens the whole feed), all on cards of the same size. Searching or picking a kind of item turns the page into
-// the results. The star on a card adds it to Favorites, the bin removes it from the library.
+// Home, as shelves: your topics (all of them), the shelves other pages bring (Foresight), your favorites (two
+// rows) and the latest items (two rows; "Show more" opens the whole feed), all on cards of the same size.
+// Searching or picking a kind of item turns the page into the results. The star on a card adds it to
+// Favorites, the bin removes it from the library.
 
 import { useCallback, useEffect, useState } from 'react'
 import ArticleGrid from '../../components/ArticleGrid.jsx'
@@ -11,6 +12,7 @@ import { api } from '../../lib/api.js'
 import { useApp } from '../../lib/app.jsx'
 import { TYPE_LABELS, plural } from '../../lib/format.js'
 import { Link, navigate } from '../../lib/router.jsx'
+import { shelves } from '../index.js'
 
 function Welcome() {
   const { meta } = useApp()
@@ -149,6 +151,8 @@ function HomePage({ query }) {
 
       {/* a filter on the kind of item is about items: the topics step aside */}
       {!type ? <Topics topics={topics} search={search} /> : null}
+      {/* shelves other pages bring along, such as Foresight (pages/index.js) */}
+      {!type ? shelves.map(({ id, component: Shelf }) => <Shelf key={id} search={search} />) : null}
       {browsing ? <Favorites count={stats?.favorites || 0} /> : null}
 
       <div className="home-section">

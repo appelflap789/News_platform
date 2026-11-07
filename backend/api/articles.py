@@ -27,10 +27,11 @@ def list_articles(
     limit: int = Query(30, ge=1, le=100),
     offset: int = Query(0, ge=0),
     favorites: bool = False,
+    saved: str = Query("", pattern="^(|all|article|video|podcast)$"),  # the single items saved by their address
 ) -> dict:
-    if not q.strip() or favorites:
+    if not q.strip() or favorites or saved:
         return query.search(query.text_match(q) if q.strip() else "", source_id=source_id, content_type=content_type,
-                            sort=sort, limit=limit, offset=offset, favorites=favorites)
+                            sort=sort, limit=limit, offset=offset, favorites=favorites, saved=saved)
     return meaning.search(q.strip(), source_id=source_id, content_type=content_type, sort=sort, limit=limit,
                           offset=offset)
 

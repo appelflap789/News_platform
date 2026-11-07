@@ -11,12 +11,14 @@ from __future__ import annotations
 
 import json
 import os
+import re
 from pathlib import Path
 
 from dotenv import load_dotenv, set_key
 
 ROOT = Path(__file__).resolve().parent.parent
-ENV_FILE = ROOT / ".env"
+# On the home server the keys live outside the code, so that an update of the code leaves them alone
+ENV_FILE = Path(os.environ.get("NSP_ENV_FILE") or ROOT / ".env")
 load_dotenv(ENV_FILE)
 
 DATA_DIR = Path(os.environ.get("NSP_DATA_DIR") or ROOT / "data")
@@ -24,6 +26,8 @@ DB_PATH = DATA_DIR / "platform.db"
 MODELS_DIR = Path(os.environ.get("NSP_MODELS_DIR") or DATA_DIR / "models")  # the downloaded embedding model
 FRONTEND_DIST = ROOT / "frontend" / "dist"
 HOST = os.environ.get("NSP_HOST", "127.0.0.1")
+# The clock the daily scrape follows (Settings → Scraping → Time of the daily scrape)
+TIMEZONE = os.environ.get("NSP_TIMEZONE", "Europe/Amsterdam")
 PORT = int(os.environ.get("NSP_PORT", "8765"))
 
 MODEL_CHOICES = ["claude-opus-5-5", "claude-sonnet-5-5", "claude-haiku-5-5", "claude-fable-5-1"]
@@ -77,8 +81,9 @@ SETTINGS: list[dict] = [
     },
     {
         "key": "translate_max_minutes", "group": "Claude", "type": "number", "default": 20,
-        "label": "Longest item the Translate button on a source's page does (minutes of reading)",
-        "help": "Items in another language that take longer to read are left out of it, as the page says; the "
+        "label": "Longest item a source translates (minutes of reading)",
+        "help": "Items in another language that take longer to read are left out of the Translate button on a "
+                "source's page and of its switch Translate new items to English, as the page says; the "
                 "Translate button in the reader still translates one of them. Counted as the cards count a "
                 "'min read'. 0 = no limit.",
     },
@@ -141,6 +146,12 @@ SETTINGS: list[dict] = [
         "label": "Podcast episodes transcribed in one run",
         "help": "The same for podcast episodes. Fewer than videos, because an episode's audio file (often 50 MB "
                 "or more) is downloaded and handed to Gemini, and an hour of talking takes it a few minutes.",
+    },
+    {
+        "key": "daily_scrape_time", "group": "Scraping", "type": "time", "default": "15:00",
+        "label": "Time of the daily scrape",
+        "help": "Sources set to Every day are scraped once a day from this time on (Dutch time). When the "
+                "platform was off then, they are scraped as soon as it starts.",
     },
     {
         "key": "user_agent", "group": "Scraping", "type": "text",
@@ -209,6 +220,14 @@ def get(key: str):
     return _load().get(key, spec["default"])
 
 
+def add_setting(spec: dict) -> None:
+    """A setting of an add-on (backend/addons): on the Settings page like any other, for as long as the add-on is
+    there. Its stored value outlives it, unused."""
+    if spec["key"] not in _SPEC:
+        SETTINGS.append(spec)
+        _SPEC[spec["key"]] = spec
+
+
 def all_values() -> dict[str, object]:
     return {s["key"]: get(s["key"]) for s in SETTINGS}
 
@@ -238,6 +257,11 @@ def _coerce(spec: dict, value):
             raise ValueError(f"{spec['label']} cannot be negative")
         return int(number) if isinstance(spec["default"], int) else number
     value = str(value).strip()
+    if kind == "time":
+        match = re.fullmatch(r"([01]?\d|2[0-3])[:.]([0-5]\d)", value)
+        if not match:
+            raise ValueError(f"{spec['label']}: '{value}' is not a time like 15:00")
+        return f"{int(match[1]):02d}:{match[2]}"
     if kind == "select" and value not in spec["choices"]:
         raise ValueError(f"{spec['label']}: '{value}' is not one of {spec['choices']}")
     if not value:

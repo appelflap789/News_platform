@@ -95,8 +95,10 @@ def test_source_can_be_edited_rescraped_and_deleted(api, site):
     recipe["site_name"] = "Renamed Institute"
     recipe["feeds"][0]["enabled"] = False
     patched = api.patch(f"/api/sources/{source_id}",
-                        json={"recipe": recipe, "interval_minutes": 120, "enrich_enabled": True}).json()
+                        json={"recipe": recipe, "interval_minutes": 120, "enrich_enabled": True,
+                              "translate_new": True}).json()
     assert patched["name"] == "Renamed Institute" and patched["interval_minutes"] == 120
+    assert patched["translate_new"] is True
     assert patched["enrich_enabled"] is True and "translate_enabled" not in patched
 
     job = wait_for(api, api.post(f"/api/sources/{source_id}/scrape", json={"deep": True}).json()["job_id"])
@@ -123,6 +125,32 @@ def test_source_can_be_edited_rescraped_and_deleted(api, site):
     assert api.delete(f"/api/sources/{source_id}").json() == {"deleted": True, "articles_removed": 6}
     assert api.get("/api/articles").json()["total"] == 0
     assert api.get(f"/api/sources/{source_id}").status_code == 404
+
+
+def test_the_scrape_log_says_per_run_what_came_in_and_what_went_wrong(api, site):
+    source_id = add_institute(api, site)
+    recipe = api.get(f"/api/sources/{source_id}").json()["recipe"]
+    gone = {**recipe["feeds"][0], "name": "Gone", "url": f"{site}/no-such-feed.xml"}
+    assert api.patch(f"/api/sources/{source_id}", json={"recipe": {**recipe, "feeds": [*recipe["feeds"], gone]}}).status_code == 200
+    wait_for(api, api.post(f"/api/sources/{source_id}/scrape", json={}).json()["job_id"])
+
+    log = api.get("/api/scrape-log").json()
+    assert [run["kind"] for run in log["runs"]] == ["scrape", "scrape"]  # the analysis is not a scrape
+    second, first = log["runs"]  # the newest first
+    assert first["source"] == "Example Institute" and first["source_id"] == source_id
+    assert first["status"] == "done" and first["new"] == 9 and not first["scheduled"]
+    assert len(first["items"]) == 9 and "Anduril and the new defence industrial base" in {i["title"] for i in first["items"]}
+    assert [(f["feed"], f["scraper"], f["new"]) for f in first["feeds"]] == [
+        ("Example Institute News", "RSS / Atom feed", 3), ("Publications", "HTML listing page", 6)]
+    assert second["new"] == 0 and second["items"] == []
+    broken = next(f for f in second["feeds"] if f["feed"] == "Gone")
+    assert "404" in broken["error"] and broken["scraper"] == "RSS / Atom feed"
+    assert any(p["level"] == "error" and p["msg"].startswith("Gone:") for p in second["problems"])
+
+    api.delete(f"/api/sources/{source_id}")
+    kept = api.get("/api/scrape-log").json()["runs"][0]
+    assert kept["source"] == "Example Institute" and kept["source_id"] is None  # a deleted source keeps its name
+    assert api.get("/api/scrape-log", params={"days": 0}).status_code == 422
 
 
 def test_recipe_can_be_tested_before_saving(api, site):

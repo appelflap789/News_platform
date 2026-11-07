@@ -13,14 +13,19 @@
 //     navItems: (app) => [...]    optional: one sidebar entry per thing (per source, per topic) instead
 //                                 of a single entry. Each is { key, to, label, icon | avatar, count, busy }.
 //     component: HomePage,        receives { params, query }
+//     shelf: { order, component } optional: a shelf of its own on Home, below the topics; the component
+//                                 receives { search } (what is typed in Home's search box)
 //   }
+//
+// A page.jsx may also export a list of such pages: a part that can be taken out again (an add-on, such
+// as pages/foresight) keeps all its pages in its one folder, and deleting the folder removes them.
 
 import { match } from '../lib/router.jsx'
 
 const modules = import.meta.glob('./*/page.jsx', { eager: true })
 
 export const pages = Object.values(modules)
-  .map((module) => module.default)
+  .flatMap((module) => [].concat(module.default || []))
   .filter((page) => page && page.path && page.component)
   // fixed addresses first, so '/topics/new' is not read as the topic with id "new"
   .sort((a, b) => a.path.split(':').length - b.path.split(':').length)
@@ -40,3 +45,9 @@ export function resolve(path) {
   }
   return null
 }
+
+/** The shelves pages put on Home, in their order. */
+export const shelves = pages
+  .filter((page) => page.shelf?.component)
+  .map((page) => ({ id: page.id, order: page.shelf.order || 0, component: page.shelf.component }))
+  .sort((a, b) => a.order - b.order)

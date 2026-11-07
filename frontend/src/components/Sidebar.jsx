@@ -70,7 +70,7 @@ export default function Sidebar({ current, open, onClose }) {
             const all = itemsOf(section, app)
             if (!all.length) return null
             const sorted = section.id === 'sources'
-            // an entry without a kind (Add source) belongs to every choice
+            // an entry without a kind (Single items, Add source) belongs to every choice
             const items = sorted ? all.filter((item) => kind === 'all' || !item.kind || item.kind === kind) : all
             return (
               <div key={section.id} className="nav-section">
@@ -88,14 +88,14 @@ export default function Sidebar({ current, open, onClose }) {
                     ) : null}
                   </h2>
                 ) : null}
-                {sorted && items.length < 2 && kind !== 'all' ? (
+                {sorted && kind !== 'all' && !items.some((item) => item.kind) ? (
                   <p className="nav-section__empty">No {kind === 'videos' ? 'video' : kind === 'podcasts' ? 'podcast' : 'article'} sources yet.</p>
                 ) : null}
                 {items.map((item) => (
                   <Link
                     key={item.key}
                     to={item.to}
-                    className={`nav-item ${current === item.to ? 'nav-item--active' : ''} ${item.action ? 'nav-item--action' : ''}`}
+                    className={`nav-item ${current === item.to || current.startsWith(`${item.to}/`) ? 'nav-item--active' : ''} ${item.action ? 'nav-item--action' : ''}`}
                     title={item.label}
                   >
                     {item.avatar ? (

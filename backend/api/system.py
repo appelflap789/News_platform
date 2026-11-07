@@ -5,7 +5,7 @@ from __future__ import annotations
 from fastapi import APIRouter, HTTPException, Query
 from pydantic import BaseModel
 
-from .. import __version__, config, db
+from .. import __version__, addons, config, db
 from ..ai import client as ai
 from ..analyzers import analyzers
 from ..connectors import connectors
@@ -56,10 +56,12 @@ def meta() -> dict:
         "keys": _other_keys(),
         "videos": videos.prices(),
         "comments": comments.prices(),
+        "addons": addons.meta(),  # the add-ons there are (backend/addons): the dashboard shows only these
         # For saying beforehand how long going back N items takes: the pause between two requests to one site,
         # and what a page takes to come. Measured at a pause of 1 second: 1.2 seconds an item on csis.org
         # (160 items), 2.5 on clingendael.org (14 items, with the listing pages that were walked to reach them).
-        "scrape": {"seconds_per_item": round(float(config.get("request_delay_seconds")) + 1.0, 2)},
+        "scrape": {"seconds_per_item": round(float(config.get("request_delay_seconds")) + 1.0, 2),
+                   "daily_time": config.get("daily_scrape_time")},  # when the sources set to Every day run
         "connectors": connectors.describe(),
         "extractors": extractors.describe(),
         "article_fields": [f.as_dict() for f in all_fields()],
@@ -77,6 +79,9 @@ def stats() -> dict:
         "topics": db.scalar("SELECT COUNT(*) FROM topics"),
         "removed": db.scalar("SELECT COUNT(*) FROM removed"),  # items you took out yourself (backend/removed.py)
         "favorites": db.scalar("SELECT COUNT(*) FROM articles WHERE favorite_at != ''"),  # the items you starred
+        # the single items saved by their address (pipeline/scrape.py, SAVED); the dashboard shows them together
+        "saved": db.scalar("SELECT COUNT(*) FROM articles a JOIN sources s ON s.id = a.source_id"
+                           " WHERE s.analyzer LIKE 'saved-%'"),
         "content_types": db.rows(
             "SELECT content_type, COUNT(*) AS n FROM articles GROUP BY content_type ORDER BY n DESC"),
     }

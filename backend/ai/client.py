@@ -151,11 +151,12 @@ def require_answer(reply, task: str) -> None:
 
 
 def structured(*, model: str, system: str, prompt: str, schema: dict, task: str, effort: str = "low",
-               max_tokens: int = 4000, usage: Usage | None = None) -> dict:
-    """One request whose answer is guaranteed to be JSON matching `schema`."""
+               max_tokens: int = 4000, usage: Usage | None = None, stream: bool = False) -> dict:
+    """One request whose answer is guaranteed to be JSON matching `schema`. `stream` as for `message`."""
     reply = message(
         model=model,
         usage=usage,
+        stream=stream,
         max_tokens=max_tokens,
         system=system,
         thinking={"type": "adaptive"},

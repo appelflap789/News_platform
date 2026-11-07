@@ -54,12 +54,18 @@ def text_match(query: str) -> str:
 
 
 def search(match: str, *, source_id: int | None = None, content_type: str = "", sort: str = "relevance",
-           limit: int = 30, offset: int = 0, favorites: bool = False) -> dict:
+           limit: int = 30, offset: int = 0, favorites: bool = False, saved: str = "") -> dict:
     """Articles matching an FTS5 expression (or all articles when `match` is empty). `favorites` keeps only
-    the ones you starred, the last one you starred first."""
+    the ones you starred, the last one you starred first. `saved` keeps only the single items saved by their
+    address: 'all', or one kind ('article', 'video', 'podcast'), the last one saved first."""
     where, params = [], []
     if favorites:
         where.append("a.favorite_at != ''")
+    if saved == "all":
+        where.append("s.analyzer LIKE 'saved-%'")
+    elif saved:
+        where.append("s.analyzer = ?")
+        params.append(f"saved-{saved}")
     if match:
         where.append("articles_fts MATCH ?")
         params.append(match)
@@ -79,7 +85,8 @@ def search(match: str, *, source_id: int | None = None, content_type: str = "", 
     else:
         base = "FROM articles a JOIN sources s ON s.id = a.source_id"
         extra = ""
-        order = "a.favorite_at DESC, a.id DESC" if favorites else NEWEST
+        order = ("a.favorite_at DESC, a.id DESC" if favorites else "a.fetched_at DESC, a.id DESC" if saved
+                 else NEWEST)
     total = db.scalar(f"SELECT COUNT(*) {base} {condition}", params)
     items = db.rows(
         f"SELECT {CARD_COLUMNS}{extra} {base} {condition} ORDER BY {order} LIMIT ? OFFSET ?",

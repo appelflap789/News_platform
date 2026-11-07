@@ -6,6 +6,7 @@ import Icon from '../../components/Icon.jsx'
 import JobProgress from '../../components/JobProgress.jsx'
 import Markdown from '../../components/Markdown.jsx'
 import RecipeEditor, { previewsByKey, stripKeys, withKeys } from '../../components/RecipeEditor.jsx'
+import { hasSingleItems } from '../../components/SaveLink.jsx'
 import { Avatar, Button, Chip, Empty, Notice, Spinner, Tabs, Toggle } from '../../components/ui.jsx'
 import { api } from '../../lib/api.js'
 import { useApp } from '../../lib/app.jsx'
@@ -202,7 +203,15 @@ function SourceSettings({ source, onChanged, onJob, busy }) {
         <div className="option">
           <div>
             <strong>Automatic updates</strong>
-            <p>How often to look for new items while the platform is running.</p>
+            <p>
+              How often to look for new items.
+              {app.meta.scrape?.daily_time ? (
+                <>
+                  {' '}
+                  <em>Every day</em> is at {app.meta.scrape.daily_time} (<Link to="/settings/scraping">Settings → Scraping</Link>).
+                </>
+              ) : null}
+            </p>
           </div>
           <select value={source.interval_minutes} onChange={(event) => update({ interval_minutes: Number(event.target.value) })}>
             {INTERVALS.map(([minutes, text]) => (
@@ -331,6 +340,30 @@ function SourceSettings({ source, onChanged, onJob, busy }) {
             disabled={!ai && !source.enrich_enabled}
           />
         </div>
+        {'translate_new' in source && source.kind === 'articles' && source.translation ? (
+          <div className="option">
+            <div>
+              <strong>Translate new items to English</strong>
+              <p>
+                After each scrape Claude translates the new items that are not in English and take at most a{' '}
+                {source.translation.max_minutes ? `${source.translation.max_minutes}-minute` : 'any length of'} read
+                (Settings → Claude). Longer ones stay as they are; the reader translates one of them. Costs about{' '}
+                {roughly(source.translation.news_per_1000_usd)} per 1,000 news articles and{' '}
+                {roughly(source.translation.papers_per_1000_usd)} per 1,000 papers with {source.translation.model_label}.
+                {source.translate_new && source.translation.waiting?.items
+                  ? ` The ${plural(source.translation.waiting.items, 'item')} stored before: the Translate button next to Update.`
+                  : ''}
+                {!ai ? ' Needs an API key (Settings).' : ''}
+              </p>
+            </div>
+            <Toggle
+              checked={source.translate_new}
+              onChange={(translate_new) => update({ translate_new })}
+              label="Translate new items to English"
+              disabled={!ai && !source.translate_new}
+            />
+          </div>
+        ) : null}
       </section>
 
       <section className="panel panel--danger">
@@ -370,7 +403,7 @@ function HowFar({ source, onGo, onCancel }) {
   const wanted = Math.floor(Number(target) || 0)
   const more = wanted - count
   const perItem = app.meta.scrape.seconds_per_item
-  const paid = source.enrich_enabled ? ['AI summary and tags'] : []
+  const paid = [source.enrich_enabled && 'AI summary and tags', source.translate_new && 'translation'].filter(Boolean)
   return (
     <section className="panel how-far">
       <div className="panel__title">
@@ -609,7 +642,12 @@ function SourcePage({ params }) {
               <span>
                 {working ? 'collecting now' : source.last_scraped_at ? `updated ${timeAgo(source.last_scraped_at)}` : 'not scraped yet'}
               </span>
-              {source.interval_minutes ? <span>{schedule?.toLowerCase()}</span> : null}
+              {source.interval_minutes ? (
+                <span>
+                  {schedule?.toLowerCase()}
+                  {source.interval_minutes === 1440 && app.meta.scrape?.daily_time ? ` at ${app.meta.scrape.daily_time}` : ''}
+                </span>
+              ) : null}
             </p>
             {source.description ? <p className="channel__about">{source.description}</p> : null}
           </div>
@@ -617,7 +655,7 @@ function SourcePage({ params }) {
             <div className="channel__actions">
               {writeAllButton}
               {translateButton}
-              <Link to="/add" className="button button--primary">
+              <Link to={hasSingleItems(app) ? `/saved?kind=${source.saved}` : '/add'} className="button button--primary">
                 <Icon name="plus" size={16} />
                 <span>Save another</span>
               </Link>
@@ -751,8 +789,9 @@ export default {
   title: 'Source',
   icon: 'rss',
   nav: { section: 'sources', order: 1 },
+  // the sources of single saved items have one entry together (pages/saved) where the platform can list them so
   navItems: (app) =>
-    app.sources.map((source) => ({
+    app.sources.filter((source) => !(source.saved && hasSingleItems(app))).map((source) => ({
       key: `source-${source.id}`,
       to: `/sources/${source.id}`,
       label: source.name,

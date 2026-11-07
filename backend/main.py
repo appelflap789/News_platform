@@ -8,7 +8,7 @@ from fastapi import FastAPI, Request
 from fastapi.responses import FileResponse, HTMLResponse, JSONResponse
 from fastapi.staticfiles import StaticFiles
 
-from . import __version__, config, db, scheduler
+from . import __version__, addons, config, db, scheduler
 from .api import routers
 from .errors import ScrapeError
 from .jobs import JobError, manager
@@ -22,6 +22,7 @@ then reload this page. The API itself is running: see <a style="color:#7aa2ff" h
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     db.init()
+    addons.init()
     manager.mark_interrupted()
     scheduler.start()
     from .api.system import start_embedding
@@ -33,7 +34,7 @@ async def lifespan(app: FastAPI):
 
 app = FastAPI(title="News Scraper Platform", version=__version__, lifespan=lifespan)
 
-for router in routers:
+for router in [*routers, *addons.routers()]:  # the add-ons' routes too (backend/addons)
     app.include_router(router)
 
 

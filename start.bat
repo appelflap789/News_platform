@@ -1,23 +1,26 @@
 @echo off
-rem Starts the News Scraper Platform and opens the dashboard in your browser.
-rem The first start creates a private Python environment in the .venv folder.
+rem Opens the News Scraper Platform. Since 3 November 2026 it runs on the home server (jacob228), day and
+rem night, and scrapes there by itself; this PC only opens its dashboard. The home Wi-Fi address is tried
+rem first, then the Tailscale address (for when you are away; Tailscale must be on on this PC).
+rem Running a copy on this PC instead: see "On the home server" in README.md.
 setlocal
-cd /d "%~dp0"
+set PORT=8765
+set ADDRESSES=192.168.1.161 100.75.117.66
 
-if not exist ".venv\Scripts\python.exe" (
-    echo First start: setting up the Python environment. This takes a minute or two...
-    where python >nul 2>nul
-    if errorlevel 1 (
-        echo.
-        echo Python was not found. Install Python 3.11 or newer, or start this file from an Anaconda Prompt.
-        pause
-        exit /b 1
+for %%A in (%ADDRESSES%) do (
+    curl.exe -sf -m 3 -o nul "http://%%A:%PORT%/api/stats"
+    if not errorlevel 1 (
+        start "" "http://%%A:%PORT%/"
+        exit /b 0
     )
-    python -m venv .venv
-    if errorlevel 1 ( pause & exit /b 1 )
-    ".venv\Scripts\python.exe" -m pip install --disable-pip-version-check -q -r requirements.txt
-    if errorlevel 1 ( pause & exit /b 1 )
 )
 
-".venv\Scripts\python.exe" run.py %*
-if errorlevel 1 pause
+echo.
+echo  The News Scraper Platform on the home server cannot be reached.
+echo.
+echo   - At home: is the server on, and is this PC on the home Wi-Fi?
+echo   - Away from home: is Tailscale switched on on this PC?
+echo.
+echo  Tried: %ADDRESSES% (port %PORT%)
+echo.
+pause

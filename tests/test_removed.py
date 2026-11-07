@@ -38,7 +38,7 @@ def test_a_removed_item_is_gone_from_everything_and_no_scrape_brings_it_back(api
     assert api.get(f"/api/articles/{article['id']}").status_code == 404
     assert api.get("/api/articles", params={"q": "anduril drone"}).json()["total"] == 0
     assert api.get("/api/stats").json() | {"content_types": 0} == {
-        "sources": 1, "articles": 8, "topics": 0, "removed": 1, "favorites": 0, "content_types": 0}
+        "sources": 1, "articles": 8, "topics": 0, "removed": 1, "favorites": 0, "saved": 0, "content_types": 0}
     assert api.get(f"/api/sources/{source_id}").json()["article_count"] == 8
     assert api.delete(f"/api/articles/{article['id']}").status_code == 404  # it is not there to remove twice
 

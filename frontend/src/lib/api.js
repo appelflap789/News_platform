@@ -52,6 +52,9 @@ function query(params) {
   return text ? `?${text}` : ''
 }
 
+/** The same helpers, for a part of the dashboard that keeps its calls with it (an add-on, such as pages/foresight). */
+export const http = { get, post, patch, put, del, query }
+
 export const api = {
   meta: () => get('/meta'),
   stats: () => get('/stats'),
@@ -120,6 +123,8 @@ export const api = {
   meaning: {
     embed: () => post('/meaning/embed'),
   },
+  // every scrape and saved link of the last `days` days: { days, runs }, the newest first
+  scrapeLog: (days) => get(`/scrape-log${query({ days })}`),
   jobs: {
     list: () => get('/jobs'),
     get: (id) => get(`/jobs/${id}`),

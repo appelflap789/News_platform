@@ -124,7 +124,8 @@ def _sample(row: dict) -> str:
 
 
 def too_long(words: int) -> bool:
-    """Whether an item is longer than the Translate button on a source's page does (Settings)."""
+    """Whether an item is longer than the Translate button on a source's page, and a source's switch, do
+    (Settings)."""
     minutes = int(config.get("translate_max_minutes"))
     return bool(minutes) and int(words / WORDS_PER_MINUTE + 0.5) > minutes  # rounded as the dashboard does
 
@@ -337,6 +338,26 @@ def sort_out(source_id: int) -> None:
         batch = english[start:start + BATCH]
         db.execute(f"UPDATE articles SET translated_at = ? WHERE id IN ({','.join('?' * len(batch))})",
                    [db.now(), *batch])
+
+
+def among_new(article_ids: list[int]) -> tuple[list[int], int]:
+    """Of the items a scrape just stored, those the source's switch *Translate new items to English* does: not in
+    English, not a video or podcast episode, and not longer than the reading time in Settings. Also how many in
+    another language were too long. The English ones are marked as looked at, for nothing."""
+    rows: list[dict] = []
+    for start in range(0, len(article_ids), BATCH):
+        batch = article_ids[start:start + BATCH]
+        rows += db.rows(f"SELECT id, title, summary, SUBSTR(text, 1, 6000) AS opening, word_count FROM articles"
+                        f" WHERE translated_at = '' AND NOT {RECORDING} AND id IN ({','.join('?' * len(batch))})",
+                        batch)
+    foreign = []
+    for row in rows:
+        if needs_translation(_sample(row)):
+            foreign.append(row)
+        else:
+            _mark_checked(row["id"])
+    done = [row["id"] for row in foreign if not too_long(row["word_count"])]
+    return done, len(foreign) - len(done)
 
 
 def _foreign(source_id: int) -> tuple[list[dict], int]:

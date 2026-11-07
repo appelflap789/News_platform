@@ -8,7 +8,7 @@ import pytest
 
 from backend import config, db
 from backend.ai import client as ai
-from backend.pipeline import translate
+from backend.pipeline import scrape, translate
 from backend.pipeline.scrape import scrape_source, store_article
 from backend.jobs import JobCancelled
 from backend.jobs import JobError
@@ -191,7 +191,7 @@ def test_the_backlog_is_translated_and_stops_when_nothing_gets_through(fake_api,
         translate_backlog(source_id, job)
 
 
-def test_a_scrape_never_translates(site, job, fake_api):
+def test_a_scrape_does_not_translate_unless_its_source_says_so(site, job, fake_api):
     api = fake_api([])  # any request would fail the test
     source_id = add_source(institute(site))
     german = store("Die unterschätzte Bedrohung", GERMAN)
@@ -279,6 +279,29 @@ def test_the_dashboard_is_told_what_translation_costs_with_the_chosen_model():
     config.update({"model_translate": "claude-sonnet-5-5"})
     assert prices()["model_label"] == "Claude Sonnet 5.5"
     assert prices()["papers_per_1000_usd"] == pytest.approx(20 * haiku["papers_per_1000_usd"])
+
+
+def test_a_source_switched_to_translate_does_its_new_items_after_a_scrape(fake_api, job):
+    note = store("Kurze Notiz", GERMAN)
+    study = store("Lange Studie", "\n\n".join([GERMAN] * 100))  # some 5,000 words: a 23-minute read
+    english = store("The underrated threat", ENGLISH)
+    db.execute("UPDATE sources SET translate_new = 1")
+    source = db.row("SELECT * FROM sources LIMIT 1")
+    api = fake_api([answer(language="de", title="Short note", summary=""), answer(text=ENGLISH)])
+    totals: dict = {}
+
+    scrape._after_storing(source["id"], source, [note, study, english], job, totals, False, None)
+
+    assert totals["translation"] == {"translated": 1, "already_english": 0, "failed": 0, "left": 0, "pending": 1,
+                                     "too_long": 1}
+    assert len(api.bodies) == 2 and "Kurze Notiz" in api.bodies[0]["messages"][0]["content"]
+    assert stored(note)["title"] == "Short note" and stored(note)["translated_from"] == "de"
+    assert stored(english)["translated_at"] and not stored(english)["translated_from"]  # judged once, for nothing
+    assert stored(study)["title"] == "Lange Studie" and not stored(study)["translated_at"]  # the button may still
+    assert "Translating 1 new item that is not in English (Claude Haiku 5.5). 1 longer than a 20-minute read" \
+        in job.text() and job.usage["calls"] == 2
+    config.update({"translate_max_minutes": 30})  # the owner's limit for SWP
+    assert translate.among_new([study, english]) == ([study], 0)
 
 
 def test_a_database_from_before_translation_gets_its_columns(site):

@@ -1,7 +1,12 @@
 # Foresight: from a signal to its second and third order consequences
 
-Design notes, 31 October 2026. **Nothing here is built.** Written while brainstorming with the owner, to be the
-starting point when the feature is built. The worked example (section 8) uses the owner's own library as it was
+Design notes, 31 October 2026, written while brainstorming with the owner. **Built the same day** as the Foresight
+add-on (`backend/addons/foresight/`, `frontend/src/pages/foresight/`); README, section *Foresight*, is what was
+built and what it costs. Where the build differs from these notes: a foresight is read and its first ring worked out
+in one request; signpost matches are shown as items that *may* bear on a consequence (the re-check judges them);
+the thresholds were measured rather than taken from here; Claude's own search terms are not used to find a
+foresight's items; and section 10 (finding signals by itself) is not built. The answers to section 13 are in
+CLAUDE.md, under *Foresight*. The worked example (section 8) uses the owner's own library as it was
 on 31 October 2026 (1,244 items, 17 sources); the numbers in square brackets are article ids in that library.
 
 The owner's request, in their words: "a feature where I can implement weak signal and trends and the data will

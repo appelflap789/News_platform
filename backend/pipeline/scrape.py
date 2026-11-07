@@ -266,7 +266,7 @@ def scrape_source(source_id: int, job: Job, *, deep: bool = False, limit: int = 
 
 def _claude_switches(source: dict, job: Job) -> tuple[bool, object]:
     """Whether this source's items are labelled, and the tally Claude's cost is counted on (None when Claude
-    is not used). A scrape never translates: the Translate buttons do that (pipeline/translate.py)."""
+    is not used). A scrape translates only where the source's switch says so (`_translate_new`)."""
     enrich = bool(source["enrich_enabled"])
     usage = None
     if enrich:
@@ -291,6 +291,8 @@ def _after_storing(source_id: int, source: dict, stored: list[int], job: Job, to
         from .videos import process
 
         totals["videos"], usage = process(source_id, job, usage, first=stored)
+    if stored and source["translate_new"]:
+        usage = _translate_new(stored, job, totals, usage)
     if stored and enrich:
         from .enrich import enrich_articles
 
@@ -299,6 +301,29 @@ def _after_storing(source_id: int, source: dict, stored: list[int], job: Job, to
         usage = _understand(job, totals, usage)
     if usage is not None:
         job.usage = usage.as_dict()
+
+
+def _translate_new(stored: list[int], job: Job, totals: dict, usage):
+    """The source's switch *Translate new items to English*: the new items in another language, the shortest
+    first, as long as they are no longer than the reading time in Settings, and within what one run may spend
+    (together with the other Claude steps of the run). What is left, the source's Translate button does."""
+    from ..ai import client as ai
+    from . import translate
+
+    ids, too_long = translate.among_new(stored)
+    if not ids and not too_long:
+        return usage
+    if not ai.available():
+        job.log("Translate new items is on for this source, but there is no API key - skipping it.", "warn")
+        return usage
+    minutes = config.get("translate_max_minutes")
+    job.log(f"Translating {len(ids)} new item{'' if len(ids) == 1 else 's'} that {'is' if len(ids) == 1 else 'are'}"
+            f" not in English ({config.model_label(str(config.get('model_translate')))})."
+            + (f" {too_long} longer than a {minutes}-minute read {'is' if too_long == 1 else 'are'} left as "
+               f"{'it is' if too_long == 1 else 'they are'}; the reader translates one of them." if too_long else ""))
+    usage = usage if usage is not None else ai.Usage()
+    totals["translation"] = {**translate.translate_articles(ids, job, usage), "too_long": too_long}
+    return usage
 
 
 # --- one page or one video, saved by its address -------------------------------------------
@@ -384,6 +409,11 @@ def _understand(job: Job, totals: dict, usage):
             totals["embedded"] = embed.embed_pending(job)["embedded"]
         except embed.Unavailable as error:
             job.log(str(error), "warn")
+    from .. import addons
+
+    found = addons.after_scrape(job)  # free steps of the add-ons, such as watching foresight signposts
+    if found:
+        totals["addons"] = found
     from ..ai import briefing
     from ..ai import client as ai
 

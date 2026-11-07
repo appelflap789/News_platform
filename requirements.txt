@@ -2,6 +2,7 @@
 fastapi>=0.115
 uvicorn>=0.30
 python-dotenv>=1.0
+tzdata>=2024.1        # time zones for the daily scrape time, also where the system has none
 
 # Claude API (source analysis, topic expansion, briefings, optional enrichment)
 anthropic>=1,<2

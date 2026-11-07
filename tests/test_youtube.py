@@ -521,6 +521,28 @@ def test_one_page_is_saved_by_its_address(api, site):
     assert api.post("/api/links", json={"url": "not an address"}).status_code == 400
 
 
+def test_the_single_items_are_listed_together_the_last_one_saved_first(api, site):
+    for page in ("p1", "p3"):
+        assert wait_for(api, api.post("/api/links", json={"url": f"{site}/publications/{page}"}).json()["job_id"])[
+            "status"] == "done"
+    followed = add_source(Recipe(site_name="Followed", homepage="https://example.org"))
+    db.execute("INSERT INTO articles(source_id, url, title, fetched_at) VALUES(?, ?, ?, ?)",
+               (followed, "https://example.org/a", "From a source you follow", db.now()))
+
+    saved = api.get("/api/articles", params={"saved": "all"}).json()
+    assert saved["total"] == 2 and [item["url"] for item in saved["items"]] == [
+        f"{site}/publications/p3", f"{site}/publications/p1"]
+    assert api.get("/api/articles", params={"saved": "article"}).json()["total"] == 2
+    assert api.get("/api/articles", params={"saved": "video"}).json()["total"] == 0
+    assert api.get("/api/articles").json()["total"] == 3
+    assert api.get("/api/stats").json()["saved"] == 2
+    assert api.get("/api/articles", params={"saved": "followed"}).status_code == 422
+
+    runs = api.get("/api/scrape-log").json()["runs"]  # a saved link is under the source its item went to
+    assert [(run["kind"], run["source"], run["new"]) for run in runs] == [("save", "Saved articles", 1)] * 2
+    assert [run["items"][0]["id"] for run in runs] == [item["id"] for item in saved["items"]]
+
+
 def test_a_save_that_fails_leaves_no_empty_source_behind(api, site):
     failed = wait_for(api, api.post("/api/links", json={"url": f"{site}/publications/nothing-here"}).json()["job_id"])
     assert failed["status"] == "error" and api.get("/api/sources").json() == []

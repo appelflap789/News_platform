@@ -1,13 +1,16 @@
-// Settings: the Claude API key, the platform's settings (drawn from the list the backend sends, so a
-// new setting needs no change here), and an overview of the installed plugins.
+// Settings, in sections with a menu of their own: the API keys, the platform's settings (drawn from the list
+// the backend sends, one section per group, so a new setting needs no change here), the scrape log, and an
+// overview of the installed plugins.
 
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import Icon from '../../components/Icon.jsx'
 import JobProgress from '../../components/JobProgress.jsx'
-import { Button, Field, Notice, PageHeader, Spinner, Toggle } from '../../components/ui.jsx'
+import { Button, Notice, PageHeader, Spinner, Toggle } from '../../components/ui.jsx'
 import { api } from '../../lib/api.js'
 import { useApp } from '../../lib/app.jsx'
+import { Link } from '../../lib/router.jsx'
 import { isActive, useJob } from '../../lib/useJob.js'
+import ScrapeLog from './ScrapeLog.jsx'
 
 function ApiKey({ status, onSaved }) {
   const app = useApp()
@@ -44,7 +47,7 @@ function ApiKey({ status, onSaved }) {
         <a href="https://console.anthropic.com/settings/keys" target="_blank" rel="noreferrer">
           console.anthropic.com
         </a>
-        . It is stored in the <code>.env</code> file of this project on your computer and is never shown again.
+        . It is stored in the platform&rsquo;s <code>.env</code> file, not in the library, and is never shown again.
       </p>
       <form
         className="key-form"
@@ -184,7 +187,7 @@ function SettingInput({ spec, value, onChange }) {
   }
   return (
     <input
-      type={spec.type === 'number' ? 'number' : 'text'}
+      type={spec.type === 'number' ? 'number' : spec.type === 'time' ? 'time' : 'text'}
       min={spec.type === 'number' ? 0 : undefined}
       step="any"
       value={value}
@@ -227,11 +230,52 @@ function Plugins() {
   )
 }
 
-function SettingsPage() {
+// The menu of Settings, top to bottom. `group` is the group of settings the backend sends for that section; a
+// group not named here (an add-on's) gets a section of its own, above the scrape log.
+const SECTIONS = [
+  { id: 'keys', label: 'API keys', icon: 'key' },
+  { id: 'claude', label: 'Claude', icon: 'sparkles', group: 'Claude' },
+  { id: 'videos', label: 'Videos and podcasts', icon: 'play', group: 'Videos' },
+  { id: 'scraping', label: 'Scraping', icon: 'refresh', group: 'Scraping' },
+  { id: 'meaning', label: 'Search by meaning', icon: 'layers', group: 'Search by meaning' },
+  { id: 'log', label: 'Scrape log', icon: 'activity' },
+  { id: 'plugins', label: 'Plugins', icon: 'list' },
+]
+
+function sectionsFor(spec) {
+  const named = new Set(SECTIONS.map((section) => section.group).filter(Boolean))
+  const extra = [...new Set(spec.map((item) => item.group))]
+    .filter((group) => !named.has(group))
+    .map((group) => ({ id: `group-${group.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`, label: group, icon: 'settings', group }))
+  const at = SECTIONS.findIndex((section) => section.id === 'log')
+  return [...SECTIONS.slice(0, at), ...extra, ...SECTIONS.slice(at)]
+}
+
+function Group({ group, spec, values, onChange }) {
+  const items = spec.filter((item) => item.group === group)
+  if (!items.length) return null
+  return (
+    <section className="panel">
+      <h3>{group}</h3>
+      {items.map((item) => (
+        <div key={item.key} className="option">
+          <div>
+            <strong>{item.label}</strong>
+            <p>{item.help}</p>
+          </div>
+          <SettingInput spec={item} value={values[item.key]} onChange={(value) => onChange({ ...values, [item.key]: value })} />
+        </div>
+      ))}
+    </section>
+  )
+}
+
+function SettingsPage({ params }) {
   const app = useApp()
   const [settings, setSettings] = useState(null)
   const [values, setValues] = useState({})
   const [saving, setSaving] = useState(false)
+  const menu = useRef(null)
 
   const load = () =>
     api.settings
@@ -245,6 +289,12 @@ function SettingsPage() {
     load()
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
+  // on a phone the menu is one row that scrolls sideways: keep the open section in sight
+  useEffect(() => {
+    const row = menu.current
+    const active = row?.querySelector('.settings__entry--active')
+    if (active && row.scrollWidth > row.clientWidth) row.scrollLeft = active.offsetLeft - row.offsetLeft - 16
+  }, [settings, params.section])
 
   if (!settings) {
     return (
@@ -271,45 +321,53 @@ function SettingsPage() {
       setSaving(false)
     }
   }
-  const groups = [...new Set(settings.spec.map((spec) => spec.group))]
+  const sections = sectionsFor(settings.spec)
+  const section = sections.find((item) => item.id === params.section) || sections[0]
+  // which sections hold a change that is not saved yet, so that leaving one does not hide it
+  const unsaved = new Set(settings.spec.filter((item) => item.key in changed).map((item) => item.group))
 
   return (
-    <div className="wizard">
+    <>
       <PageHeader title="Settings" subtitle={`News Scraper Platform ${app.meta.version}`} />
-      <ApiKey status={settings.ai} onSaved={load} />
-      <OtherKey name="youtube" />
-      <OtherKey name="gemini" />
-      <Meaning />
+      <div className="settings">
+        <nav className="settings__menu" aria-label="Settings" ref={menu}>
+          {sections.map((item) => (
+            <Link
+              key={item.id}
+              to={item.id === sections[0].id ? '/settings' : `/settings/${item.id}`}
+              className={`settings__entry ${item.id === section.id ? 'settings__entry--active' : ''}`}
+            >
+              <Icon name={item.icon} size={16} />
+              <span>{item.label}</span>
+              {item.group && unsaved.has(item.group) ? <span className="settings__dot" title="Not saved yet" /> : null}
+            </Link>
+          ))}
+        </nav>
+        <div className="settings__body">
+          {section.id === 'keys' ? (
+            <>
+              <ApiKey status={settings.ai} onSaved={load} />
+              <OtherKey name="youtube" />
+              <OtherKey name="gemini" />
+            </>
+          ) : null}
+          {section.id === 'meaning' ? <Meaning /> : null}
+          {section.group ? <Group group={section.group} spec={settings.spec} values={values} onChange={setValues} /> : null}
+          {section.id === 'log' ? <ScrapeLog /> : null}
+          {section.id === 'plugins' ? <Plugins /> : null}
 
-      {groups.map((group) => (
-        <section key={group} className="panel">
-          <h3>{group}</h3>
-          {settings.spec
-            .filter((spec) => spec.group === group)
-            .map((spec) => (
-              <div key={spec.key} className="option">
-                <div>
-                  <strong>{spec.label}</strong>
-                  <p>{spec.help}</p>
-                </div>
-                <SettingInput spec={spec} value={values[spec.key]} onChange={(value) => setValues({ ...values, [spec.key]: value })} />
-              </div>
-            ))}
-        </section>
-      ))}
-
-      {Object.keys(changed).length ? (
-        <div className="wizard__actions wizard__actions--sticky">
-          <Button onClick={() => setValues(settings.values)}>Discard</Button>
-          <span className="reader__spacer" />
-          <Button variant="primary" icon="check" onClick={save} busy={saving}>
-            Save settings
-          </Button>
+          {Object.keys(changed).length ? (
+            <div className="wizard__actions wizard__actions--sticky">
+              <Button onClick={() => setValues(settings.values)}>Discard</Button>
+              <span className="reader__spacer" />
+              <Button variant="primary" icon="check" onClick={save} busy={saving}>
+                Save settings
+              </Button>
+            </div>
+          ) : null}
         </div>
-      ) : null}
-
-      <Plugins />
-    </div>
+      </div>
+    </>
   )
 }
 
@@ -342,7 +400,7 @@ function Meaning() {
         ) : null}
       </div>
       <p className="panel__lead">
-        An embedding is a list of numbers that stands for what an item is about. A model on this computer makes
+        An embedding is a list of numbers that stands for what an item is about. A model that runs with the platform makes
         them after every scrape; nothing is sent anywhere and it costs nothing. Search, topics and &ldquo;More like
         this&rdquo; use them. Until the library holds 50 items they are used more cautiously.
       </p>
@@ -352,11 +410,15 @@ function Meaning() {
   )
 }
 
-export default {
-  id: 'settings',
-  path: '/settings',
-  title: 'Settings',
-  icon: 'settings',
-  nav: { section: 'platform', order: 2 },
-  component: SettingsPage,
-}
+export default [
+  {
+    id: 'settings',
+    path: '/settings',
+    title: 'Settings',
+    icon: 'settings',
+    nav: { section: 'platform', order: 2 },
+    component: SettingsPage,
+  },
+  // one section of it: /settings/log, /settings/scraping…
+  { id: 'settings-section', path: '/settings/:section', title: 'Settings', icon: 'settings', component: SettingsPage },
+]

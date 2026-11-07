@@ -186,6 +186,31 @@ def test_scheduler_picks_sources_that_are_due(site):
     assert {s["id"] for s in scheduler.due_sources(now)} == {never, overdue}
 
 
+def test_every_day_means_at_the_daily_scrape_time_dutch_time(site):
+    recipe = institute(site)
+    utc = lambda text: datetime.strptime(text, "%Y-%m-%d %H:%M").replace(tzinfo=timezone.utc)  # noqa: E731
+    stamp = lambda text: utc(text).strftime("%Y-%m-%dT%H:%M:%SZ")  # noqa: E731
+    last_night = add_source(recipe, name="last night", interval_minutes=1440, last_scraped_at=stamp("2026-11-03 21:58"))
+    this_morning = add_source(recipe, name="this morning", interval_minutes=1440, last_scraped_at=stamp("2026-11-04 08:00"))
+    hourly = add_source(recipe, name="hourly", interval_minutes=60, last_scraped_at=stamp("2026-11-04 12:30"))
+    due = lambda when: {s["id"] for s in scheduler.due_sources(utc(when))}  # noqa: E731
+
+    assert config.get("daily_scrape_time") == "15:00"  # 14:00 UTC in winter
+    assert due("2026-11-04 13:59") == {hourly}
+    assert due("2026-11-04 14:00") == {last_night, this_morning, hourly}
+    db.execute("UPDATE sources SET last_scraped_at = ? WHERE interval_minutes = 1440", (stamp("2026-11-04 14:03"),))
+    assert due("2026-11-05 13:59") == {hourly}  # once a day, not every 24 hours from 14:03
+    assert due("2026-11-05 14:00") >= {last_night, this_morning}
+    assert scheduler.daily_slot(utc("2026-07-01 13:30")) == utc("2026-07-01 13:00")  # 15:00 in summer is 13:00 UTC
+    assert scheduler.daily_slot(utc("2026-07-01 12:59")) == utc("2026-06-30 13:00")  # before it: yesterday's
+
+    config.update({"daily_scrape_time": "7.30"})
+    assert config.get("daily_scrape_time") == "07:30"
+    for wrong in ("25:00", "15", "noon"):
+        with pytest.raises(ValueError):
+            config.update({"daily_scrape_time": wrong})
+
+
 # --- sites that refuse item pages but serve a feed ---------------------------------------------
 
 class PagesBlocked(Context):

@@ -2052,6 +2052,216 @@ mark {
   white-space: nowrap;
 }
 
+.settings {
+  display: grid;
+  grid-template-columns: 220px minmax(0, 1fr);
+  gap: 24px;
+  align-items: start;
+  max-width: 1290px;
+}
+
+.settings__menu {
+  position: sticky;
+  top: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.settings__entry {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 12px;
+  border-radius: var(--radius-sm);
+  color: var(--text-2);
+  font-weight: 560;
+  text-decoration: none;
+}
+
+.settings__entry:hover {
+  background: var(--hover);
+  color: var(--text);
+}
+
+.settings__entry--active {
+  background: var(--accent-soft);
+  color: var(--text);
+}
+
+.settings__entry--active .icon {
+  color: var(--accent);
+}
+
+.settings__dot {
+  width: 7px;
+  height: 7px;
+  margin-left: auto;
+  border-radius: 50%;
+  background: var(--warn);
+}
+
+.settings__body {
+  min-width: 0;
+}
+
+.log__controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin-left: auto;
+}
+
+.log__only {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: 6px;
+  font-size: 13px;
+  color: var(--text-2);
+  cursor: pointer;
+}
+
+.log__day + .log__day {
+  margin-top: 22px;
+}
+
+.log__day h4 {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px 12px;
+  margin: 0 0 10px;
+  font-size: 14.5px;
+}
+
+.log__day h4 .muted {
+  font-weight: 450;
+  font-size: 13px;
+}
+
+.log__day .activity {
+  max-width: none;
+}
+
+.log__error {
+  color: var(--danger);
+}
+
+.log__run--warn .activity__icon {
+  color: var(--warn);
+}
+
+.log__run--ok .activity__icon {
+  color: var(--ok);
+}
+
+.log__run--error .activity__icon {
+  color: var(--danger);
+}
+
+.log__detail {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 14px 16px 16px;
+  border-top: 1px solid var(--line);
+  font-size: 13.5px;
+}
+
+.log__feeds {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.log__feeds th {
+  text-align: left;
+  font-weight: 560;
+  font-size: 12px;
+  color: var(--text-3);
+  padding: 0 12px 6px 0;
+}
+
+.log__feeds td {
+  padding: 6px 12px 6px 0;
+  border-top: 1px solid var(--line);
+  vertical-align: top;
+  overflow-wrap: anywhere;
+}
+
+.log__feed--error td:last-child {
+  color: var(--danger);
+}
+
+.log__problems,
+.log__items {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  width: 100%;
+}
+
+.log__problems li {
+  display: flex;
+  gap: 8px;
+  color: var(--text-2);
+  overflow-wrap: anywhere;
+}
+
+.log__problems .icon {
+  flex: none;
+  margin-top: 2px;
+  color: var(--warn);
+}
+
+.log__problem--error,
+.log__problem--error .icon {
+  color: var(--danger);
+}
+
+.log__items button {
+  background: none;
+  border: none;
+  padding: 0;
+  color: var(--text);
+  text-align: left;
+  cursor: pointer;
+}
+
+.log__items button:hover {
+  color: var(--accent);
+}
+
+@media (max-width: 920px) {
+  .settings {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 14px;
+  }
+
+  .settings__menu {
+    position: static;
+    flex-direction: row;
+    overflow-x: auto;
+    padding-bottom: 4px;
+    scrollbar-width: none;
+  }
+
+  .settings__entry {
+    flex: none;
+    white-space: nowrap;
+  }
+
+  .log__feeds th:nth-child(2),
+  .log__feeds td:nth-child(2) {
+    display: none;
+  }
+}
+
 .key-form {
   display: flex;
   gap: 10px;
@@ -3180,7 +3390,8 @@ mark {
   text-decoration: underline;
 }
 
-.filters__removed {
+.filters__removed,
+.filters__link {
   display: inline-flex;
   align-items: center;
   gap: 6px;
@@ -3189,7 +3400,8 @@ mark {
   text-decoration: none;
 }
 
-.filters__removed:hover {
+.filters__removed:hover,
+.filters__link:hover {
   color: var(--text);
 }
 

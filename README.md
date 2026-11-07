@@ -5,6 +5,7 @@ A personal dashboard that collects news, reports, papers and forum posts from an
 The idea in one sentence: **you give an address, Claude works out how that source is built and writes a reusable "recipe", and from then on the platform scrapes it without AI.**
 
 - [Start](#start)
+- [On the home server](#on-the-home-server)
 - [Using the dashboard](#using-the-dashboard)
 - [How plugging in a source works](#how-plugging-in-a-source-works)
 - [Videos and single items](#videos-and-single-items)
@@ -24,17 +25,68 @@ The idea in one sentence: **you give an address, Claude works out how that sourc
 
 ## Start
 
-Double-click **`start.bat`**. It starts the platform and opens `http://127.0.0.1:8765` in your browser. Close the window (or press Ctrl+C) to stop it.
+Double-click **`start.bat`**. The platform runs on the home server, day and night (see [On the home server](#on-the-home-server)); `start.bat` opens its dashboard in your browser, over the home Wi-Fi when you are at home and over Tailscale when you are not. When neither answers, it says what to check.
 
-The Python environment lives in `.venv` inside this folder and is already set up. If that folder is ever missing, `start.bat` rebuilds it from `requirements.txt` on the next start. `start.bat` does not install what is added to `requirements.txt` later; after such a change run `.venv\Scripts\python.exe -m pip install -r requirements.txt` once.
+**Claude API key.** Open **Settings → API keys** in the dashboard and paste an Anthropic API key (create one at <https://console.anthropic.com/settings/keys>). It is saved in the platform's `.env` (on the server `~/news-platform/config/.env`) and never shown again. Without a key everything except the Claude features works: you can add sources with *Quick detect*, scrape, search and build topics by hand.
 
-**The embedding model.** Search and topics also work by meaning (see [Topics and search](#topics-and-search)). The model for that runs on this computer and is kept in `data/models` (about 240 MB). If that folder is missing it is downloaded on the next start, which needs internet once.
+**The embedding model.** Search and topics also work by meaning (see [Topics and search](#topics-and-search)). The model for that runs with the platform itself and is kept in `data/models` (about 240 MB; on the server `/opt/news-platform/data/models`). If that folder is missing it is downloaded on the next start, which needs internet once.
 
-**Claude API key.** Open **Settings** in the dashboard and paste an Anthropic API key (create one at <https://console.anthropic.com/settings/keys>). It is saved to `.env` in this folder and never shown again. Without a key everything except the Claude features works: you can add sources with *Quick detect*, scrape, search and build topics by hand.
+---
 
-Manual start, if you prefer: `.venv\Scripts\python.exe run.py` (add `--no-browser` to not open a browser).
+## On the home server
 
-If a start ever fails with *"An Application Control policy has blocked this file"*, start it again. Windows was still checking a newly installed file; it happened once here, right after installation, and not again.
+Since 3 November 2026 the platform runs on the home server **jacob228**, in Docker, and scrapes there by itself. This PC only opens its dashboard, and is where the code is written.
+
+**Opening it.**
+
+| From | Address |
+|---|---|
+| This PC | `start.bat` (it tries the two addresses below, in that order) |
+| Any device on the home Wi-Fi | `http://192.168.1.161:8765` |
+| A device with Tailscale on, anywhere | `http://100.75.117.66:8765` |
+
+It is reachable on the home Wi-Fi and on Tailscale, like Jellyfin. The dashboard has no login: anyone on your Wi-Fi or your tailnet can open it and spend your API keys. So it must never be opened to the internet; do not forward port 8765 in the router. The server's Wi-Fi address can change (it was 192.168.0.129 on another network); the Tailscale address does not. Both are at the top of `start.bat`.
+
+**Scraping by itself.** Every source is set to *Every day* (its Settings tab), and *Every day* means at **15:00 Dutch time** (Settings → Scraping → *Time of the daily scrape*). The scheduler looks once a minute; from 15:00 on, every daily source that was not scraped since then is scraped, three at a time, so the whole round takes a while (the Reddit ones are slow by design). When the platform was off at 15:00, the round runs as soon as it starts. A source updated by hand before 15:00 is still scraped at 15:00. The other intervals (every hour, every 6 or 12 hours, every week) count from the last scrape. A scrape that is cut off, by an update of the code or a restart, leaves its source due, and it runs again a minute after the start. What came in each day, and which source gave which error: **Settings → Scrape log**.
+
+**Where everything is.**
+
+| What | On the server |
+|---|---|
+| The library (`platform.db`) | `/opt/news-platform/data/` (the SSD) |
+| The embedding model | `/opt/news-platform/data/models/` |
+| The API keys (`.env`) | `~/news-platform/config/.env`, readable by the server's own user only. A key saved in Settings goes here |
+| `compose.yaml` | `~/news-platform/` |
+| The code the image is built from | `~/news-platform/app/`, copied there by `server/deploy.sh`; do not change it there |
+| Backups | `/opt/news-platform/data/backups/` (the last 7) and `/mnt/sdc2/news-platform-backup/` on the WD drive (the last 14) |
+
+Everything that is scraped is in the library: the items with their full text, the text of the PDFs they link to, the transcripts, the embeddings, your topics, foresights and settings. Pictures, PDFs and audio themselves are not kept, only their addresses.
+
+**Backups.** Every night at 04:00 UTC, after the Immich (03:30) and Seafile (03:45) backups, `/usr/local/bin/news-platform-backup.sh` (from `/etc/cron.d/news-platform-backup`) has the running platform make a copy of the library with SQLite's own backup (`python -m backend.backup`), checks it, keeps the last seven on the SSD and copies them to the WD drive when that is plugged in. Its log is `/var/log/news-platform-backup.log`. Do not copy `platform.db` by hand while the platform runs: such a copy can be broken, and what is still in `platform.db-wal` is not in it.
+
+**Putting a backup back** (on the server):
+
+```
+cd ~/news-platform && docker compose stop
+cp /mnt/sdc2/news-platform-backup/platform-<date>.db /opt/news-platform/data/platform.db
+rm -f /opt/news-platform/data/platform.db-wal /opt/news-platform/data/platform.db-shm
+docker compose start
+```
+
+**Changing the code.** The code is written on this PC, in this folder. `server/deploy.sh`, run from WSL, puts it on the server: it waits until no scrape is running, copies the code over the network, builds the image, restarts the platform with it and checks that it answers (`--check` also runs the tests inside the new image first, on Linux and without internet; `--now` does not wait). A deploy takes about half a minute and never touches the library, the model or the keys. GitHub is not involved; push to it only to keep a copy of the code there. A change reaches the server when it is deployed, not on every save, because the server holds the real library and a half-finished change would scrape into it.
+
+**On the server itself** (`ssh jacob228@192.168.1.161`, then `cd ~/news-platform`):
+
+```
+docker compose ps                 is it running, and healthy
+docker compose logs --tail 50     what it printed
+docker compose restart            restart it
+docker compose stop               stop it (start brings it back)
+```
+
+It starts by itself when the server starts, and again when it crashes (`restart: unless-stopped`); Docker checks once a minute that it answers.
+
+**A copy on this PC.** For trying changes the platform still runs on Windows, on a throwaway copy of the library (CLAUDE.md, *Trying a change for real*): `.venv\Scripts\python.exe run.py` with `NSP_DATA_DIR` set to the copy's folder. Without `NSP_DATA_DIR` it starts an empty library in `data\`; the library as it was on this PC when it moved is kept in `data\before-server-2026-11-03\`. The Python environment lives in `.venv`; after a change to `requirements.txt` run `.venv\Scripts\python.exe -m pip install -r requirements.txt` once. If a start ever fails with *"An Application Control policy has blocked this file"*, start it again: Windows was still checking a newly installed file.
 
 ---
 
@@ -44,19 +96,28 @@ The sidebar on the left is the list of pages.
 
 | Page | What it is for |
 |---|---|
-| **Home** | Shelves, as on YouTube: your **topics** as cards (see [Topics on Home](#topics-on-home)), your **favorites** (two rows), and the **latest items** (two rows; *Show more* opens the whole feed, newest first). The search box finds items that contain your words (all of them; `"quoted words"` must appear together) and items that are about the same thing in other words or another language; those carry a *by meaning* mark. Searching, or picking a kind of content, turns the page into the results. Point at a card and a star and a bin appear: the star adds it to [Favorites](#favorites), the bin [removes the item](#removing-items) from your library. |
+| **Home** | Shelves, as on YouTube: your **topics** as cards (see [Topics on Home](#topics-on-home)), your **foresights** (see [Foresight](#foresight)), your **favorites** (two rows), and the **latest items** (two rows; *Show more* opens the whole feed, newest first). The search box finds items that contain your words (all of them; `"quoted words"` must appear together) and items that are about the same thing in other words or another language; those carry a *by meaning* mark. Searching, or picking a kind of content, turns the page into the results. Point at a card and a star and a bin appear: the star adds it to [Favorites](#favorites), the bin [removes the item](#removing-items) from your library. |
+| **Foresight** | Your foresights as cards, *New foresight*, and a quick start from any of your topics. See [Foresight](#foresight). |
+| **Foresight → a foresight** | A trend, a weak signal or an event, read against your library and worked out into what follows from it: the wheel, the chains, how the literature reacts, and the signposts the platform watches for. |
 | **Topics → a topic** | A page per subject, described under [The topic page](#the-topic-page): *What is new*, *The long run*, a timeline, a trend, the sources, and *Up next*. `←` and `→` flip to the previous and the next topic. |
 | **Topics → New topic** | Name a topic, say in a sentence what it is about, let Claude suggest terms (or type them; they are in English, plus translations only into a language that at least 5% of your library, and ten items, is really written in: a translated item counts as English), see the count update live, save. |
+| **Sources → Single items** | The articles, PDFs, YouTube videos and podcast episodes you saved one at a time by their address, from any site, without following the site they come from: the box to save another at the top, then **All / Articles / Videos / Podcasts**, the last one saved first. See [Saving one page, one video or one podcast episode](#saving-one-page-one-video-or-one-podcast-episode). |
 | **Sources → a source** | The source's own page, laid out like a channel. Tabs: **Items** (its cards), **Structure** (how the site is built, its feeds, the recipe editor, re-analysis), **Settings** (automatic updates, leaving out items behind a login or paywall, AI summary and tags, delete). Buttons: **Update** (fetch what is new), **Deep scrape** (walk back through the archive, as far as you say: until the source has so many items, or all of it) and, when some of its items are not in English, **Translate N items** (see *Translation to English*). |
-| **Sources → Add source** | First a box to [save one page or one video](#videos-and-single-items) by its address. Then the three-step wizard described in the next section, which also takes a YouTube channel. Below it: the [built scrapers](#built-scrapers), added with one click. |
+| **Sources → Add source** | First the same box as on *Single items*, to [save one page or one video](#videos-and-single-items) by its address. Then the three-step wizard described in the next section, which also takes a YouTube channel. Below it: the [built scrapers](#built-scrapers), added with one click. |
 | **Activity** | Every analysis, scrape, embedding run and topic text that ran, with its log and what Claude cost. |
-| **Settings** | The Anthropic key, the two optional Google keys that videos use, how many items have an embedding, models, scraping behaviour, and the list of installed plugins. |
+| **Settings** | In sections, with a menu of their own on the left (a row at the top on a phone): **API keys** (the Anthropic key and the two optional Google keys that videos use), **Claude** (models, what one run may spend), **Videos and podcasts**, **Scraping**, **Search by meaning** (how many items have an embedding), the **[Scrape log](#the-scrape-log)** and **Plugins**. A section with a change that is not saved yet has a dot; *Save settings* saves the changes of every section. An add-on's settings get a section of their own. |
 | **Removed items** | What you [took out of your library](#removing-items) yourself, the last one first, each with **Put back**. |
 | **Favorites** | The items you starred, the last one first. Home shows the first two rows of them. |
 
-The **Sources** heading in the sidebar has a small menu: all sources, only the ones that collect articles, or only the ones that collect videos.
+The **Sources** heading in the sidebar has a small menu: all sources, or only the ones that collect articles, videos or podcasts. *Single items* and *Add source* stay under every choice.
 
 Clicking a card opens the **reader**, a panel that slides over the page. `Esc` closes it, `←` and `→` step through the list you opened it from, and `Delete` (or the bin at the top) [removes the item](#removing-items) and shows the next one. *Open original* goes to the source; *PDF* appears when the item has one. A video plays at the top of the reader, with its length and views, and can be read as an article or as a transcript. An address ending in `?article=12` opens that item directly. An item that came from Reddit has a **Summarise comments** button (see [What the comments say](#what-the-comments-say)). Under the text the reader lists your **topics** (a click puts the item in a topic or takes it out) and **More like this**: the items closest to it in meaning.
+
+### The scrape log
+
+**Settings → Scrape log** lists every scrape and every saved link of the last 7, 14 or 30 days, by day, the newest first. Each day says how many items came in, from how many sources, and how many runs had an error. Each run is one row: the source, whether it ran by itself (*Scheduled*) or because you pressed a button (*By hand*), how many items were new, skipped, left out or only partly read, and the first error, in red. A green tick means nothing went wrong, an amber sign that items were skipped, left out or partly read, a red one an error.
+
+Opening a row shows its feeds, each with how it is read (*RSS / Atom feed*, *HTML listing page*, *Built scraper*, *Reddit*, …), how many items it gave and what went wrong; then the warnings and errors from the run's log; then the titles of the items it stored (a click opens one in the reader). *Only problems* hides the runs where all went well. The full log of every run stays on **Activity**.
 
 ### Favorites
 
@@ -150,7 +211,7 @@ What it cannot know: the numbers of votes (Reddit's feed gives the order, not th
 
 ### Saving one page, one video or one podcast episode
 
-*Add source* starts with a box, **Save one page, video or podcast episode**. Paste the address of an article, a PDF, a YouTube video or a podcast episode on Spotify and it is stored at once, without making a source of the site it comes from. It lands in **Saved articles**, **Saved videos** or **Saved podcasts**, sources that appear in the sidebar when you first use them. They have nothing to update; their Settings tab (AI summary, leaving out paywalled pages, writing videos up) applies to whatever you save next; a saved page in another language gets the reader's *Translate to English* button. Saving an address that is in the library already opens that item.
+**Single items**, at the top of *Sources* in the sidebar, is the place for things that do not come from a site you follow. Its box, **Save one page, video or podcast episode** (also at the top of *Add source*), takes the address of an article, a PDF, a YouTube video or a podcast episode on Spotify and stores it at once, without making a source of the site it comes from. The page shows them all, the last one saved first, or one kind at a time: **Articles**, **Videos**, **Podcasts**. Behind the page they belong to three sources, **Saved articles**, **Saved videos** and **Saved podcasts**, made when you first save one of that kind; the sidebar shows the one *Single items* entry in their place. They have nothing to update. Each has its own Settings tab (AI summary, leaving out paywalled pages, writing videos up), which applies to whatever you save next: with one kind picked, *Settings of Saved videos* (and so on) opens it, and the *Transcribe and summarise* button for saved videos is there too. A saved page in another language gets the reader's *Translate to English* button. Saving an address that is in the library already opens that item. Saved items are searched, embedded, matched to topics and read by foresight like everything else, and they are in Home's latest items.
 
 ### YouTube
 
@@ -221,7 +282,7 @@ A recipe is a set of CSS selectors, and that is as far as it goes. For a site yo
                                     ──► tests it against the live site ──► you add it in the dashboard
 ```
 
-**Getting one.** Open Claude Code in this folder and say which site you want, for example *"build a scraper for https://hcss.nl/research/"*. `CLAUDE.md` in this folder tells it how: what to look at first, the rules a scraper follows, how to test it. Restart the platform afterwards.
+**Getting one.** Open Claude Code in this folder and say which site you want, for example *"build a scraper for https://hcss.nl/research/"*. `CLAUDE.md` in this folder tells it how: what to look at first, the rules a scraper follows, how to test it. It reaches the platform with `server/deploy.sh`.
 
 **Using one.** *Add source* lists the built scrapers under the wizard. **Add and scrape** makes it a source like any other: Update, Deep scrape, automatic updates, leaving out items behind a login or paywall, AI summary and tags, topics and search all work the same. Its Structure tab shows the scraper's own notes on how the site is built.
 
@@ -252,11 +313,11 @@ A recipe is a set of CSS selectors, and that is as far as it goes. For a site yo
 
 ```
 News scraper platform oktober/
-├── start.bat              double-click to run
+├── start.bat              double-click: opens the dashboard on the home server
 ├── run.py                 starts the web server
 ├── requirements.txt
-├── .env                   your API key (created by the Settings page; not in git)
-├── data/platform.db       everything that was collected (SQLite; not in git)
+├── .env                   your API keys (created by the Settings page; not in git; the server has its own)
+├── data/platform.db       everything that was collected (SQLite; not in git; the real one is on the server)
 ├── data/models/           the embedding model (downloaded once; not in git)
 │
 ├── backend/               Python, FastAPI
@@ -266,8 +327,9 @@ News scraper platform oktober/
 │   ├── schemas.py         the Recipe model
 │   ├── registry.py        the plugin mechanism
 │   ├── jobs.py            background jobs with live logs
-│   ├── scheduler.py       automatic updates
+│   ├── scheduler.py       automatic updates (Every day = at the daily scrape time, Dutch time)
 │   ├── removed.py         the items you removed yourself: kept out of every scrape, kept to put back
+│   ├── backup.py          a checked copy of the library, safe while it runs (python -m backend.backup <folder>)
 │   │
 │   ├── fetchers/          PLUGINS: how bytes are downloaded        (http)
 │   ├── connectors/        PLUGINS: how a feed's items are listed   (rss, html_list, sitemap, reddit, youtube, podcast, single, scraper)
@@ -281,19 +343,23 @@ News scraper platform oktober/
 │   │                      topics.py (what belongs to a topic, timeline, trend), expand.py (Claude suggests terms)
 │   ├── ai/                client.py (the only place that calls Claude), briefing.py (the two texts on a topic page),
 │   │                      gemini.py (the only place that calls Google's Gemini: what is said in a video)
-│   └── api/               one file per area: sources, scrapers, links, articles, topics, system
+│   ├── api/               one file per area: sources, scrapers, links, articles, topics, system, scrape_log
+│   └── addons/            ADD-ONS: parts that live in a folder of their own and can be taken out again
+│                          (foresight)
 │
 ├── frontend/              React + Vite
 │   ├── dist/              the built dashboard, served by the backend
 │   └── src/
-│       ├── pages/         PLUGINS: one folder per page, found automatically
+│       ├── pages/         PLUGINS: one folder per page, found automatically (pages/foresight is an add-on's)
 │       ├── cards/         PLUGINS: one file per card look, found automatically
 │       ├── components/    Sidebar, Reader, ArticleGrid, RecipeEditor, TopicEditor, JobProgress, ...
 │       ├── lib/           api.js, router.jsx, app.jsx (shared state), format.js, useJob.js
 │       └── styles/app.css design tokens at the top; the rest follows them
 │
 ├── CLAUDE.md              instructions for Claude Code, including how to build a scraper for a new site
-└── tests/                 226 tests; no internet needed
+├── FORESIGHT.md           the design Foresight was built from, with a worked example
+├── server/                Dockerfile, compose.yaml, deploy.sh (puts the code on the home server), backup.sh (nightly)
+└── tests/                 253 tests; no internet needed
 ```
 
 ### The one mechanism behind all of it
@@ -309,6 +375,8 @@ A plugin declares the options it understands as `fields`. That one declaration i
 So a new connector is immediately usable by hand in the editor and by Claude during analysis.
 
 The dashboard works the same way: `src/pages/index.js` picks up every `pages/*/page.jsx`, and the sidebar is drawn from what those files declare. `src/cards/index.js` picks up every `*Card.jsx`. The Settings page is drawn from the list in `backend/config.py`.
+
+**Add-ons** go one step further: a whole part of the platform in two folders, `backend/addons/<name>/` and `frontend/src/pages/<name>/`, that nothing else imports, so that deleting the two folders takes it out and leaves the rest working. On start `backend/addons/__init__.py` imports each add-on and uses what it has: `router` (its API routes), `init()` (its own tables), `after_scrape(job)` (a free step at the end of every scrape) and `meta()` (sent to the dashboard as `meta.addons.<name>`). It may add settings with `config.add_setting`. An add-on that fails to import or start is left out, with the reason on the console, and the platform starts without it. In the dashboard its `page.jsx` exports a list of pages, a sidebar entry and a Home shelf (`shelf`), and shows them only when `meta.addons` names it, so a dashboard built with the add-on also works against a platform that does not have it (yet). [Foresight](#foresight) is the first add-on; a test copies the backend without it, adds a broken one, and checks that the platform starts and answers.
 
 ### What depends on what
 
@@ -339,9 +407,10 @@ Scraping never imports the Claude code unless enrichment is switched on for that
 | Give a content type its own card | Add a `SomethingCard.jsx` in `frontend/src/cards/` |
 | Add a setting | Add one entry to `SETTINGS` in `backend/config.py` |
 | Add API endpoints | Add a module in `backend/api/` and list it in `backend/api/__init__.py` |
+| Add a part that can be taken out again (its own tables, routes, pages, Home shelf) | Add an **add-on**: `backend/addons/<name>/` and `frontend/src/pages/<name>/`, as Foresight does; see [the one mechanism](#the-one-mechanism-behind-all-of-it) |
 | Add a processing step per item (e.g. an importance score) | Follow `backend/pipeline/enrich.py`; see [below](#where-an-importance-filter-would-go) |
 
-After a backend change, restart the platform. After a dashboard change, run `npm run build` in `frontend/` (see [Developing the dashboard](#developing-the-dashboard)).
+After a dashboard change, run `npm run build` in `frontend/` (see [Developing the dashboard](#developing-the-dashboard)); then put the change on the server with `server/deploy.sh` (see [On the home server](#on-the-home-server)).
 
 ### A new connector
 
@@ -509,7 +578,7 @@ Items are found in two ways, and both are used everywhere.
 
 **By words.** SQLite's full-text index (FTS5) with BM25 ranking. Matches in the title count most, then tags, then summaries, then the body. A single word of four letters or more matches by prefix (`drone` finds `drones` and `droneaanval`); several words must appear next to each other; accents and capitals are ignored.
 
-**By meaning.** Every item gets an *embedding*: a list of 384 numbers that stands for what it is about. Two texts on the same subject get lists that lie close together, whatever words or language they use. They are made by a small multilingual model (`paraphrase-multilingual-MiniLM-L12-v2`) that runs on this computer through onnxruntime: nothing is sent anywhere and it costs nothing. Measured here in October 2026: 380 items in 20 seconds the first time, a search in 50 milliseconds.
+**By meaning.** Every item gets an *embedding*: a list of 384 numbers that stands for what it is about. Two texts on the same subject get lists that lie close together, whatever words or language they use. They are made by a small multilingual model (`paraphrase-multilingual-MiniLM-L12-v2`) that runs with the platform itself through onnxruntime: nothing is sent anywhere and it costs nothing. Measured here in October 2026: 380 items in 20 seconds the first time, a search in 50 milliseconds.
 
 - **What is embedded** is the title plus a summary: Claude's when the item has one, otherwise the site's. Never the opening of the stored text, which is too often a copyright page or a line of boilerplate. So items with an English *AI summary* are placed best; a Dutch or German item without one is still placed, a little less surely.
 - **When.** At the end of every scrape, after labelling, and at the end of a translation run. When a title or summary changes, the embedding is dropped by a database trigger and made again. On start-up, and with the button on the Settings page, whatever is missing is filled in.
@@ -564,6 +633,40 @@ The trend compares **shares**, not counts: the topic's items as a part of everyt
 
 ---
 
+## Foresight
+
+A foresight is a trend (*demographic ageing*), a weak signal (*navies buy cheap lasers against drones*) or an event (*the Strait of Hormuz stays closed through the winter*), read against your library and worked out into what follows from it, and from that, three rings deep. Then the platform watches for the signs, for free, after every scrape. It was designed with the owner on 31 October 2026; `FORESIGHT.md` is that design, with a worked example on the Strait of Hormuz. It is an [add-on](#the-one-mechanism-behind-all-of-it): `backend/addons/foresight/` and `frontend/src/pages/foresight/`, and deleting both folders takes it out.
+
+**Making one** (sidebar → *Foresight* → *New foresight*, or from one of your topics): its kind, a name, what exactly you expect or see (a trend can be just its name), how far ahead (months, a few years, decades), what you know about it (Claude treats that as expert knowledge, builds on it and says where your library disagrees), and what to read it against: your whole library or one topic's items. While you type, the page says for free how many items are about it, from which sources, the first five, and what reading costs. *Create and read it* makes it and has Claude read it; without an API key you can still make one and add consequences yourself.
+
+**What Claude does with it, each step on a button with its price:**
+
+- **Read it.** Claude reads the best-matching items and the newest (40 at most, a summary or the opening 900 characters of each, oldest first) and says what the library says *now*: a standing (*borne out*, *partly borne out*, *contested*, *little in your library*), the statement as the library sees it, two to four paragraphs citing the items, what each item says on it (*supports*, *nuances*, *contradicts*, *context*), and what the library does not cover. Then four to six first-order consequences, at least one of them pushing back against the others (an adaptation, a substitution, a policy or market response).
+- **Work out what follows**, on a consequence you open: two to four consequences of that one. The items read are the ones closest to *that* consequence, so every ring rests on its own evidence. Three rings at most: beyond that nearly everything is guesswork.
+- **Find links**: where consequences on different chains reinforce or dampen each other.
+- **Re-check**: reads the items that arrived since, those about it and those that matched a signpost, and says what they change: a new standing, a new restatement, and for each consequence they bear on *strengthened*, *weakened*, *happening* or *contradicted*, with why. Every re-check is kept.
+- **Start over**: read it again from scratch; what was worked out goes, your own consequences and notes too.
+
+**Each consequence** has its mechanism (why it follows), a domain, a horizon, a likelihood in the words of the UK intelligence probability yardstick (*remote, highly unlikely, unlikely, realistic possibility, likely, highly likely, almost certain*; beyond the first ring: how likely if the one above happens, and the page multiplies them for the whole chain), what it rests on (*from your library*: items report it; *argued*: an item argues or recommends it; *reasoning*: no item supports it; *yours*), and one or two **signposts**: what a news item would report if it were happening, or if it were not. You can add your own consequences, write a note on any (Claude reads it when it works out what follows), change its likelihood, mark later whether it happened, or remove it with what follows from it.
+
+**Four views** of a foresight: the **wheel** (the signal in the middle, the rings around it, colour = domain, size = likelihood, outline = what it rests on, a bar in the dot = pushes back, dashed lines = links; pointing at a consequence lights up its chain), the **chains** (the same, read from left to right; on a phone the default), the **literature** (what your library says, each item it was read from on a line of time in the lane of its stance, attention per week, who writes about it, the re-checks, every item about it), and the **signposts** (all of them, with what matched). A consequence opens in a panel beside the chains, or slides in from the right over the wheel. Home has a *Foresight* shelf with a card per foresight; its picture is the foresight's own wheel in small.
+
+**Signposts, watched for free.** At the end of every scrape (and whenever a foresight's page is opened) the platform matches the new items, dated within the last 30 days, to every signpost, locally: an item matches when it is very close in meaning (0.62), or contains one of the signpost's search terms and is somewhat close (0.30). A match is an item that *may* bear on a consequence; meaning cannot tell a signpost from its opposite, so which way it points is what *Re-check* is for. The scrape's log says how many matched. When a signpost is made, the items of the last 14 days are looked at too and kept as *already in your library*.
+
+**What a foresight is read from.** A foresight from a topic reads that topic's items. Any other is matched like a topic: its name and statement by meaning (*broad* for a trend, *balanced* otherwise), and by words its name and the names in it ("Strait of Hormuz" in "The Strait of Hormuz stays closed"), except names that are in more than 15% of a library of 200 items or more. Measured on a copy of the owner's library on 31 October 2026 (1,264 to 1,291 items, with the real embedding model):
+
+- With the whole name as its only term, *Strait of Hormuz stays closed* found 9 items; with the name in it, 44.
+- Common names swamp a foresight: *Europe swaps Russian gas for US LNG* found 167 items with "Europe" (in 55% of the library), "Russian" (35%) and "US" (49%) as terms, and 17, all on the subject, without them. Hormuz (11%), Japan (11%), Qatar (5%) and "demographic" (3.5%) are kept; NATO (19%), Iran (26%) and China (34%) are not.
+- Claude's own search terms are not used for this: twelve of them for *Demographic ageing* pulled the point it is matched by away from the subject, and it went from 18 items to 10.
+- Working out what follows reads the 20 items closest to the consequence, from 0.40: above that the items were on the subject (diesel prices, strikes on Iran, migration politics), below it came military trains for a consequence about migration.
+- Signposts in meaning alone: between 0.50 and 0.60 items were often about something else (a swimming robot for "care robots in Japan", 0.51) or about the opposite ("Diesel at $170" for "diesel prices fall back", 0.60); from 0.62 they were on the subject. With a search term in the item: on the subject down to about 0.30 ("US pulls diplomats from Saudi Arabia as it readies Iran strikes after midterms", 0.32).
+
+**What it costs.** Measured on that copy with Claude Haiku 5.5: reading *Demographic ageing* (18 items) $0.0046 and *Strait of Hormuz stays closed* (40 items) $0.005, each one request of about 20 seconds; working out what follows $0.0016 to $0.0019; links $0.0009; a re-check of two items $0.0011. With Claude Sonnet 5.5, the default: reading *Europe swaps Russian gas for US LNG* (17 items) cost $0.040 in 21 seconds, where the button said about $0.08: the price on a button counts on Claude writing 7,000 tokens with its thinking (Haiku wrote 7,000 to 8,000, Sonnet 2,600), so it is on the safe side. A whole foresight on Sonnet (reading, three rings worked out on a few chains, links, a re-check now and then) comes to a few tens of cents; on Haiku a few cents. Settings → *Foresight model*. Every step counts in the foresight's *Claude so far*.
+
+What the run on the copy showed, as a check on it: for *Strait of Hormuz stays closed* the reading came back *contested* (crude transits back near the pre-war level under US escort since late September, refined products and freight still short, a new closure possible after the midterms), and the first ring followed from that rather than from the statement as typed. A scrape of r/energy on the copy brought 27 new items, of which 3 matched a signpost, loosely; the re-check read them and said they changed nothing about the strait. Haiku did not always keep to one sentence for the restatement, so the page shows three lines of it at most.
+
+**Not built:** finding signals by itself (rising subjects, outliers, claims only one source makes, an inbox of candidates; FORESIGHT.md section 10), scenarios from two uncertainties, and a track record over all foresights of what happened.
+
 ## Where Claude is used, and what it costs
 
 All Claude calls go through `backend/ai/client.py`, using the official `anthropic` Python SDK.
@@ -575,11 +678,12 @@ All Claude calls go through `backend/ai/client.py`, using the official `anthropi
 | *The long run* on a topic page | When you press the button | `claude-opus-5-5`, effort `medium` (the *Topic model*) |
 | *What is new* on a topic page | When you press the button, or after a scrape for topics where you switched that on | `claude-haiku-5-5`, effort `low` (the *Topic update model*) |
 | AI summary and tags | Per new item, only for sources where you switched it on | `claude-haiku-5-5`, effort `low` |
-| Translation to English | Per item that is not in English, only when you press a Translate button (on a source's page or in the reader) | `claude-haiku-5-5`, effort `low` |
+| Translation to English | Per item that is not in English: when you press a Translate button (on a source's page or in the reader), and after each scrape of a source whose switch *Translate new items to English* is on | `claude-haiku-5-5`, effort `low` |
 | The article of a video | Per video that has a transcript, for sources where *Write videos up as articles* is on (see [From a video to an article](#from-a-video-to-an-article)) | `claude-haiku-5-5`, effort `low` (the *Video article model*) |
 | What the comments say | When you press *Summarise comments* on an item from Reddit | `claude-haiku-5-5`, effort `low` (the *Article tagging model*) |
+| [Foresight](#foresight): reading, working out what follows, links, re-check | When you press its buttons, each with its price | `claude-sonnet-5-5`, effort `medium` (`low` for links) (the *Foresight model*) |
 
-Scraping, embeddings, search, topic matching, timelines and trends make no Claude calls.
+Scraping, embeddings, search, topic matching, timelines, trends and watching foresight signposts make no Claude calls.
 
 Token use and an estimated cost are shown on every job (Activity page, and next to the result in the wizard). Published prices in October 2026: Claude Opus 5.5 is $4 per million input tokens and $20 per million output tokens; Claude Sonnet 5.5 is $2 and $10; Claude Haiku 5.5 is $0.10 and $0.50. The source analysis re-sends the growing conversation on each step, so it uses prompt caching to keep that cheap.
 
@@ -596,12 +700,12 @@ Every sentence of both texts carries the number of the item it rests on; clickin
 
 What it costs depends on the length of the item, because the whole text (up to 60,000 characters) is read and only a few lines are written. With Claude Haiku 5.5: an English news article of 700 words costs about $0.0002, an English paper of 3,500 words about $0.0007 and a German one about $0.0015 (German takes about twice as many tokens per word; measured in October 2026), and the most an item can cost is about $0.003. That is roughly $0.20 per thousand news articles and never more than about $3 per thousand items. Claude Sonnet 5.5 costs 20 times as much for the same work and Claude Opus 5.5 40 times. The Activity page shows what a run really used.
 
-**Translation to English.** Nothing is translated while scraping. A source with items that are not in English gets a **Translate N items** button next to *Update* and *Deep scrape*, and a line under its header that says how many items, about how long it takes and what it costs with the translation model set in Settings. The reader has a **Translate to English** button on any single item that is not in English, with its price. A translated item is stored in English: the title, the summary and the whole text. The home page, the source page, the search, the topics and the briefings then all work with the English version. The original is kept next to it; the reader says *Translated from German by Claude* and **Show the original** switches to the text as it was written. A card of a translated item carries a small `DE → EN` mark. A source whose items are all in English has no button at all.
+**Translation to English.** Nothing is translated while scraping, unless a source's switch says so: **Translate new items to English** on its Settings tab (off by default; on for SWP since 3 November 2026). With it on, every scrape ends by translating the new items that are not in English and are no longer than the reading time in Settings (30 minutes since 3 November 2026), the shortest first, within what one run may spend on Claude together with its other Claude steps; what that leaves, and what was stored before the switch went on, the Translate button does. A source with items that are not in English gets a **Translate N items** button next to *Update* and *Deep scrape*, and a line under its header that says how many items, about how long it takes and what it costs with the translation model set in Settings. The reader has a **Translate to English** button on any single item that is not in English, with its price. A translated item is stored in English: the title, the summary and the whole text. The home page, the source page, the search, the topics and the briefings then all work with the English version. The original is kept next to it; the reader says *Translated from German by Claude* and **Show the original** switches to the text as it was written. A card of a translated item carries a small `DE → EN` mark. A source whose items are all in English has no button at all.
 
 How it works (`backend/pipeline/translate.py`):
 
 - **Which items.** The language is judged on this computer from the text itself, for nothing, not from what the site says about itself (Clingendael and HCSS label their Dutch pages English). The commonest English words (*the, of, and, to…*) are about a third of an English text and a few percent of a German, Dutch or French one. An item counts as not English only on evidence of another language: most of its letters are of another script, or the common words of German, Dutch, French, Spanish, Italian, Portuguese or Polish are as frequent as the English ones (in a title or teaser of under 40 words: more frequent, and two at least). English written like headlines has few of the commonest English words but none of another language's, so it stays English. An item found to be English is marked as looked at and never judged again. Videos and podcast episodes are left out: writing one up (*Transcribe and summarise*) makes an English article of it.
-- **Too long for the button.** The source's button leaves out items that take longer to read than Settings → *Longest item the Translate button on a source's page does* (20 minutes by default, counted as the cards count a "min read": 220 words a minute; 0 = no limit). The line under the header says how many it left out. The reader's button translates one of them whatever its length.
+- **Too long for the button.** The source's button and its switch leave out items that take longer to read than Settings → Claude → *Longest item a source translates* (20 minutes by default, 30 in your library since 3 November 2026, counted as the cards count a "min read": 220 words a minute; 0 = no limit). The line under the header says how many it left out. The reader's button translates one of them whatever its length.
 - **In what order.** The shortest first, so most items are in English within minutes and a report of a hundred pages holds up nothing but itself. Stopping the run loses nothing that is finished.
 - **How.** One request translates the title and the summary; the text goes in pieces of at most 8,000 characters, cut between paragraphs, one request each, one after the other. If any request fails or is declined, the item is left exactly as it was and the button offers it again. The same goes for an item that was being translated when the run was stopped: what was done of it is lost, and it has been paid for.
 - **The same text twice.** A site often lists a report twice, as the report and as a short piece about it, and both end up with the text of the same PDF. The second one takes over the translation of the first and only its title is translated.
@@ -627,7 +731,7 @@ Two things are switched on that you should know about:
 
 ## Data and API
 
-Everything is in `data/platform.db` (SQLite). Back up that one file to back up the platform; delete it to start over.
+Everything is in `platform.db` (SQLite), on the server in `/opt/news-platform/data/`. It is backed up every night (see [On the home server](#on-the-home-server)); `python -m backend.backup <folder>` makes such a copy by hand, also while the platform runs. Delete it to start over.
 
 | Table | Holds |
 |---|---|
@@ -640,12 +744,13 @@ Everything is in `data/platform.db` (SQLite). Back up that one file to back up t
 | `topics` | Name, what it is about, the two term lists, whether it also collects by meaning and how widely, whether it updates itself, when you last opened it, and *The long run* with its sources, and the picture pinned for its card on Home (empty = automatic) |
 | `topic_items` | What you said about an item on a topic: *belongs here* or *not this* |
 | `topic_notes` | Every *What is new* that was written, with its sources. The newest is shown; the older ones are read when *The long run* is rewritten |
+| `foresights`, `foresight_nodes`, `foresight_signposts`, `foresight_checks` | The [Foresight](#foresight) add-on's own tables (`backend/addons/foresight/store.py`), made when the platform starts: the foresights, their consequences, the signposts and what matched them, and every re-check. They refer to items by number only, so the platform removes an item without knowing about them |
 | `jobs` | Every background job with its log, result and Claude usage |
 | `settings` | What you changed on the Settings page |
 
 `is_partial` marks items that could not be read in full: only the opening in front of a login or paywall, or only what the listing said (see [Items behind a login or paywall](#items-behind-a-login-or-paywall)); the reader says so.
 
-The API is documented interactively at `http://127.0.0.1:8765/docs` while the platform runs. In short:
+The API is documented interactively at `/docs` while the platform runs (`http://192.168.1.161:8765/docs`). In short:
 
 | | |
 |---|---|
@@ -661,7 +766,7 @@ The API is documented interactively at `http://127.0.0.1:8765/docs` while the pl
 | `POST /api/links` | Save one page, one YouTube video or one podcast episode (a Spotify link) by its address |
 | `PUT /api/settings/keys/{youtube or gemini}` | Store one of the two Google keys (never returned) |
 | `GET /api/scrapers`, `POST /api/scrapers/{name}/add` | The built scrapers; add one as a source |
-| `GET /api/articles`, `GET/DELETE /api/articles/{id}` | The feed, search (by words and by meaning), one item. `favorites=1` lists the starred ones. `DELETE` removes it from the library and remembers it |
+| `GET /api/articles`, `GET/DELETE /api/articles/{id}` | The feed, search (by words and by meaning), one item. `favorites=1` lists the starred ones, `saved=all` (or `article`, `video`, `podcast`) the single items saved by their address, the last one saved first. `DELETE` removes it from the library and remembers it |
 | `PUT /api/articles/{id}/favorite` | Star an item or take its star away (`on`) |
 | `GET /api/removed`, `POST /api/removed/{id}/restore` | The items you removed; put one back |
 | `GET /api/articles/{id}/similar`, `/topics` | The items closest in meaning; which topics the item is in |
@@ -670,8 +775,12 @@ The API is documented interactively at `http://127.0.0.1:8765/docs` while the pl
 | `POST /api/topics/{id}/news`, `/briefing` | Start *What is new*; start *The long run* |
 | `POST /api/topics/{id}/items`, `/visit` | Say *belongs here* or *not this* about an item; mark the page as opened |
 | `POST /api/topics/expand`, `/preview` | Claude's term suggestions; live count |
+| `GET/POST /api/foresights`, `POST /api/foresights/preview`, `GET/PATCH/DELETE /api/foresights/{id}` | Foresights (the add-on, only when it is there). The preview is free: what the library has, and what reading costs. `POST` makes one and starts reading it when Claude is connected |
+| `POST /api/foresights/{id}/read`, `/recheck`, `/links`, `/visit`, `/nodes`; `GET /api/foresights/{id}/articles` | Read it (again: start over), re-check it, find links, mark it opened, add a consequence of your own; its items (`stance` = one of the four) |
+| `GET /api/foresight-nodes/{id}/plan`, `POST …/expand`, `PATCH`, `DELETE` | What working out what follows from one consequence costs, and doing it; your note, look back and likelihood; removing it and what follows from it |
 | `POST /api/meaning/embed` | Embed the items that have no embedding yet |
 | `GET /api/jobs`, `GET /api/jobs/{id}`, `POST /api/jobs/{id}/cancel` | Jobs and their logs |
+| `GET /api/scrape-log?days=14` | Every scrape and saved link of the last days (1 to 90), the newest first: per run its source, counts, feeds (with how each is read and its error), warnings and the items it stored. The dashboard puts them under the days of its own time zone |
 | `GET/PUT /api/settings`, `PUT /api/settings/api-key` | Settings; store the key (it is never returned) |
 
 ---
@@ -685,7 +794,7 @@ The API is documented interactively at `http://127.0.0.1:8765/docs` while the pl
 - **It does not work around bot protection.** A Cloudflare challenge or a 403 is reported as what it is.
 - **It refuses local network addresses** (localhost, 192.168.x.x and the like), also after redirects.
 - **During analysis Claude can only open pages of the site being analysed.** Page content is passed to Claude as material to analyse, with the instruction that text on a page has no authority over it.
-- **The platform listens on `127.0.0.1` only**, so nothing outside your computer can reach it. It has no login; do not expose it to a network as it is.
+- **It is reachable at home and on Tailscale only.** On the home server it listens on the home Wi-Fi and on Tailscale; a copy on a PC listens on `127.0.0.1` only. It has no login, so it must never be opened to the internet.
 
 ---
 
@@ -695,16 +804,17 @@ The API is documented interactively at `http://127.0.0.1:8765/docs` while the pl
 .venv\Scripts\python.exe -m pytest
 ```
 
-226 tests, about fifteen seconds, no internet and no API key (the key in `.env` is kept out of the tests). They run against a small fake website that the test suite serves itself (`tests/conftest.py`).
+253 tests, about twenty-five seconds, no internet and no API key (the key in `.env` is kept out of the tests). They run against a small fake website that the test suite serves itself (`tests/conftest.py`).
 
 | File | Covers |
 |---|---|
 | `test_plugins.py` | Fetcher rules (redirects, robots.txt, size limit, local addresses), every connector, both extractors, recipe validation |
-| `test_pipeline.py` | Scraping end to end, updates versus deep scrapes, failing items and feeds, blocked sites, search and topic matching, the scheduler, a deep scrape that goes back as many items as asked (stopping mid-page, passing what is stored, running out, counting across feeds) |
+| `test_pipeline.py` | Scraping end to end, updates versus deep scrapes, failing items and feeds, blocked sites, search and topic matching, the scheduler (*Every day* at the daily scrape time, in summer and winter time), a deep scrape that goes back as many items as asked (stopping mid-page, passing what is stored, running out, counting across feeds) |
 | `test_analyzers.py` | The page digest, the pre-scan, Quick detect, and the Claude analysis loop driven by scripted replies: tool handling, wrong selectors, off-site requests, untested recipes, truncated replies, refusals |
 | `test_sdk_requests.py` | The Claude calls sent through the real Anthropic SDK to a fake API server: what goes over the wire, streaming, error messages, the language summaries are asked for |
-| `test_api.py` | The HTTP API the way the dashboard uses it, including that the API key is stored but never returned |
-| `test_translate.py` | Translation to English: telling English from other languages (also in titles, and English written like headlines), cutting a long text into pieces, what is sent to Claude and what is stored, items left alone when a request fails, a scrape never translating, the source's button leaving out what is too long and spending what it said, the reader's button for one item, an older database getting its new columns |
+| `test_api.py` | The HTTP API the way the dashboard uses it, including that the API key is stored but never returned, and the scrape log (per run what came in, each feed's error and how it is read, a deleted source's runs) |
+| `test_server.py` | What the home server relies on: a backup taken while the platform writes is whole and checked, old copies are cleared; the keys file can live outside the code (`NSP_ENV_FILE`) |
+| `test_translate.py` | Translation to English (the buttons, and a source's switch after a scrape): telling English from other languages (also in titles, and English written like headlines), cutting a long text into pieces, what is sent to Claude and what is stored, items left alone when a request fails, a scrape never translating, the source's button leaving out what is too long and spending what it said, the reader's button for one item, an older database getting its new columns |
 | `test_meaning.py` | Embeddings (made after a scrape, dropped when a title or summary changes, the library's average, switched off or not installed), search by meaning, what belongs to a topic (words, meaning, mentions, your say, reach), the topic page (timeline, trend, sources, up next, what is new since a visit), and the two texts Claude writes: what is sent (which items have a picture), what is stored, how a text is cut into headline, opening line, pictures and body, what it would cost, updating by itself within the limit per run; and a timeline entry's picture. The embeddings in the tests come from a stand-in that counts words, so no test downloads the model. And a topic's card: pictures of its newest items, one per source first, the opening of its last text in plain words, a pinned picture and back to automatic |
 | `test_youtube.py` | YouTube and single links: telling videos from channels, a video's page and a channel's feed (small copies saved from the real site), listing a channel with and without a YouTube API key (the API is played by a stand-in), leaving Shorts out or taking them in, a refused key that is never shown, Quick detect, a video written out and written up (what Claude is sent, what is stored), a set number per run, videos that are too long or cannot be read, staying within the limit per run, what Gemini is sent over the wire and what its errors turn into, saving one page and one video, the two Google keys stored but never returned, a first scrape that takes the number asked for and an update that does not fill in below it |
 | `test_podcasts.py` | Podcasts: telling Spotify addresses apart, an episode found in its show's feed (Spotify's pages, Apple's directory answer and the feed are copies saved from the real services), a title that was edited, a show that is only on Spotify, an episode written out from its audio and written up (what Claude is sent), Quick detect following a show a few episodes per run, a feed's own transcript used instead of listening, transcripts in every format, what Gemini is handed over the wire and that the uploaded file is deleted again, audio that cannot be fetched or heard, and the two buttons: everything that is left done on request, one episode done from the reader whatever its length, and what one episode runs into said on its job |
@@ -712,6 +822,8 @@ The API is documented interactively at `http://127.0.0.1:8765/docs` while the pl
 | `test_removed.py` | Removing an item yourself: gone from the feed, the search and the counts; an update and a deep scrape pass it without opening its page and say so; put back exactly as it was (Claude's work, the embedding, what you said about it on a topic); staying out when its source is deleted and added again, and being let in again; saving it by its address; a run that finds an item gone carries on; and favorites: starred, listed last-starred first, searched within, counted, kept through a removal |
 | `test_reddit.py` | The Reddit connector against feeds saved from the real r/geopolitics (`tests/fixtures/reddit/`): posts, comments, shared articles read from their own (faked) sites, refused and paywalled articles, paging, Quick detect's two feeds; and what the comments say: which post an item belongs to, the comments read and summed up on request (what Claude is sent, what is stored), a post without comments, Reddit refusing |
 | `test_scrapers.py` | Site scrapers: one written for the fake site (running as a feed, its own deep-scrape limit, a page it trips on, adding it from the dashboard), and the Clingendael scraper against pages saved from the real site (`tests/fixtures/clingendael/`); and the CSIS scraper against pages and a sitemap saved from the real site (`tests/fixtures/csis/`): every kind of card on the first page, the sitemap's runs walked newest first, the American date, text around figures, a 1999 piece read from its PDF, a protected PDF costing its text and not the item, and stopping when the site keeps refusing |
+
+**On Linux too.** `server/deploy.sh --check` runs the whole suite inside the image the server runs, without network; on 3 November 2026 all 253 passed there as on Windows.
 
 **What the tests do not prove.** The tests never reach the real Claude API or the real embedding model: the request format is checked against the SDK, the loops are driven by scripted replies, and embeddings come from a stand-in that counts words. What was run for real, by hand, in October 2026: source analyses, AI summaries, translations, and one *What is new* and one *The long run* (the measurements quoted above), and the embedding model on a copy of a library of 380 items, which is where the thresholds for "close in meaning" come from. A failure of a real request is shown on its job; the Activity page keeps the full log. **Gemini has run for real** (12 October 2026, in the platform itself): three videos were written out, one of 12 minutes in 28 seconds (1,771 words; 63,711 tokens read) and one of 24 minutes in 65 seconds (3,821 words; 131,324 tokens). **So has a podcast episode, start to finish** (13 October 2026, on a throwaway library): a Spotify link, the show's feed, 33 MB of audio through Gemini's Files API, and Claude's write-up; the numbers are under [Podcasts](#podcasts). The reader's player loaded that audio in a real browser. **Claude writing videos up has too** (the same day, in the platform itself): a channel's 15 newest videos, 13 of them written out and written up with Claude Haiku 5.5 in twelve minutes, for $0.018 in total (13 requests; 77,000 tokens in, 21,000 out), which is about 0.14 cents a video of 9 to 24 minutes. For the other two, both 24 minutes long, Gemini returned no text; the source's Settings tab can try those again. **One thing has not:** listing a channel through the YouTube Data API (there was no key). It is tested against a stand-in; a failure of the real thing is shown on the job with the service's own message. Also run for real, without a key: a channel's feed with and without Shorts, a video's page, saving one video and one article, and the embedded player's page, which reported the test video as playable.
 
@@ -749,6 +861,6 @@ npm run dev        dashboard with live reload on http://localhost:5173, talking 
 npm run build      writes frontend/dist, which the backend serves
 ```
 
-Run `start.bat` alongside `npm run dev`. The look of the dashboard is controlled by the tokens at the top of `src/styles/app.css` (colours, radius, fonts, sidebar width).
+Run a copy on this PC (see [On the home server](#on-the-home-server), *A copy on this PC*) alongside `npm run dev`; the dev server sends its API calls to `127.0.0.1:8765`. The look of the dashboard is controlled by the tokens at the top of `src/styles/app.css` (colours, radius, fonts, sidebar width).
 
-Environment variables (in `.env`, all optional): `ANTHROPIC_API_KEY`, `NSP_HOST` (default `127.0.0.1`), `NSP_PORT` (default `8765`), `NSP_DATA_DIR` (default `data`).
+Environment variables (all optional): `NSP_TIMEZONE` (the clock the daily scrape time follows; default `Europe/Amsterdam`), `ANTHROPIC_API_KEY`, `GEMINI_API_KEY`, `YOUTUBE_API_KEY` (usually in `.env`), `NSP_HOST` (default `127.0.0.1`), `NSP_PORT` (default `8765`), `NSP_DATA_DIR` (default `data`), `NSP_MODELS_DIR` (default `<data>/models`), `NSP_ENV_FILE` (where the keys are read and saved; default `.env` in this folder). The image on the server sets the last five (`server/Dockerfile`).

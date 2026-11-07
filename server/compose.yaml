@@ -1,0 +1,26 @@
+# The News Scraper Platform on the home server. server/deploy.sh puts this file in ~/news-platform and the
+# code in ~/news-platform/app. The library and the model are in /opt/news-platform/data (SSD), the API keys
+# in ~/news-platform/config/.env (a folder, so that a key saved in Settings can replace the file).
+name: news-platform
+services:
+  platform:
+    build:
+      context: ./app
+      dockerfile: server/Dockerfile
+    image: news-platform
+    container_name: news-platform
+    restart: unless-stopped
+    user: "1000:1000"
+    ports:
+      # on every address of the server: the home Wi-Fi and Tailscale, like Jellyfin. The dashboard has no
+      # login, so never forward this port in the router.
+      - "8765:8765"
+    volumes:
+      - /opt/news-platform/data:/data
+      - ./config:/config
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8765/api/stats', timeout=5)"]
+      interval: 1m
+      timeout: 10s
+      start_period: 2m
+      retries: 3

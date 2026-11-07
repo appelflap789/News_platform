@@ -32,7 +32,8 @@ CREATE TABLE IF NOT EXISTS sources (
     last_scraped_at  TEXT NOT NULL DEFAULT '',
     last_error       TEXT NOT NULL DEFAULT '',
     skip_walled      INTEGER NOT NULL DEFAULT 0,
-    write_videos     INTEGER NOT NULL DEFAULT 1
+    write_videos     INTEGER NOT NULL DEFAULT 1,
+    translate_new    INTEGER NOT NULL DEFAULT 0
 );
 
 -- Items a source did not store because their own page could not be read (a login, a paywall, a refusal) and
@@ -204,6 +205,8 @@ ADDED_COLUMNS = [
     ("articles", "original_text", "TEXT NOT NULL DEFAULT ''"),
     ("sources", "skip_walled", "INTEGER NOT NULL DEFAULT 0"),  # leave out items behind a login or paywall
     ("sources", "write_videos", "INTEGER NOT NULL DEFAULT 1"),  # transcribe videos and write them up as articles
+    # translate the new items that are not in English after each scrape (the old translate_enabled is unused)
+    ("sources", "translate_new", "INTEGER NOT NULL DEFAULT 0"),
     ("articles", "video_id", "TEXT NOT NULL DEFAULT ''"),  # the YouTube id, for an item that is a video
     ("articles", "views", "INTEGER NOT NULL DEFAULT 0"),  # as counted when the video was last listed
     ("articles", "duration_seconds", "INTEGER NOT NULL DEFAULT 0"),

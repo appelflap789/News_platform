@@ -9,8 +9,22 @@ owner's manual (what exists, how it behaves, what it costs, what was measured), 
 (how to run and test, the routines, the decisions already taken, how the owner likes to work, what is not
 built). Read both before changing anything. Neither depends on an earlier conversation.
 
-## Running things (the platform runs on Windows, you are probably in WSL)
+## Running things (the platform runs on the home server; the code is written here, you are probably in WSL)
 
+- **The owner's platform runs on the home server** since 3 November 2026: `jacob228@192.168.1.161` (ssh from
+  WSL with a key, passwordless `sudo -n`; Tailscale `100.75.117.66`), in Docker, container `news-platform`.
+  `~/news-platform` holds `compose.yaml`, `config/.env` (their three API keys) and `app/` (the code the image is
+  built from); the library and the model are in `/opt/news-platform/data`. README *On the home server* has the
+  rest (addresses, backups, putting one back). Reachable on the home Wi-Fi and on Tailscale, port 8765.
+- **A change reaches it with `server/deploy.sh`** (from WSL, in this folder): it waits for running jobs, copies
+  the code, builds, restarts and checks that the platform answers; `--check` also runs the tests inside the new
+  image (do that when `requirements.txt` or anything platform-dependent changed). The owner asked for code to
+  reach the server straight away, so deploy every finished change once its tests pass and the dashboard is
+  built, and say that you did. Never edit `~/news-platform/app` on the server: the next deploy overwrites it.
+- **Reading the real library**: GET requests to `http://192.168.1.161:8765/api/...`, or read-only SQL inside the
+  container: `ssh jacob228@192.168.1.161 'docker exec news-platform python -c "import sqlite3; c = sqlite3.connect(\"file:/data/platform.db?mode=ro\", uri=True); print(c.execute(\"...\").fetchall())"'`.
+  `data/` on this PC holds no live library any more (the one from before the move is in
+  `data/before-server-2026-11-03/`); `data/models` is still used by throwaway servers here.
 - Python is the Windows venv: `.venv/Scripts/python.exe`. Run it from the project root.
 - Tests: `.venv/Scripts/python.exe -m pytest` (offline, a few seconds). Run them after every backend change.
 - Environment variables only reach Windows Python through `WSLENV`, e.g.
@@ -20,7 +34,8 @@ built). Read both before changing anything. Neither depends on an earlier conver
   `/mnt/c/Windows/System32/curl.exe`, not WSL's curl. Also pass `NSP_MODELS_DIR` with the real `data\models`
   folder (and add it to `WSLENV`), or the throwaway server downloads the 240 MB embedding model again.
 - Dashboard changes need a build with Windows npm: `cmd.exe /c "npm run build"` inside `frontend/`.
-- Backend changes need a restart of the platform (`start.bat`); there is no hot reload.
+- There is no hot reload: a backend change needs a restart, which a deploy does. `start.bat` only opens the
+  server's dashboard; it starts nothing.
 - The code is on GitHub, **public**: https://github.com/appelflap789/News_platform, branch `main` (first pushed
   31 October 2026). Commit and push only when the owner asks. Use Windows Git
   (`"/mnt/c/Program Files/Git/cmd/git.exe"`): it has the owner's identity and Git Credential Manager; WSL's git
@@ -118,6 +133,28 @@ non-browser client with a challenge or a login is not scraped.
   switches it on. The thresholds in `search/meaning.py` and `search/topics.py` were measured on the user's
   library with the real model; a change to what is embedded, or to the model, means measuring them again on a
   copy of the library (free), not guessing.
+- **Add-ons** (`backend/addons/`, README *The one mechanism behind all of it*): a part of the platform that lives in
+  `backend/addons/<name>/` and `frontend/src/pages/<name>/` and that nothing else imports, so that deleting the two
+  folders takes it out. The core only calls `addons.routers()`, `addons.init()`, `addons.after_scrape(job)` (in
+  `pipeline/scrape._understand`) and `addons.meta()` (`meta.addons`), and the dashboard's registry picks up the
+  pages, the sidebar entry and the Home shelf. Keep it so: never import an add-on from the core or from another
+  page, give it its own tables (made by its `init`, referring to items by number in JSON, never by foreign key to
+  `articles`), its own settings (`config.add_setting`), its own styles (imported by its `page.jsx`), and show it in
+  the dashboard only when `meta.addons` names it. `tests/test_foresight.py` copies the backend without the add-on,
+  adds a broken one, and checks that the platform starts; the dashboard was built once without
+  `pages/foresight` to check the same (31 October 2026).
+- **Foresight** is the first add-on (asked 31 October 2026: "an extra page on the left menu where I have
+  foresights. just as with a topic it is possible to create a new foresight or use a foresight topic ... on the
+  homescreen also a foresight category ... I let you decide how you make this but it would be interesting to have a
+  large topic e.g. demographic aging and be able to see how the literature reacts with this topic"). `FORESIGHT.md`
+  is the design it was built from; README *Foresight* is what was built. Decided without asking: one *Foresight*
+  entry in the sidebar (not one per foresight), three kinds (trend, weak signal, event), one ring at a time on
+  request, PHIA likelihood words, Claude Sonnet as its default model, start over replacing everything. Its
+  thresholds (`library.NEAR_FLOOR`, `library.COMMON_SHARE`, `watch.CLOSE`, `watch.WITH_WORDS`) were measured on a
+  copy of the owner's library with the real model; the README gives the numbers. Change them only after measuring
+  again. Claude's own search terms are deliberately not used to find a foresight's items (they made *Demographic
+  ageing* worse), and a signpost's match is shown as "may bear on it", never as a confirmation: meaning cannot tell a
+  signpost from its opposite, the re-check says which way an item points.
 - A new Claude step follows the two on the topic page (`backend/ai/briefing.py`): build the request first, show
   what it will cost before it is sent, and let it count towards `claude_budget_usd` when it runs by itself.
 - The two topic texts are news articles (asked for 30 October 2026): Claude writes a `# headline`, the opening,
@@ -132,13 +169,18 @@ non-browser client with a challenge or a login is not scraped.
   (`plan_news(rewrite=True)`, which replaces that update). Claude Haiku often leaves out the picture line or
   writes one long paragraph; `briefing.article` is lenient on purpose (see its docstring): keep it so. No generated pictures: on a news-style page
   they would look like photos of what happened.
-- Translation runs only from its two buttons (`backend/pipeline/translate.py`), never in a scrape: *Translate N
-  items* next to *Update* (all items not in English, those over `translate_max_minutes` of reading left out) and
-  *Translate to English* in the reader (one item, any length). Which items are not in English is judged locally
+- Translation runs from its two buttons (`backend/pipeline/translate.py`): *Translate N items* next to *Update*
+  (all items not in English, those over `translate_max_minutes` of reading left out) and *Translate to English*
+  in the reader (one item, any length); and, since 3 November 2026, after a scrape of a source whose switch
+  *Translate new items to English* (`sources.translate_new`, off by default) is on: its new items, the same
+  reading limit, within `claude_budget_usd` (`scrape._translate_new`, `translate.among_new`). Asked for SWP: "can
+  you make it that it translates it to english? if its more than 30 min read it does not need to do it, but
+  lower ones it must translate" (so `translate_max_minutes` is 30 in their library). Which items are not in English is judged locally
   from their words (`needs_translation`); English ones are marked in `translated_at` once (`sort_out`, run when a
   source page is read), so the check is free and only done once per item. Its rule was measured on the owner's
   library (28 October 2026): change it only after judging a copy of the library again and reading what it flags.
-  The old per-source switch is gone; its column `translate_enabled` is still in older libraries and unused.
+  The old per-source switch's column `translate_enabled` is still in older libraries, still set on SWP and
+  Institut Jacques Delors, and unused: do not bring it back, it would switch on sources nobody chose.
 - Windows Smart App Control is on on the user's PC. It refused to load scikit-learn; numpy, onnxruntime and
   fastembed load. Try a new native package in the venv before building on it, and do not touch the setting.
 - Keep the README true: it is the user's manual for this project.
@@ -148,25 +190,31 @@ non-browser client with a challenge or a login is not scraped.
 The tests are offline. Before telling the owner that something works, try it once the way they will use it,
 on a throwaway copy, never on the real library.
 
-- **The copy.** Back the library up with SQLite's own backup, from `data\platform.db` opened read-only, into
-  `%TEMP%\nsp_<something>\platform.db`. In the copy, before starting anything, set every source's
+- **The copy.** Make a fresh copy on the server with SQLite's own backup and fetch it:
+  `ssh jacob228@192.168.1.161 'docker exec news-platform python -m backend.backup /data/backups --keep 7'` (it
+  prints the file; it joins the nightly ones), then `rsync jacob228@192.168.1.161:/opt/news-platform/data/backups/<file>`
+  into `%TEMP%\nsp_<something>\platform.db`. Never copy the live `platform.db` itself. In the copy, before starting anything, set every source's
   `interval_minutes`, `enrich_enabled` and (unless that is what is being tried) `write_videos` to 0, and every
   topic's `auto_update` to 0. Set Settings → *Translation model* in the copy to Claude Haiku before pressing a
-  Translate button there (`PUT /api/settings` with `{"values": {...}}`): the owner has Claude Sonnet set. A throwaway server reads the real `.env`, so
+  Translate button there (`PUT /api/settings` with `{"values": {...}}`): the owner has had Claude Sonnet set (Haiku since early November 2026; check). A throwaway server reads the real `.env`, so
   Claude and Gemini are live in it; this is what keeps it from spending by itself.
 - **The server.** Start it on port 8799 with the `WSLENV` line under *Running things*. Stop it by the process
-  that listens on that port (`netstat -ano`, then `taskkill /PID`), never by name: the owner's own platform is
-  usually running on 8765, and reading from it with `curl.exe` (GET only) is how to see what state they are in.
+  that listens on that port (`netstat -ano`, then `cmd.exe /c "taskkill /PID <pid> /F"`), never by name.
+  To try the Linux image itself, run the copy on the home server instead, without keys so that nothing can
+  spend: `docker run -d --name nsp-test --user 1000:1000 -p 8799:8765 -e NSP_ENV_FILE=/nonexistent -e ANTHROPIC_API_KEY= -e GEMINI_API_KEY= -e YOUTUBE_API_KEY= -v /tmp/nsp_test:/data -v /opt/news-platform/data/models:/data/models:ro news-platform`
+  (the copy in `/tmp/nsp_test/platform.db`); reach it at `http://192.168.1.161:8799` from Windows, and remove it
+  and `/tmp/nsp_test` afterwards. That is how the move was tried (3 November 2026).
 - **The browser.** Windows `node` (v24, `WebSocket` built in) can drive a headless Edge through the DevTools
   protocol (`msedge.exe --headless=new --remote-debugging-port=…`): real mouse moves, clicks, keys and
   screenshots. Keep the script and the Edge profile in the same temp folder. An expression that returns a DOM
   node fails; wrap it in `Boolean(...)`.
 - **Afterwards.** Delete the temp folder in a command of its own (a refused delete cancels the whole command).
   Say what the check cost: Claude's dollars from the job's usage, Gemini's tokens.
-- **The dashboard is rebuilt while their platform runs**, and their older backend serves the new dashboard
-  until they restart. So a new button is only shown when the backend says it can do it: `meta.scrape`,
-  `meta.comments`, `meta.videos.can_write_one`, `stats.removed`, `translation.waiting.too_long` (a source) and
-  `translation` (an article) are such signs. Tell them to restart.
+- **A dashboard can meet an older backend**: a deploy ships both together, but a copy on this PC serves the
+  freshly built `frontend/dist` with whatever backend it runs, and a browser tab keeps an old dashboard. So a new button is only shown when the backend says it can do it: `meta.scrape`,
+  `meta.comments`, `meta.videos.can_write_one`, `stats.removed`, `stats.saved` (the *Single items* page), `translation.waiting.too_long` (a source) and
+  `translation` (an article) and `meta.addons.<name>` (an add-on, such as foresight) are such signs; so is a 404 from `/api/scrape-log`
+  (Settings → *Scrape log* then asks for a restart).
 
 ## How the owner works
 
@@ -185,8 +233,19 @@ on a throwaway copy, never on the real library.
   the update and deepscrape can you add a translate button?", items over "20 minute read" left out, and a
   translate option per item in the reader). Whether they want Dutch translated was not asked: the button counts
   Dutch items too (HCSS and Clingendael have some).
-- They restart the platform, and add and delete sources, themselves. Do not write to the real library
-  without saying so.
+- They add and delete sources themselves. Do not write to the real library without saying so. Since the move a
+  deploy restarts the platform; they no longer do (3 November 2026: "I indeed want it so that the code on the
+  computer can still be written and that it immediately updates on the server").
+- They want every source scraped once a day ("I also want it to scrape each day"), in the afternoon ("Can you
+  do the scrape somewhere during the day. Around 15:00"): all sources were set to *Every day* when the library
+  moved, and *Every day* is now a time of day (`daily_scrape_time`, 15:00, `NSP_TIMEZONE` Europe/Amsterdam;
+  `scheduler.daily_slot`), not 24 hours after the last scrape. A new source starts at manual; tell them to set
+  it to *Every day*.
+- Settings is sorted into sections with a menu of its own (asked 3 November 2026: "You can make a different
+  settings menu with more sub-menus so that settings are started to get sorted"); a new group of settings gets a
+  section by itself (`pages/settings/page.jsx`, `SECTIONS`). The *Scrape log* section is what they asked for as
+  "a menu in the app where it shows what it scraped each day and if it got errors which scraper gave that
+  error. The menu does not need to be something big".
 - Dark, sleek interface; plain words in it, in the British spelling it already has.
 
 ## Decisions already taken
@@ -208,13 +267,17 @@ on a throwaway copy, never on the real library.
   spend the price it showed plus a quarter (`translate.MARGIN`) even beyond `claude_budget_usd`, because the
   limit made each press translate a few items and silently leave the rest.
 - **One local file holds the data**, and there are no accounts. So the platform is not to be opened to the
-  internet as it is; on a home server it belongs behind Tailscale.
+  internet as it is. On the home server it is published on every address, the home Wi-Fi and Tailscale (the
+  owner's choice, 3 November 2026: "if you are on my home wifi the server is reachable but also when you are on
+  tailscale. Just with jellyfin"); never forward its port, and do not add a public route.
+- **The library stays SQLite**, one container, on the server's SSD; files (should PDFs ever be kept) belong on
+  the HDD (`/mnt/sdb1`), outside the database. Backups only through `backend/backup.py` (SQLite's backup API).
 
 ## Not built (so that nobody assumes it is)
 
-- Foresight (signals worked out into second and third order consequences, signposts watched after each
-  scrape): brainstormed 31 October 2026, design notes and a worked example from the owner's library in
-  `FORESIGHT.md`. Nothing built yet; its section 13 holds the questions still open.
+- Of Foresight (`FORESIGHT.md`): finding signals by itself (its section 10), scenarios from two uncertainties, a
+  track record across all foresights, and a re-check that runs by itself. Built on 31 October 2026 and tried on a
+  copy of the library; the owner has not used it yet.
 - Story cards on Home, a trends page across topics, topics suggested from automatic groups, a world curve
   from GDELT: all from `Platform development options (2026-10-11).pdf` in this folder. (Topics themselves are
   on Home as cards since 14 October 2026: `components/TopicCard.jsx`, pictures from `search/topics.pictures`.)
@@ -222,7 +285,20 @@ on a throwaway copy, never on the real library.
 - Selecting several items at once to remove them.
 - The comments summary in search and in the embeddings: it is only shown in the reader.
 - Reading protected (AES-encrypted) PDFs: that needs the `cryptography` package, which was not installed.
-- A login, and running on Linux: the platform has only ever run on Windows.
+- A login. (It runs on Linux since 3 November 2026: in Docker on the home server, all tests passing there.)
+- A bigger embedding model. Tried on a copy of the library on 4 November 2026; the owner wants BGE-M3 "another
+  time" (their material needs better models) and asked to keep the current one for now. What was found: BGE-M3
+  runs in fastembed as it is (`TextEmbedding.add_custom_model`, CLS pooling, normalised; `Xenova/bge-m3`
+  `onnx/model_int8.onnx` is a ready 8-bit version, 568 MB, vectors 0.98 alike to the full model's). On title +
+  summary it was better on abstract and non-English searches and as good elsewhere; on the first 8,000
+  characters of the text it was mixed; multilingual-e5-large had one item turning up in nearly every list.
+  The 8-bit model on the server's processor: about 7 items a second, a search 20 ms, about 1.1 GB of memory.
+  Switching means re-measuring every threshold of search by meaning, topics and foresight on a copy, because
+  the centred similarities of another model are not on the same scale. The GTX 1050 in the server works for
+  this only with old GPU software (onnxruntime-gpu 1.21, CUDA 12.4, cuDNN 9.1) and has 2 GB; its driver was
+  removed again. The owner's PC (RTX 5060 Ti) is the place for one-off bulk embedding, never the daily work.
+- Keeping the PDFs themselves (*Keep PDFs*, proposed 31 October 2026): only their text is stored. Nor passages
+  of long items for search by meaning: one embedding per item, from title and summary.
 - Never run for real: listing a channel through the YouTube Data API (there was no key).
 - Offered and not answered: captions through `youtube-transcript-api`, as the owner's Note-saver project
   uses, as a second way to a video's transcript.

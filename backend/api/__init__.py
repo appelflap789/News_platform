@@ -4,6 +4,7 @@ To add an area, create a module with a `router = APIRouter(prefix="/api")` and
 list it here.
 """
 
-from . import articles, links, scrapers, sources, system, topics
+from . import articles, links, scrape_log, scrapers, sources, system, topics
 
-routers = [sources.router, scrapers.router, links.router, articles.router, topics.router, system.router]
+routers = [sources.router, scrapers.router, links.router, articles.router, topics.router, system.router,
+           scrape_log.router]

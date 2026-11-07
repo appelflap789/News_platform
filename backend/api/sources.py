@@ -26,7 +26,7 @@ router = APIRouter(prefix="/api")
 SOURCE_JOBS = ("scrape", "enrich", "translate", "videos", "save")
 LIST_SQL = """
     SELECT s.id, s.name, s.url, s.description, s.language, s.icon_url, s.analyzer, s.enrich_enabled,
-           s.skip_walled, s.write_videos, s.interval_minutes, s.created_at, s.last_scraped_at, s.last_error,
+           s.skip_walled, s.write_videos, s.translate_new, s.interval_minutes, s.created_at, s.last_scraped_at, s.last_error,
            s.recipe,
            (SELECT COUNT(*) FROM articles a WHERE a.source_id = s.id) AS article_count,
            (SELECT MAX(COALESCE(NULLIF(a.published_at, ''), a.fetched_at)) FROM articles a
@@ -48,6 +48,7 @@ class SourceCreate(BaseModel):
     enrich_enabled: bool = False
     skip_walled: bool = False  # leave out items whose own page is behind a login or paywall, or refuses
     write_videos: bool = True  # write out what is said in videos and write them up as articles
+    translate_new: bool = False  # translate the new items that are not in English after each scrape
     interval_minutes: int = Field(0, ge=0)
     scrape_now: bool = True
     first_limit: int = Field(0, ge=0, le=100_000)  # the first scrape takes at most this many, newest first (0 = pages)
@@ -58,6 +59,7 @@ class SourcePatch(BaseModel):
     enrich_enabled: bool | None = None
     skip_walled: bool | None = None
     write_videos: bool | None = None
+    translate_new: bool | None = None
     interval_minutes: int | None = Field(None, ge=0)
 
 
@@ -93,6 +95,7 @@ def _present(source: dict, with_recipe: bool = False) -> dict:
     source["enrich_enabled"] = bool(source["enrich_enabled"])
     source["skip_walled"] = bool(source["skip_walled"])
     source["write_videos"] = bool(source["write_videos"])
+    source["translate_new"] = bool(source["translate_new"])
     source["feeds"] = [
         {"name": f["name"], "connector": f["connector"], "enabled": f.get("enabled", True),
          "content_type": f.get("content_type", "article")}
@@ -180,11 +183,11 @@ def create_source(request: SourceCreate) -> dict:
     recipe = _checked(request.recipe)
     cursor = db.execute(
         """INSERT INTO sources(name, url, description, language, icon_url, recipe, analyzer, enrich_enabled,
-                               skip_walled, write_videos, interval_minutes, created_at)
-           VALUES(?,?,?,?,?,?,?,?,?,?,?,?)""",
+                               skip_walled, write_videos, translate_new, interval_minutes, created_at)
+           VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)""",
         (recipe.site_name.strip(), normalize_url(request.url), recipe.description, recipe.language, recipe.icon_url,
          recipe.model_dump_json(), request.analyzer, int(request.enrich_enabled), int(request.skip_walled),
-         int(request.write_videos), request.interval_minutes, db.now()),
+         int(request.write_videos), int(request.translate_new), request.interval_minutes, db.now()),
     )
     source_id = cursor.lastrowid
     job = None
@@ -232,6 +235,8 @@ def update_source(source_id: int, patch: SourcePatch) -> dict:
         db.execute("UPDATE sources SET skip_walled = ? WHERE id = ?", (int(patch.skip_walled), source_id))
     if patch.write_videos is not None:
         db.execute("UPDATE sources SET write_videos = ? WHERE id = ?", (int(patch.write_videos), source_id))
+    if patch.translate_new is not None:
+        db.execute("UPDATE sources SET translate_new = ? WHERE id = ?", (int(patch.translate_new), source_id))
     if patch.interval_minutes is not None:
         db.execute("UPDATE sources SET interval_minutes = ? WHERE id = ?", (patch.interval_minutes, source_id))
     return get_source(source_id)
