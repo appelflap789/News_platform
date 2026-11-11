@@ -28,6 +28,7 @@ async def lifespan(app: FastAPI):
     from .api.system import start_embedding
 
     start_embedding()  # items stored before embeddings existed, or while they were switched off
+    addons.started()  # the add-ons' own background work, such as splitting items into passages for questions
     yield
     scheduler.stop()
 

@@ -18,7 +18,7 @@ from backend.jobs import JobError
 from backend.main import app
 from backend.pipeline.scrape import preview_feed, scrape_source
 from backend.schemas import FeedRecipe, Recipe, validate_recipe
-from backend.scrapers import SiteScraper, Stream, csis, scrapers
+from backend.scrapers import SiteScraper, Stream, carnegieeurope, csis, nationalinterest, scrapers
 from backend.scrapers._sources import recipe_for
 from backend.scrapers.base import Extracted, Item, ListPage
 from backend.scrapers.clingendael import LISTING
@@ -472,3 +472,186 @@ def test_csis_runs_as_a_source_with_two_feeds(job):
     assert report["image_url"].startswith("https://csis-website-prod.s3.amazonaws.com/s3fs-public/2026-10/")  # not the thumbnail
     teaser = db.row("SELECT * FROM articles WHERE url = ?", (f"{csis.ITEMS}ai-export-dilemma",))
     assert teaser["is_partial"] and teaser["title"] == "The AI Export Dilemma" and teaser["author"] == "William Alan Reinsch"
+
+
+# --- The National Interest, against feeds and pages saved from the real site ----------------------
+
+NI = nationalinterest
+NI_TECHLAND = f"{NI.HOME}/blog/techland/ai-is-changing-how-election-campaigns-talk-to-voters"
+NI_FEATURE = f"{NI.HOME}/feature/new-age-cyber-threats-here-us-must-prepare"
+NI_OLD = f"{NI.HOME}/blog/buzz/campaigner-chief-6887"
+NI_SAVED = {
+    NI.BLOGS: "blogs.xml",
+    f"{NI.BLOGS}?paged=2": "blogs_2.xml",
+    NI.FEATURES: "features.xml",
+    NI.TECH_FEEDS[0]: "topic_ai.xml",
+    NI_TECHLAND: "techland.html",
+    NI_FEATURE: "feature.html",
+    NI_OLD: "old_2012.html",
+}
+
+
+class SavedNationalInterest(Context):
+    def __init__(self):
+        self.asked: list[str] = []
+
+    def fetch(self, url: str, fetcher: str = "http", **kwargs) -> FetchResult:
+        self.asked.append(url)
+        if url not in NI_SAVED:
+            raise FetchError(f"HTTP 404 for {url}", status=404)
+        kind = "application/rss+xml" if NI_SAVED[url].endswith(".xml") else "text/html"
+        return FetchResult(url, 200, kind, (FIXTURES / "nationalinterest" / NI_SAVED[url]).read_bytes(), "utf-8")
+
+
+@pytest.fixture
+def national_interest(monkeypatch):
+    monkeypatch.setattr(NI, "PACE", 0.0)
+    return scrapers.get("nationalinterest"), SavedNationalInterest()
+
+
+def test_national_interest_merges_blogs_and_features_newest_first(national_interest):
+    scraper, ctx = national_interest
+    pages = list(scraper.list_pages(scraper.stream("all"), ctx))
+    items = [item for page in pages for item in page.items]
+    # blogs pages 1 and 2 and the one page of features saved (page 2 of features is "past the end" here)
+    assert len(items) == 30 and all(len(page.items) == 10 for page in pages)
+    dates = [item.published for item in items]
+    assert dates == sorted(dates, reverse=True)
+    assert any("/feature/" in item.url for item in items[:10]) and any("/blog/" in item.url for item in items[:10])
+    first = next(item for item in items if item.url.endswith("hk-110926"))
+    assert first.author == "Harrison Kass" and first.title.startswith("Europe Is Still Making Up Its Mind")
+    assert first.summary.startswith("The European Commission is weighing") and "appeared first" not in first.summary
+    assert "<p>" in first.content_html  # the feed's full text, kept in case the page cannot be read
+    assert f"{NI.BLOGS}?paged=3" in ctx.asked  # walked on until the feed ran out
+
+
+def test_national_interest_technology_reads_the_topic_feeds(national_interest):
+    scraper, ctx = national_interest
+    items = [item for page in scraper.list_pages(scraper.stream("technology"), ctx) for item in page.items]
+    assert len(items) == 10 and items[0].url == NI_TECHLAND
+    rules = next(item for item in items if "self-regulate" in item.url)
+    assert rules.author == "Nicholas Kruus, Michael O'Hanlon"  # "Nicholas Kruus , Michael O'Hanlon" in the feed
+    assert set(NI.TECH_FEEDS) <= set(ctx.asked)
+
+
+def test_national_interest_item_tags_region_blog_topics_and_technology(national_interest):
+    scraper, ctx = national_interest
+    read = scraper.read_item(Item(url=NI_TECHLAND), scraper.stream("all"), ctx)
+    assert read.title == "AI Is Changing How Election Campaigns Talk to Voters" and read.author == "Oren Tsur"
+    assert read.published == "2026-11-04T15:29:38Z"
+    assert read.tags[:6] == ["Technology", "Middle East", "North America", "Techland", "2024 Elections",
+                             "Artificial Intelligence (AI)"]
+    assert "Deepfakes" in read.tags
+    assert read.summary.startswith("AI campaign assistants can make political information more accessible")
+    assert read.text.startswith("During Israel’s election campaign")  # the standfirst is the summary, not text
+    assert "Region:" not in read.text and "Share" not in read.text and len(read.text) > 5000
+    assert read.image_url.endswith(".jpg")
+
+
+def test_national_interest_feature_and_an_item_from_2012(national_interest):
+    scraper, ctx = national_interest
+    feature = scraper.read_item(Item(url=NI_FEATURE), scraper.stream("all"), ctx)
+    assert "Technology" in feature.tags and "Cybersecurity" in feature.tags
+    assert "Related" not in feature.text[:200] and len(feature.text) > 4000
+    old = scraper.read_item(Item(url=NI_OLD), scraper.stream("all"), ctx)
+    assert old.text.startswith("Dana Milbank is known for his lighter fare") and "Technology" not in old.tags
+    assert "The Buzz" in old.tags
+
+
+# --- Carnegie Europe, against pages and (trimmed) sitemaps saved from the real site -----------------
+
+CE = carnegieeurope
+CE_POST = f"{CE.BLOG}/2026/11/member-states-must-make-enlargement-their-own"
+CE_POST_2013 = f"{CE.BLOG}/2013/07/obamas-murky-foreign-policy"
+CE_PAPER = f"{CE.RESEARCH}/2026/02/european-democracy-support-annual-review-2025"
+CE_2012 = f"{CE.RESEARCH}/2012/01/the-strategic-europe-yardstick-making-foreign-policy-strategic-in-a-union-of-27"
+CE_SAVED = {
+    CE.BLOG: "strategic_europe.html",
+    CE.EUROPE: "europe.html",
+    CE.SITEMAPS["strategic-europe"]: "posts-index.xml",
+    CE.SITEMAPS["research"]: "research-index.xml",
+    f"{CE.HOME}/sitemaps/posts-0.xml": "posts-0.xml",
+    f"{CE.HOME}/sitemaps/research-0.xml": "research-0.xml",
+    CE_POST: "blog_post.html",
+    CE_POST_2013: "blog_post_2013.html",
+    CE_PAPER: "paper.html",
+    CE_2012: "research_2012.html",
+}
+
+
+class SavedCarnegie(Context):
+    def __init__(self):
+        self.asked: list[str] = []
+
+    def fetch(self, url: str, fetcher: str = "http", **kwargs) -> FetchResult:
+        self.asked.append(url)
+        if url not in CE_SAVED:
+            raise FetchError(f"HTTP 404 for {url}", status=404)
+        kind = "application/xml" if CE_SAVED[url].endswith(".xml") else "text/html"
+        return FetchResult(url, 200, kind, (FIXTURES / "carnegieeurope" / CE_SAVED[url]).read_bytes(), "utf-8")
+
+
+@pytest.fixture
+def carnegie():
+    return CE.CarnegieEurope(), SavedCarnegie()  # a fresh one: the registered one remembers sitemaps
+
+
+def _month(url: str) -> tuple[str, str]:
+    return CE.YEAR_MONTH.search(url).groups()
+
+
+def test_carnegie_blog_shows_six_then_the_sitemap_newest_first(carnegie):
+    scraper, ctx = carnegie
+    pages = list(scraper.list_pages(scraper.stream("strategic-europe"), ctx))
+    first = [item.url for item in pages[0].items]
+    assert len(first) == 6 and f"{CE.BLOG}/2026/11/is-russia-winning-the-perception-war-in-germany" in first
+    rest = [item.url for page in pages[1:] for item in page.items]
+    assert len(rest) == 14 - 6 and not set(rest) & set(first)
+    assert all(url.startswith(f"{CE.BLOG}/") for url in rest)  # the Endowment's other blogs are not taken
+    assert [_month(url) for url in rest] == sorted((_month(url) for url in rest), reverse=True)
+
+
+def test_carnegie_update_does_not_download_the_sitemap_for_the_first_page(carnegie):
+    scraper, ctx = carnegie
+    next(iter(scraper.list_pages(scraper.stream("strategic-europe"), ctx)))
+    assert ctx.asked == [CE.BLOG]
+
+
+def test_carnegie_research_starts_from_the_europe_home_page(carnegie):
+    scraper, ctx = carnegie
+    pages = list(scraper.list_pages(scraper.stream("research"), ctx))
+    first = [item.url for item in pages[0].items]
+    assert f"{CE.RESEARCH}/2026/11/serbia-still-has-a-steep-hill-to-climb" in first
+    assert all(item.url.startswith(f"{CE.RESEARCH}/") for page in pages for item in page.items)
+
+
+def test_carnegie_blog_post(carnegie):
+    scraper, ctx = carnegie
+    read = scraper.read_item(Item(url=CE_POST), scraper.stream("strategic-europe"), ctx)
+    assert read.title == "Member States Must Make Enlargement Their Own" and read.author == "Iliriana Gjoni"
+    assert read.published == "2026-11-03T12:00:00Z" and read.content_type == "article"
+    assert read.tags[0] == "Commentary" and "EU Enlargement" in read.tags and "Western Balkans" in read.tags
+    assert "Ukraine" not in read.tags  # a link in the site's menu, not one of the post's regions
+    assert read.text.startswith("EU enlargement is entering a decisive phase.")
+    assert "Subscribe" not in read.text and "research analyst at Carnegie Europe" not in read.text  # box, bio
+    assert read.summary.startswith("The European Commission is preparing the EU") and read.pdf_url == ""
+
+
+def test_carnegie_paper_has_its_text_on_the_page_and_a_pdf(carnegie):
+    scraper, ctx = carnegie
+    read = scraper.read_item(Item(url=CE_PAPER), scraper.stream("research"), ctx)
+    assert read.content_type == "paper" and read.tags[0] == "Paper"
+    assert read.pdf_url.endswith("European%20Democracy%20Support%20Annual%20Review%20EDH25.pdf")
+    assert len(read.text) > 50_000 and read.text.startswith("Introduction")
+    assert not any(url.lower().endswith(".pdf") for url in ctx.asked)  # the page has it all: no PDF downloaded
+    assert read.author.startswith("Richard Youngs")
+
+
+def test_carnegie_old_layouts(carnegie):
+    scraper, ctx = carnegie
+    post = scraper.read_item(Item(url=CE_POST_2013), scraper.stream("strategic-europe"), ctx)
+    assert post.text.startswith("Half a year into President Barack Obama")
+    assert "What was touted in January" in post.text and "distinguished fellow" not in post.text
+    assert post.published == "2013-07-03T04:10:09Z"
+    paper = scraper.read_item(Item(url=CE_2012), scraper.stream("research"), ctx)
+    assert paper.author == "Jan Techau" and "Ambitious:" in paper.text and len(paper.text) > 15_000

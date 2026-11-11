@@ -1,0 +1,2024 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Artificial Intelligence (AI) Archives - The National Interest</title>
+	<atom:link href="https://nationalinterest.org/topics/ai-artificial-intelligence/feed" rel="self" type="application/rss+xml" />
+	<link>https://nationalinterest.org/topics/ai-artificial-intelligence</link>
+	<description>Foreign policy and national security analysis and commentary</description>
+	<lastBuildDate>Wed, 04 Nov 2026 15:29:40 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=7.1.4</generator>
+
+<image>
+	<url>https://nationalinterest.org/wp-content/uploads/2024/11/cropped-favicon-150x150.png</url>
+	<title>Artificial Intelligence (AI) Archives - The National Interest</title>
+	<link>https://nationalinterest.org/topics/ai-artificial-intelligence</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+	<item>
+		<title>AI Is Changing How Election Campaigns Talk to Voters</title>
+		<link>https://nationalinterest.org/blog/techland/ai-is-changing-how-election-campaigns-talk-to-voters</link>
+		
+		<dc:creator><![CDATA[Oren Tsur]]></dc:creator>
+		<pubDate>Wed, 04 Nov 2026 15:29:38 +0000</pubDate>
+				<category><![CDATA[Deepfakes]]></category>
+		<category><![CDATA[Disinformation]]></category>
+		<category><![CDATA[Israel]]></category>
+		<category><![CDATA[Joe Biden]]></category>
+		<category><![CDATA[Naftali Bennett]]></category>
+		<category><![CDATA[TikTok]]></category>
+		<category><![CDATA[United States (USA)]]></category>
+		<guid isPermaLink="false">https://nationalinterest.org/blog/</guid>
+
+					<description><![CDATA[<p>AI campaign assistants can make political information more accessible, but private, personalized conversations also open new paths to manipulation that voters and regulators must scrutinize.</p>
+<p>The post <a href="https://nationalinterest.org/blog/techland/ai-is-changing-how-election-campaigns-talk-to-voters">AI Is Changing How Election Campaigns Talk to Voters</a> appeared first on <a href="https://nationalinterest.org">The National Interest</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<div class="header header--post header--immersive header--min-height-none header--has-media">
+			<figure class="header__media" role="presentation">
+							<img fetchpriority="high" decoding="async" src="https://nationalinterest.org/wp-content/uploads/2026/11/AI-Is-Changing-How-Election-Campaigns-Talk-to-Voters-e1793806163435.jpg" alt="An illustration of a humanoid AI robot speaking at a press conference. AI can make political information more accessible, but campaign chatbots that tailor their pitch to each voter in private demand new transparency and scrutiny. (Shutterstock/Stokkete)" width="8000" height="4507" loading="eager" style="object-position: 50% 50%">
+									<p class="img-caption">An illustration of a humanoid AI robot speaking at a press conference. AI can make political information more accessible, but campaign chatbots that tailor their pitch to each voter in private demand new transparency and scrutiny. (Shutterstock/Stokkete)</p>
+														<span class="header__overlay"></span>
+					</figure>
+	
+	<div class="header__layout">
+		
+<div class="header__content">
+	
+<h1 class="header__title">AI Is Changing How Election Campaigns Talk to Voters</h1>
+
+
+<div class="header__metadata"><div class="header__metas"><div class="header__meta header__meta--date"> November 4, 2026</div>
+
+<div class="header__meta header__meta--taxonomy">By:  <a href="https://nationalinterest.org/profile/oren-tsur">Oren Tsur</a></div></div></div>
+
+
+<div class="share">
+	<div class="share__layout">
+		<h3 class="share__label has-kicker-variant">Share</h3>
+
+		<ul class="share__list">
+							<li class="share__item share__item--facebook">
+					<a class="share__link share-block__link--facebook" href="https://www.facebook.com/sharer.php?u=https%3A%2F%2Fnationalinterest.org%2Fblog%2Ftechland%2Fai-is-changing-how-election-campaigns-talk-to-voters%3Futm_source%3Dfacebook" target="_blank" rel="noopener">
+						<span class="a11y">Share this link on Facebook</span>
+						<span aria-hidden="true" class="share__icon-wrap">
+							<svg class="svg svg--svg-assets-svg-logo-facebook" role="img" focusable="false" height="16" width="16"><use xlink:href="#svg-assets-svg-logo-facebook"/></svg>						</span>
+					</a>
+				</li>
+							<li class="share__item share__item--twitter">
+					<a class="share__link share-block__link--twitter" href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fnationalinterest.org%2Fblog%2Ftechland%2Fai-is-changing-how-election-campaigns-talk-to-voters%3Futm_source%3Dtwitter%26utm_campaign%3Dweb-share" target="_blank" rel="noopener">
+						<span class="a11y">Share this page on X (Twitter)</span>
+						<span aria-hidden="true" class="share__icon-wrap">
+							<svg class="svg svg--svg-assets-svg-logo-x" role="img" focusable="false" height="16" width="16"><use xlink:href="#svg-assets-svg-logo-x"/></svg>						</span>
+					</a>
+				</li>
+							<li class="share__item share__item--linkedin">
+					<a class="share__link share-block__link--linkedin" href="https://www.linkedin.com/sharing/share-offsite?url=https%3A%2F%2Fnationalinterest.org%2Fblog%2Ftechland%2Fai-is-changing-how-election-campaigns-talk-to-voters%3Futm_source%3Dlinkedin%26utm_campaign%3Dweb-share" target="_blank" rel="noopener">
+						<span class="a11y">Share this link on LinkedIn</span>
+						<span aria-hidden="true" class="share__icon-wrap">
+							<svg class="svg svg--svg-assets-svg-logo-linkedin" role="img" focusable="false" height="16" width="16"><use xlink:href="#svg-assets-svg-logo-linkedin"/></svg>						</span>
+					</a>
+				</li>
+							<li class="share__item share__item--reddit">
+					<a class="share__link share-block__link--reddit" href="https://reddit.com/submit?url=https%3A%2F%2Fnationalinterest.org%2Fblog%2Ftechland%2Fai-is-changing-how-election-campaigns-talk-to-voters%3Futm_source%3Dreddit%26utm_campaign%3Dweb-share&amp;title=AI+Is+Changing+How+Election+Campaigns+Talk+to+Voters" target="_blank" rel="noopener">
+						<span class="a11y">Share this page on Reddit</span>
+						<span aria-hidden="true" class="share__icon-wrap">
+							<svg class="svg svg--svg-assets-svg-logo-reddit" role="img" focusable="false" height="16" width="16"><use xlink:href="#svg-assets-svg-logo-reddit"/></svg>						</span>
+					</a>
+				</li>
+							<li class="share__item share__item--email">
+					<a class="share__link share-block__link--email" href="mailto:?body=https%3A%2F%2Fnationalinterest.org%2Fblog%2Ftechland%2Fai-is-changing-how-election-campaigns-talk-to-voters%3Futm_source%3Demail%26utm_campaign%3Dweb-share&amp;subject=AI+Is+Changing+How+Election+Campaigns+Talk+to+Voters" target="_blank" rel="noopener">
+						<span class="a11y">Email a link to this page</span>
+						<span aria-hidden="true" class="share__icon-wrap">
+							<svg class="svg svg--svg-assets-svg-icon-email" role="img" focusable="false" height="16" width="16"><use xlink:href="#svg-assets-svg-icon-email"/></svg>						</span>
+					</a>
+				</li>
+					</ul>
+	</div>
+</div>
+
+
+<div class="google-preferred-source">
+	<a class="google-preferred-source__button wp-block-button__link wp-element-button" href="https://www.google.com/preferences/source?q=https://nationalinterest.org/" target="_blank" rel="noopener noreferrer">
+		<span>Add TNI as a Preferred Source on Google</span>
+	</a>
+</div>
+
+</div>
+
+	</div>
+</div>
+
+
+
+<h2 id="h-ai-campaign-assistants-can-make-political-information-more-accessible-but-private-personalized-conversations-also-open-new-paths-to-manipulation-that-voters-and-regulators-must-scrutinize" class="wp-block-heading"><em>AI campaign assistants can make political information more accessible, but private, personalized conversations also open new paths to manipulation that voters and regulators must scrutinize.</em></h2>
+
+
+
+<p class="wp-block-paragraph">During&nbsp;<a href="https://nationalinterest.org/tags/israel">Israel</a>’s election campaign, I answered a call that began with an assurance: “This is not a robocall.” The caller identified itself as former Prime Minister and candidate&nbsp;<a href="https://nationalinterest.org/tags/naftali-bennett">Naftali Bennett</a>’s artificial intelligence (<a href="https://nationalinterest.org/topics/ai-artificial-intelligence">AI</a>) assistant—a literal robocall.</p>
+
+
+
+<p class="wp-block-paragraph">I was skeptical of the introduction. But I stayed on the line, partly out of professional curiosity. Instead of delivering the usual prerecorded message, the system invited me into a conversation (“you can tell us the issues that matter to you the most, and ask about our policy”). Assuming its answers were accurate and offered in good faith, this seemed a productive use of&nbsp;AI. A voter could ask about a concern and get a relevant response.</p>
+
+
+
+<p class="wp-block-paragraph">The same interaction could also become a vehicle for manipulation. That possibility deserves attention during this election season in the United States and Israel. AI can make political information more accessible. It can also make persuasion more personal, manipulative, and harder to scrutinize.</p>
+
+
+
+<p class="wp-block-paragraph">Consider the difference between a campaign prerecorded video and an unfolding conversation. A video can be examined publicly. A system responding individually to voters could adapt its arguments to their concerns, with exchanges that journalists, researchers, and other voters never see. We should investigate how such systems are used even without assuming that every conversation is deceptive.</p>
+
+
+
+<h3 id="h-how-ai-has-already-been-used-to-mislead-voters" class="wp-block-heading"><strong>How AI Has Already Been Used to Mislead Voters</strong></h3>
+
+
+
+<p class="wp-block-paragraph">Americans have already encountered a more straightforward form of abuse. Before New Hampshire’s 2024 presidential primary, voters received calls featuring an&nbsp;<a href="https://docs.fcc.gov/public/attachments/DOC-403529A1.pdf">AI-generated imitation</a>&nbsp;of President Joe Biden’s voice that discouraged them from voting. That episode illustrates a concrete danger: Technology can lend a familiar voice to a fraudulent instruction.</p>
+
+
+
+<p class="wp-block-paragraph">Yet focusing exclusively on obvious fakes misses another concern. A voter asking a general-purpose chatbot which candidate best represents their interests may believe they are consulting a neutral adviser. The answer depends on the model’s training, the information it retrieves, and how the question is phrased. As with polling, wording matters. With AI, the user often has even less visibility into what shaped the response.</p>
+
+
+
+<p class="wp-block-paragraph">There is also a risk that political actors will try to influence the online information these systems draw upon. We need evidence about specific attempts and their effects. Suspicion alone cannot establish that a chatbot has been manipulated.</p>
+
+
+
+<h3 id="h-why-researchers-need-access-to-platform-data" class="wp-block-heading"><strong>Why Researchers Need Access to Platform Data</strong></h3>
+
+
+
+<p class="wp-block-paragraph">That difference between suspicion and actual evidence matters throughout this debate. In my research at Ben-Gurion University of the Negev, we use AI to study political communication, including Israeli politicians’&nbsp;<a href="https://nationalinterest.org/tags/tiktok">TikTok</a>&nbsp;videos and conspiracy narratives in Hebrew. Using AI to analyze campaign messages does not tell us how much AI changed anyone’s vote. We should be candid about that limit. Identifying synthetic content is different from demonstrating attempted electoral influence, let alone a successful influence campaign.</p>
+
+
+
+<p class="wp-block-paragraph">Our limited view is itself a reason to demand greater transparency. Platforms and campaign operators hold information that independent researchers cannot readily access. Without it, we risk mistaking striking anecdotes for a complete picture, or missing both—the forest and the trees.</p>
+
+
+
+<p class="wp-block-paragraph">In a recently published&nbsp;<a href="https://www.cigionline.org/static/documents/no.221_Malone_and_Tsur.pdf">policy brief</a>&nbsp;on TikTok regulation in Canada, Matt Malone and I argue for measures including meaningful researcher access to platform data. The principle applies more broadly: Oversight must allow independent examination of how information reaches people. It cannot depend entirely on a company’s willingness to cooperate.</p>
+
+
+
+<h3 id="h-what-regulators-and-voters-should-do-about-ai-in-campaigns" class="wp-block-heading"><strong>What Regulators and Voters Should Do About AI in Campaigns</strong></h3>
+
+
+
+<p class="wp-block-paragraph">Regulation is beneficial, but we should be wary of promising a simple solution. Regulators often lag behind technology, and poorly designed rules can miss the problem. We should require clear disclosure when campaigns use AI assistants, protect information voters reveal in those conversations, and enable independent scrutiny with privacy safeguards. Enforcement needs consequences substantial enough to change behavior. These obligations should apply regardless of whose campaign benefits.</p>
+
+
+
+<p class="wp-block-paragraph">Voters should also adopt practical habits. Check an alarming claim against its original source before sharing it. Confirm voting instructions with official election authorities. Ask a chatbot for supporting sources, then open them. A confident answer is not necessarily a verified answer.</p>
+
+
+
+<p class="wp-block-paragraph">AI can help with this work. Carefully designed tools could compare candidates’ published positions, explain unfamiliar policy questions, and help users trace claims to evidence. They could make civic information available across languages and help people navigate material they would otherwise struggle to understand. Campaign assistants could answer substantive questions while clearly identifying whom they represent.</p>
+
+
+
+<p class="wp-block-paragraph">The difficulty is that people do not always want a careful explanation. We are drawn to sensational claims, particularly those that confirm our beliefs and predispositions. More sophisticated tools will have limited value if we use them only to reinforce what we already believe.</p>
+
+
+
+<p class="wp-block-paragraph">That is why critical thinking needs a place in this conversation. When the next campaign assistant calls, we should take the steps to determine who sent it, what it does with our answers, and how to verify its answers.</p>
+
+
+
+<p class="wp-block-paragraph">Those habits serve a larger civic purpose. They help us hold candidates accountable, engage seriously with people who disagree with us, and cast votes that we can explain beyond a slogan or a viral clip. AI can make that participation better informed—if we ask the right questions.</p>
+
+
+
+<h3 id="h-about-the-author-oren-tsur" class="wp-block-heading"><strong>About the Author: Oren Tsur</strong></h3>
+
+
+
+<p class="wp-block-paragraph"><em>Oren Tsur is a senior lecturer at the Institute for Applied AI Research in the Faculty of Computer and Information Science (CIS) at Ben-Gurion University of the Negev and the head of the Center for the Study of Digital Politics and Strategy (DPS@BGU).</em></p>
+<p>The post <a href="https://nationalinterest.org/blog/techland/ai-is-changing-how-election-campaigns-talk-to-voters">AI Is Changing How Election Campaigns Talk to Voters</a> appeared first on <a href="https://nationalinterest.org">The National Interest</a>.</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>New Age Cyber Threats Are Here—the US Must Be Prepared</title>
+		<link>https://nationalinterest.org/feature/new-age-cyber-threats-here-us-must-prepare</link>
+		
+		<dc:creator><![CDATA[Pat Fallon]]></dc:creator>
+		<pubDate>Wed, 28 Oct 2026 20:47:59 +0000</pubDate>
+				<category><![CDATA[Donald Trump]]></category>
+		<category><![CDATA[National Coordination Center (NCC)]]></category>
+		<category><![CDATA[PHP]]></category>
+		<category><![CDATA[PHP2Shell]]></category>
+		<category><![CDATA[United States (USA)]]></category>
+		<guid isPermaLink="false">https://nationalinterest.org/?post_type=feature&#038;p=501536</guid>
+
+					<description><![CDATA[<p>As artificial intelligence rapidly expands the cyber threat frontier, public-private cooperation is needed to defend the digital domain.</p>
+<p>The post <a href="https://nationalinterest.org/feature/new-age-cyber-threats-here-us-must-prepare">New Age Cyber Threats Are Here—the US Must Be Prepared</a> appeared first on <a href="https://nationalinterest.org">The National Interest</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<div class="header has-background has-black-background-color header--post header--immersive header--min-height-none header--has-media">
+			<figure class="header__media" role="presentation">
+							<img decoding="async" src="https://nationalinterest.org/wp-content/uploads/2026/10/Cybersecurity-AI-10282026-SS-scaled-e1793220421854.jpg" alt="" width="1280" height="720" loading="eager" style="object-position: 50% 50%">
+									<p class="img-caption">The US Capitol building at night, circa September 2025, with glowing digital padlock icons and data elements overlaid. US cybersecurity is under tremendous strain from new AI-enhanced threats, writes Pat Fallon. (Shutterstock/VideoFlow)</p>
+														<span class="header__overlay has-background has-black-background-color"></span>
+					</figure>
+	
+	<div class="header__layout">
+		
+<div class="header__content">
+	
+<h1 class="header__title">New Age Cyber Threats Are Here—the US Must Be Prepared</h1>
+
+
+<div class="header__metadata"><div class="header__metas"><div class="header__meta header__meta--date"> October 28, 2026</div>
+
+<div class="header__meta header__meta--taxonomy">By:  <a href="https://nationalinterest.org/profile/rep-pat-fallon">Pat Fallon</a></div></div></div>
+
+
+<div class="share">
+	<div class="share__layout">
+		<h3 class="share__label has-kicker-variant">Share</h3>
+
+		<ul class="share__list">
+							<li class="share__item share__item--facebook">
+					<a class="share__link share-block__link--facebook" href="https://www.facebook.com/sharer.php?u=https%3A%2F%2Fnationalinterest.org%2Ffeature%2Fnew-age-cyber-threats-here-us-must-prepare%3Futm_source%3Dfacebook" target="_blank" rel="noopener">
+						<span class="a11y">Share this link on Facebook</span>
+						<span aria-hidden="true" class="share__icon-wrap">
+							<svg class="svg svg--svg-assets-svg-logo-facebook" role="img" focusable="false" height="16" width="16"><use xlink:href="#svg-assets-svg-logo-facebook"/></svg>						</span>
+					</a>
+				</li>
+							<li class="share__item share__item--twitter">
+					<a class="share__link share-block__link--twitter" href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fnationalinterest.org%2Ffeature%2Fnew-age-cyber-threats-here-us-must-prepare%3Futm_source%3Dtwitter%26utm_campaign%3Dweb-share" target="_blank" rel="noopener">
+						<span class="a11y">Share this page on X (Twitter)</span>
+						<span aria-hidden="true" class="share__icon-wrap">
+							<svg class="svg svg--svg-assets-svg-logo-x" role="img" focusable="false" height="16" width="16"><use xlink:href="#svg-assets-svg-logo-x"/></svg>						</span>
+					</a>
+				</li>
+							<li class="share__item share__item--linkedin">
+					<a class="share__link share-block__link--linkedin" href="https://www.linkedin.com/sharing/share-offsite?url=https%3A%2F%2Fnationalinterest.org%2Ffeature%2Fnew-age-cyber-threats-here-us-must-prepare%3Futm_source%3Dlinkedin%26utm_campaign%3Dweb-share" target="_blank" rel="noopener">
+						<span class="a11y">Share this link on LinkedIn</span>
+						<span aria-hidden="true" class="share__icon-wrap">
+							<svg class="svg svg--svg-assets-svg-logo-linkedin" role="img" focusable="false" height="16" width="16"><use xlink:href="#svg-assets-svg-logo-linkedin"/></svg>						</span>
+					</a>
+				</li>
+							<li class="share__item share__item--reddit">
+					<a class="share__link share-block__link--reddit" href="https://reddit.com/submit?url=https%3A%2F%2Fnationalinterest.org%2Ffeature%2Fnew-age-cyber-threats-here-us-must-prepare%3Futm_source%3Dreddit%26utm_campaign%3Dweb-share&amp;title=New+Age+Cyber+Threats+Are+Here%E2%80%94the+US+Must+Be+Prepared" target="_blank" rel="noopener">
+						<span class="a11y">Share this page on Reddit</span>
+						<span aria-hidden="true" class="share__icon-wrap">
+							<svg class="svg svg--svg-assets-svg-logo-reddit" role="img" focusable="false" height="16" width="16"><use xlink:href="#svg-assets-svg-logo-reddit"/></svg>						</span>
+					</a>
+				</li>
+							<li class="share__item share__item--email">
+					<a class="share__link share-block__link--email" href="mailto:?body=https%3A%2F%2Fnationalinterest.org%2Ffeature%2Fnew-age-cyber-threats-here-us-must-prepare%3Futm_source%3Demail%26utm_campaign%3Dweb-share&amp;subject=New+Age+Cyber+Threats+Are+Here%E2%80%94the+US+Must+Be+Prepared" target="_blank" rel="noopener">
+						<span class="a11y">Email a link to this page</span>
+						<span aria-hidden="true" class="share__icon-wrap">
+							<svg class="svg svg--svg-assets-svg-icon-email" role="img" focusable="false" height="16" width="16"><use xlink:href="#svg-assets-svg-icon-email"/></svg>						</span>
+					</a>
+				</li>
+					</ul>
+	</div>
+</div>
+
+
+<div class="google-preferred-source">
+	<a class="google-preferred-source__button wp-block-button__link wp-element-button" href="https://www.google.com/preferences/source?q=https://nationalinterest.org/" target="_blank" rel="noopener noreferrer">
+		<span>Add TNI as a Preferred Source on Google</span>
+	</a>
+</div>
+
+</div>
+
+	</div>
+</div>
+
+
+
+<h2 id="h-as-artificial-intelligence-rapidly-expands-the-cyber-threat-frontier-public-private-cooperation-is-needed-to-defend-the-digital-domain" class="wp-block-heading"><em>As artificial intelligence rapidly expands the cyber threat frontier, public-private cooperation is needed to defend the digital domain.</em></h2>
+
+
+
+<p class="wp-block-paragraph">Last week, several components of the US intelligence community and law enforcement apparatus, including the <a href="https://nationalinterest.org/tags/fbi-federal-bureau-of-investigation">FBI</a> Cyber Division and <a href="https://nationalinterest.org/tags/nsa">NSA</a> Cyber team, <a href="https://x.com/FBICyberDiv/status/2112921648252719420">issued</a> <a href="https://www.nsa.gov/press-room/press-releases-statements/press-release-view/article/4630238/nsa-advisory-critical-patches-recommended-for-php-vulnerabilities/">notices</a> that a major cyberattack, referred to as <a href="https://nationalinterest.org/tags/php2shell">PHP2Shell</a>, exploited a <a href="https://www.wsj.com/tech/cybersecurity/ai-just-found-a-bug-that-puts-up-to-70-of-the-worlds-websites-at-risk-fd0902ea">critical vulnerability</a> that puts over 70 percent of websites at risk.&nbsp;</p>
+
+
+
+<p class="wp-block-paragraph">Nearly every major website of every US industry is under threat, from software companies to large US banks to telecommunications providers and scientific labs. These targets share the same programming language: <a href="https://nationalinterest.org/tags/php">PHP</a>. This programming language is vulnerable because it has a low barrier to entry, making it easy for inexperienced developers to write code with common, easily exploitable flaws.</p>
+
+
+
+<p class="wp-block-paragraph">Many companies have reported <a href="https://nationalinterest.org/topics/artificial-intelligence">AI agents</a>, also called agentic <a href="https://www.whitehouse.gov/presidential-actions/2026/09/inaugurating-the-era-of-super-intelligence/">superintelligence</a> (SI), attempting to breach their cyber defenses and disrupt customer operations; once inside, these agents can access sensitive private data. While details of last week’s attack are still emerging, two truths are clear: an attack of this scale puts nearly every American at risk, and the <a href="https://nationalinterest.org/topics/cybersecurity">cybersecurity</a> landscape has changed significantly in the age of agentic SI.</p>
+
+
+
+<p class="wp-block-paragraph">Mounting threats from agentic SI lay bare the stark reality of our modern digital domain. Both private companies and government agencies must reassess how they defend against cyberattacks. For too long, the US government’s response to cyberattacks such as PHP2Shell has been fragmented because our cyber defenses have been siloed, preventing agencies from sharing timely information with each other and with the public. Our patchwork of redundant, time-consuming measures has led to uninformed responses and reduced visibility into the cyber threat landscape.</p>
+
+
+
+<p class="wp-block-paragraph">Gaps in government cyber defenses have allowed gangs, cartels, transnational criminal organizations (TCO), and non-state actors to defraud, disrupt, and continuously attack the American people and American businesses. Thankfully, the Trump administration is making real progress towards a solution. The National Coordination Center (NCC), outlined in President <a href="https://www.whitehouse.gov/presidential-actions/2026/03/combating-cybercrime-fraud-and-predatory-schemes-against-american-citizens/"></a><a href="https://nationalinterest.org/tags/donald-trump">Donald Trump</a>’s <a href="https://www.whitehouse.gov/presidential-actions/2026/03/combating-cybercrime-fraud-and-predatory-schemes-against-american-citizens/">Executive Order 14390</a> from March of this past year, is a major improvement in how we deter cyber threats from an organizational perspective.</p>
+
+
+
+	<div class="related-posts">
+		<div class="related-posts__header">
+			<h2 class="has-kicker-variant">Related Articles</h2>
+		</div>
+
+		<div class="related-posts__layout">
+			<div class="card"><div class="card__layout"><a href="https://nationalinterest.org/feature/on-immigration-the-us-is-not-europe-unless-it-chooses-to-be" class="card__media-link"><figure class="card__media"><picture><img decoding="async" src="https://nationalinterest.org/wp-content/uploads/2026/11/United-States-Protest-Sign-11092026-SS-e1794241153822-1024x576.jpg" srcset="https://nationalinterest.org/wp-content/uploads/2026/11/United-States-Protest-Sign-11092026-SS-e1794241153822-1024x576.jpg 1024w, https://nationalinterest.org/wp-content/uploads/2026/11/United-States-Protest-Sign-11092026-SS-e1794241153822-300x169.jpg 300w, https://nationalinterest.org/wp-content/uploads/2026/11/United-States-Protest-Sign-11092026-SS-e1794241153822-768x432.jpg 768w, https://nationalinterest.org/wp-content/uploads/2026/11/United-States-Protest-Sign-11092026-SS-e1794241153822.jpg 1280w" loading="lazy" alt="" height="576" width="1024" style="object-position: 50% 50%"></picture></figure></a><div class="card__text"><ul class="card__terms term-list"><li class="card__term term-list__item"><a href="https://nationalinterest.org/topics/migration" class="term-list__link">Migration</a></li><li class="card__term term-list__item"><a href="https://nationalinterest.org/topics/religion" class="term-list__link">Religion</a></li></ul><h3 class="card__heading"><a href="https://nationalinterest.org/feature/on-immigration-the-us-is-not-europe-unless-it-chooses-to-be" class="card__link">
+					On Immigration, the US Is Not Europe—Unless It Chooses to Be				</a></h3><div class="card__excerpt"><p>The American constitutional tradition is a bulwark against the social fragmentation seen now in Europe.</p></div><div class="card__byline"><ul class="card__people"><li class="card__person"><a href="https://nationalinterest.org/profile/ahmed-charai">Ahmed Charai</a></li></ul><time class="card__date" datetime="2026-11-09">
+						November 9, 2026					</time></div></div></div></div><div class="card"><div class="card__layout"><a href="https://nationalinterest.org/feature/it-is-long-past-time-for-the-un-to-leave-western-sahara" class="card__media-link"><figure class="card__media"><picture><img decoding="async" src="https://nationalinterest.org/wp-content/uploads/2026/11/un-aircraft-western-sahara-110726-wikimedia-1024x576.jpg" srcset="https://nationalinterest.org/wp-content/uploads/2026/11/un-aircraft-western-sahara-110726-wikimedia-1024x576.jpg 1024w, https://nationalinterest.org/wp-content/uploads/2026/11/un-aircraft-western-sahara-110726-wikimedia-300x169.jpg 300w, https://nationalinterest.org/wp-content/uploads/2026/11/un-aircraft-western-sahara-110726-wikimedia-768x432.jpg 768w, https://nationalinterest.org/wp-content/uploads/2026/11/un-aircraft-western-sahara-110726-wikimedia.jpg 1280w" loading="lazy" alt="A UN aircraft takes off from an airfield in Western Sahara." height="576" width="1024" style="object-position: 50% 50%"></picture></figure></a><div class="card__text"><ul class="card__terms term-list"><li class="card__term term-list__item"><a href="https://nationalinterest.org/topics/diplomacy" class="term-list__link">Diplomacy</a></li></ul><h3 class="card__heading"><a href="https://nationalinterest.org/feature/it-is-long-past-time-for-the-un-to-leave-western-sahara" class="card__link">
+					It Is Long Past Time for the UN to Leave Western Sahara				</a></h3><div class="card__excerpt"><p>The recent expiration of the UN Mission for the Referendum in Western Sahara (MINURSO) is an opportunity to unfreeze a peace process that has been stalled for decades.</p></div><div class="card__byline"><ul class="card__people"><li class="card__person"><a href="https://nationalinterest.org/profile/brett-d-schaefer">Brett D. Schaefer</a></li><li class="card__person"><a href="https://nationalinterest.org/profile/liam-karr">Liam Karr</a></li></ul><time class="card__date" datetime="2026-11-07">
+						November 7, 2026					</time></div></div></div></div><div class="card"><div class="card__layout"><a href="https://nationalinterest.org/feature/why-eu-china-trade-relations-have-deteriorated" class="card__media-link"><figure class="card__media"><picture><img decoding="async" src="https://nationalinterest.org/wp-content/uploads/2026/11/EU-China-11072026-SS-scaled-e1794059167211-1024x576.jpg" srcset="https://nationalinterest.org/wp-content/uploads/2026/11/EU-China-11072026-SS-scaled-e1794059167211-1024x576.jpg 1024w, https://nationalinterest.org/wp-content/uploads/2026/11/EU-China-11072026-SS-scaled-e1794059167211-300x169.jpg 300w, https://nationalinterest.org/wp-content/uploads/2026/11/EU-China-11072026-SS-scaled-e1794059167211-768x432.jpg 768w, https://nationalinterest.org/wp-content/uploads/2026/11/EU-China-11072026-SS-scaled-e1794059167211.jpg 1280w" loading="lazy" alt="" height="576" width="1024" style="object-position: 50% 50%"></picture></figure></a><div class="card__text"><ul class="card__terms term-list"><li class="card__term term-list__item"><a href="https://nationalinterest.org/topics/electric-vehicles" class="term-list__link">Electric Vehicles (EVs)</a></li><li class="card__term term-list__item"><a href="https://nationalinterest.org/topics/manufacturing" class="term-list__link">Manufacturing</a></li><li class="card__term term-list__item"><a href="https://nationalinterest.org/topics/trade" class="term-list__link">Trade</a></li></ul><h3 class="card__heading"><a href="https://nationalinterest.org/feature/why-eu-china-trade-relations-have-deteriorated" class="card__link">
+					Why EU-China Trade Relations Have Deteriorated				</a></h3><div class="card__excerpt"><p>US Tariffs have made China more dependent on the European market for buying its exports.</p></div><div class="card__byline"><ul class="card__people"><li class="card__person"><a href="https://nationalinterest.org/profile/milton-ezrati">Milton Ezrati</a></li></ul><time class="card__date" datetime="2026-11-07">
+						November 7, 2026					</time></div></div></div></div>		</div>
+	</div>
+
+
+
+<p class="wp-block-paragraph">The NCC is a combined effort between the Department of Justice (<a href="https://nationalinterest.org/tags/doj-department-of-justice">DOJ</a>) and the Department of Homeland Security (<a href="https://nationalinterest.org/tags/dhs-department-of-homeland-security">DHS</a>), with support from the secretaries of state, treasury, defense, the attorney general, and the national cyber director. Their mission is to serve as the hub for a dedicated, cyber-focused operational cell that centralizes detection, disruption, and deterrence of foreign TCO cyber threats. This brings defense frameworks, information sharing, threat detection, and response decisions under one roof, so our entire digital defense apparatus moves with one voice in the same direction.</p>
+
+
+
+<p class="wp-block-paragraph">I’m proud to support President Trump and the NCC with my new legislation, the <a href="https://fallon.house.gov/news/documentsingle.aspx?DocumentID=1694"><em></em>National Coordination Center and Commercial Cyber Capabilities Codification Act</a><em>,</em> which would make the NCC permanent and unleash our commercial cyber sector’s unmatched ability to detect, disrupt, and deter a new era of cyber threats.</p>
+
+
+
+<p class="wp-block-paragraph">But even with the NCC established, we must admit the US government cannot conquer this new era of cyber threats alone. The United States is home to the world’s most successful, innovative, and exceptional technology companies. We must leverage the speed and agility of our private-sector partners to secure the digital domain and suppress foreign threats that seek to harm our country.</p>
+
+
+
+<p class="wp-block-paragraph">In addition to codifying the NCC, my bill also solidifies <a href="https://www.whitehouse.gov/fact-sheets/2026/08/fact-sheet-president-donald-j-trump-expands-capabilities-to-combat-transnational-cyber-enabled-crime/">National Security Presidential Memorandum (NSPM) 15</a>, issued by President Trump this past August. This memo expands on EO 14390 and our national cyber defense industrial base by allowing vetted US private-sector companies to conduct cyber surveillance and offensive disruption operations against foreign cyber-enabled transnational organizations (CE-TCOs).&nbsp;</p>
+
+
+
+<p class="wp-block-paragraph">This would allow private-sector companies to respond quickly to and confront cyber threats to their firms and customers. These companies have much broader insight into the cyber threat landscape and are on the front lines of cyber defense each day. By removing the latent response and approval process from our current structure, we shift the entire paradigm of the cyber domain.</p>
+
+
+
+<p class="wp-block-paragraph">Combined with growing private-sector capabilities in superintelligence, cryptography, and advanced computing power, the US government and private-sector partners can move beyond reactive cyber defense and take the initiative to identify and target potential threats ahead of time. Bringing our most critical sectors—large financial institutions, healthcare providers, oil and gas producers, critical infrastructure entities, and telecommunications and internet providers—into the cyber fight is key to improving our country’s cyber defenses.</p>
+
+
+
+<p class="wp-block-paragraph">It is time for the US government to rethink and restructure our cyber capabilities, and I stand ready to support President Trump and our private-sector partners as we work to secure our digital domain and protect the American people. My message to our cyber adversaries is clear: if you come for the best, you’re going offline like the rest.</p>
+
+
+
+<h3 id="h-about-the-author-pat-fallon" class="wp-block-heading"><strong>About the Author: Pat Fallon</strong></h3>
+
+
+
+<p class="wp-block-paragraph"><a href="https://fallon.house.gov/"><em>Pat Fallon</em></a> <em>serves Texas’ Fourth Congressional District in the US House of Representatives. He is the chairman of the Military Personnel Subcommittee of the House Armed Services Committee. He is a member of the House Permanent Select Committee on Intelligence and the House Committee on Oversight &amp; Accountability.</em></p>
+<p>The post <a href="https://nationalinterest.org/feature/new-age-cyber-threats-here-us-must-prepare">New Age Cyber Threats Are Here—the US Must Be Prepared</a> appeared first on <a href="https://nationalinterest.org">The National Interest</a>.</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>Blocking Data Centers at Home Could Put Americans’ Data at Risk Abroad</title>
+		<link>https://nationalinterest.org/blog/techland/blocking-data-centers-at-home-could-put-americans-data-at-risk-abroad</link>
+		
+		<dc:creator><![CDATA[Annie Chestnut Tutor]]></dc:creator>
+		<pubDate>Fri, 23 Oct 2026 20:31:23 +0000</pubDate>
+				<category><![CDATA[Bahrain]]></category>
+		<category><![CDATA[Canada]]></category>
+		<category><![CDATA[Data Centers]]></category>
+		<category><![CDATA[United Arab Emirates (UAE)]]></category>
+		<category><![CDATA[United States (USA)]]></category>
+		<category><![CDATA[US-Mexico-Canada Agreement (USMCA)]]></category>
+		<category><![CDATA[World Trade Organization (WTO)]]></category>
+		<guid isPermaLink="false">https://nationalinterest.org/blog/</guid>
+
+					<description><![CDATA[<p>If local opposition pushes AI data centers offshore, Americans’ data could fall under foreign censorship, tariffs, and instability, undermining US data sovereignty.</p>
+<p>The post <a href="https://nationalinterest.org/blog/techland/blocking-data-centers-at-home-could-put-americans-data-at-risk-abroad">Blocking Data Centers at Home Could Put Americans’ Data at Risk Abroad</a> appeared first on <a href="https://nationalinterest.org">The National Interest</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<div class="header header--post header--immersive header--min-height-none header--has-media">
+			<figure class="header__media" role="presentation">
+							<img decoding="async" src="https://nationalinterest.org/wp-content/uploads/2026/10/Blocking-Data-Centers-at-Home-Could-Put-Americans-Data-at-Risk-Abroad-scaled-e1792787478295.jpg" alt="A data center campus in Columbus, Ohio, circa 2025. If local opposition keeps data centers from being built at home, Americans’ data could end up governed by foreign laws, tariffs, and political instability. (Shutterstock/SNEHIT PHOTO)" width="2560" height="1440" loading="eager" style="object-position: 50% 50%">
+									<p class="img-caption">A data center campus in Columbus, Ohio, circa 2025. If local opposition keeps data centers from being built at home, Americans’ data could end up governed by foreign laws, tariffs, and political instability. (Shutterstock/SNEHIT PHOTO)</p>
+														<span class="header__overlay"></span>
+					</figure>
+	
+	<div class="header__layout">
+		
+<div class="header__content">
+	
+<h1 class="header__title">Blocking Data Centers at Home Could Put Americans’ Data at Risk Abroad</h1>
+
+
+<div class="header__metadata"><div class="header__metas"><div class="header__meta header__meta--date"> October 23, 2026</div>
+
+<div class="header__meta header__meta--taxonomy">By:  <a href="https://nationalinterest.org/profile/annie-chestnut-tutor">Annie Chestnut Tutor</a></div></div></div>
+
+
+<div class="share">
+	<div class="share__layout">
+		<h3 class="share__label has-kicker-variant">Share</h3>
+
+		<ul class="share__list">
+							<li class="share__item share__item--facebook">
+					<a class="share__link share-block__link--facebook" href="https://www.facebook.com/sharer.php?u=https%3A%2F%2Fnationalinterest.org%2Fblog%2Ftechland%2Fblocking-data-centers-at-home-could-put-americans-data-at-risk-abroad%3Futm_source%3Dfacebook" target="_blank" rel="noopener">
+						<span class="a11y">Share this link on Facebook</span>
+						<span aria-hidden="true" class="share__icon-wrap">
+							<svg class="svg svg--svg-assets-svg-logo-facebook" role="img" focusable="false" height="16" width="16"><use xlink:href="#svg-assets-svg-logo-facebook"/></svg>						</span>
+					</a>
+				</li>
+							<li class="share__item share__item--twitter">
+					<a class="share__link share-block__link--twitter" href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fnationalinterest.org%2Fblog%2Ftechland%2Fblocking-data-centers-at-home-could-put-americans-data-at-risk-abroad%3Futm_source%3Dtwitter%26utm_campaign%3Dweb-share" target="_blank" rel="noopener">
+						<span class="a11y">Share this page on X (Twitter)</span>
+						<span aria-hidden="true" class="share__icon-wrap">
+							<svg class="svg svg--svg-assets-svg-logo-x" role="img" focusable="false" height="16" width="16"><use xlink:href="#svg-assets-svg-logo-x"/></svg>						</span>
+					</a>
+				</li>
+							<li class="share__item share__item--linkedin">
+					<a class="share__link share-block__link--linkedin" href="https://www.linkedin.com/sharing/share-offsite?url=https%3A%2F%2Fnationalinterest.org%2Fblog%2Ftechland%2Fblocking-data-centers-at-home-could-put-americans-data-at-risk-abroad%3Futm_source%3Dlinkedin%26utm_campaign%3Dweb-share" target="_blank" rel="noopener">
+						<span class="a11y">Share this link on LinkedIn</span>
+						<span aria-hidden="true" class="share__icon-wrap">
+							<svg class="svg svg--svg-assets-svg-logo-linkedin" role="img" focusable="false" height="16" width="16"><use xlink:href="#svg-assets-svg-logo-linkedin"/></svg>						</span>
+					</a>
+				</li>
+							<li class="share__item share__item--reddit">
+					<a class="share__link share-block__link--reddit" href="https://reddit.com/submit?url=https%3A%2F%2Fnationalinterest.org%2Fblog%2Ftechland%2Fblocking-data-centers-at-home-could-put-americans-data-at-risk-abroad%3Futm_source%3Dreddit%26utm_campaign%3Dweb-share&amp;title=Blocking+Data+Centers+at+Home+Could+Put+Americans%E2%80%99+Data+at+Risk+Abroad" target="_blank" rel="noopener">
+						<span class="a11y">Share this page on Reddit</span>
+						<span aria-hidden="true" class="share__icon-wrap">
+							<svg class="svg svg--svg-assets-svg-logo-reddit" role="img" focusable="false" height="16" width="16"><use xlink:href="#svg-assets-svg-logo-reddit"/></svg>						</span>
+					</a>
+				</li>
+							<li class="share__item share__item--email">
+					<a class="share__link share-block__link--email" href="mailto:?body=https%3A%2F%2Fnationalinterest.org%2Fblog%2Ftechland%2Fblocking-data-centers-at-home-could-put-americans-data-at-risk-abroad%3Futm_source%3Demail%26utm_campaign%3Dweb-share&amp;subject=Blocking+Data+Centers+at+Home+Could+Put+Americans%E2%80%99+Data+at+Risk+Abroad" target="_blank" rel="noopener">
+						<span class="a11y">Email a link to this page</span>
+						<span aria-hidden="true" class="share__icon-wrap">
+							<svg class="svg svg--svg-assets-svg-icon-email" role="img" focusable="false" height="16" width="16"><use xlink:href="#svg-assets-svg-icon-email"/></svg>						</span>
+					</a>
+				</li>
+					</ul>
+	</div>
+</div>
+
+
+<div class="google-preferred-source">
+	<a class="google-preferred-source__button wp-block-button__link wp-element-button" href="https://www.google.com/preferences/source?q=https://nationalinterest.org/" target="_blank" rel="noopener noreferrer">
+		<span>Add TNI as a Preferred Source on Google</span>
+	</a>
+</div>
+
+</div>
+
+	</div>
+</div>
+
+
+
+<h2 id="h-if-local-opposition-pushes-ai-data-centers-offshore-americans-data-could-fall-under-foreign-censorship-tariffs-and-instability-undermining-us-data-sovereignty" class="wp-block-heading"><em>If local opposition pushes AI data centers offshore, Americans’ data could fall under foreign censorship, tariffs, and instability, undermining US data sovereignty.</em></h2>
+
+
+
+<p class="wp-block-paragraph">If&nbsp;<a href="https://nationalinterest.org/topics/ai-artificial-intelligence">artificial intelligence (AI)</a>&nbsp;companies are boxed out of every jurisdiction in the United States, they may need to locate their infrastructure offshore instead. That may resolve not-in-my-backyard concerns and prevent utility rates from increasing—at least from&nbsp;<a href="https://nationalinterest.org/tags/data-centers">data centers</a>—but it presents other disadvantages that AI’s opponents are likely overlooking.</p>
+
+
+
+<p class="wp-block-paragraph">The most obvious is the economic loss caused by pushing out a booming industry. Another is losing autonomy over Americans’ data.</p>
+
+
+
+<h3 id="h-why-offshore-data-centers-put-americans-data-at-risk" class="wp-block-heading"><strong>Why Offshore Data Centers Put Americans’ Data at Risk</strong></h3>
+
+
+
+<p class="wp-block-paragraph">Consider what happens to US data that relies on infrastructure in countries that do not share our value of freedom of speech. Our data could be subject to the same censorship laws of our host nation.</p>
+
+
+
+<p class="wp-block-paragraph">Governments in countries in the Middle East control internet infrastructure and restrict connectivity by blocking encrypted services like WhatsApp, FaceTime, and Facebook Messenger. These&nbsp;<a href="https://freedomhouse.org/country/saudi-arabia/freedom-net/2024" target="_blank" rel="noopener">governments also censor content</a>&nbsp;that is anti-Islamic, critical of those governments, obscene, and offensive.</p>
+
+
+
+<p class="wp-block-paragraph">The region also faces political instability that could affect data center performance and reliability. Amazon Web Services&nbsp;<a href="https://economy.ac/news/2026/09/202609295614" target="_blank" rel="noopener">recently announced</a>&nbsp;that customer data stored in data centers in&nbsp;<a href="https://nationalinterest.org/tags/bahrain">Bahrain</a>&nbsp;and the&nbsp;<a href="https://nationalinterest.org/tags/united-arab-emirates">United Arab Emirates</a>&nbsp;was unrecoverable after&nbsp;<a href="https://nationalinterest.org/blog/techland/when-the-cloud-becomes-a-target-the-future-of-war-is-your-internet">drone attacks</a>&nbsp;by&nbsp;<a href="https://nationalinterest.org/tags/iran">Iran</a>&nbsp;in March and April.</p>
+
+
+
+<p class="wp-block-paragraph">In another scenario, a host nation may place tariffs on data transmitted back to the United States or use our data as a bargaining chip. In March, the&nbsp;<a href="https://www.wti.org/events-news/blog/1288/wto-moratorium-for-tariffs-on-electronic-transmissions-from-nostalgia-to-pragmatism/" target="_blank" rel="noopener">World Trade Organization’s multilateral moratorium</a>&nbsp;on customs duties for electronic transmissions lapsed. The&nbsp;<a href="https://www.wiley.law/newsletter-Mar-2020-PIF_The_USMCAs_Impact_on_Digital_Trade_and_Data_Transfers" target="_blank" rel="noopener">United States-Mexico-Canada Agreement also prohibits tariffs</a>&nbsp;on data transfers, but&nbsp;the&nbsp;<a href="https://www.ntu.org/publications/detail/usmca-at-a-crossroads-what-the-2026-review-could-mean-for-north-american-trade" target="_blank" rel="noopener">future of this agreement</a>&nbsp;is uncertain&nbsp;due to its ongoing review process and the recently renewed trade war between&nbsp;<a href="https://www.npr.org/2026/08/22/nx-s1-5941584/us-canada-tariffs" target="_blank" rel="noopener">the United States and Canada</a>.</p>
+
+
+
+<p class="wp-block-paragraph">Or say AI developers go to any of the European, South American, or East Asian countries that favor carbon emissions taxes or high fuel-use taxes. Like tariffs, taxes would be costs passed down to US consumers.</p>
+
+
+
+<p class="wp-block-paragraph">These are some of the risks the United States faces if enough jurisdictions do not allow data center development domestically. Outside its boundaries, the United States loses control.&nbsp;</p>
+
+
+
+<h3 id="h-how-ai-already-shapes-americans-daily-lives" class="wp-block-heading"><strong>How AI Already Shapes Americans’ Daily Lives</strong></h3>
+
+
+
+<p class="wp-block-paragraph">Yet disillusionment with AI chatbots and disdain toward AI-generated content are growing.&nbsp;<a href="https://techcrunch.com/2026/08/19/ai-was-supposed-to-win-people-over-by-now-it-hasnt/" target="_blank" rel="noopener">These objections are reasonable</a>. People value human connection, critical thinking, and human multimedia rather than life-like imitations.</p>
+
+
+
+<p class="wp-block-paragraph">But rejection of AI is not as simple as abstaining from consumer-facing, general-purpose AI chatbots or objecting to AI-generated media. AI is embedded across systems in society, and regular people encounter uses of AI more than they realize.</p>
+
+
+
+<p class="wp-block-paragraph">For example, facial recognition technology or Face ID that allows users to unlock their phones, sign into password-protected accounts, and verify their age for age-restricted platforms with a quick scan of their face is enabled by AI software.</p>
+
+
+
+<p class="wp-block-paragraph">Prospective homeowners engage with home lending advisors who use AI-powered software to verify income and financial records and extract data from applications and other documents. AI can improve objectivity and efficiency of application reviews.&nbsp;Banks and&nbsp;<a href="https://executive.mit.edu/blog/inside-the-bank-how-artificial-intelligence-is-changing-banking-operations.html" target="_blank" rel="noopener">credit-card companies use AI</a>&nbsp;to analyze patterns and deviations in transactions for improved fraud detection.</p>
+
+
+
+<p class="wp-block-paragraph">Many physicians use AI to record and summarize clinical encounters. Modern medicine involves administrative tasks to maintain a medical history for patients, which helps inform patients and their providers. But these tasks are time-consuming and take away time providers can spend with patients. AI frees up some of providers’ time spent on administration.</p>
+
+
+
+<p class="wp-block-paragraph">Additionally, more physicians use the AI-powered medical search engine&nbsp;<a href="https://www.openevidence.com/about" target="_blank" rel="noopener">OpenEvidence</a>&nbsp;to assist with complex diagnoses and research the latest treatment options. Modern medicine is advancing constantly; it is challenging even for specialists to remain informed of every new clinical trial, technique, or other development in their field. Unlike general-purpose AI tools, the platform complies with the Health Insurance Portability and Accountability Act (HIPAA) and is trained not on the open internet but on peer-reviewed medical literature, which helps ensure its output is accurate and relevant. The tool is only made available to health care professionals with verified credentials.</p>
+
+
+
+<p class="wp-block-paragraph">Drivers relying on GPS navigation&nbsp;obtain&nbsp;<a href="https://blog.google/products-and-platforms/products/maps/google-maps-101-how-ai-helps-predict-traffic-and-determine-routes/" target="_blank" rel="noopener">real-time traffic information</a>, alerts, and faster routes&nbsp;due to AI. AI analyzes historical and live traffic conditions to estimate arrival times, predict slowdowns, and determine routes.</p>
+
+
+
+<p class="wp-block-paragraph">So whether or not you embrace AI, you likely unknowingly use it or you are on the receiving end of its use. And each of these examples involves processing and collecting sensitive data that should be safeguarded.</p>
+
+
+
+<h3 id="h-why-the-united-states-needs-data-centers-at-home" class="wp-block-heading"><strong>Why the United States Needs Data Centers at Home</strong></h3>
+
+
+
+<p class="wp-block-paragraph">US AI data sovereignty means Americans’ data captured by AI systems is processed and stored in the United States. It also means it is governed and protected by US laws and regulations and&nbsp;not subject to the&nbsp;<a href="https://www.ibm.com/think/topics/data-sovereignty" target="_blank" rel="noopener">whims of foreign governments</a>. Maintaining data sovereignty requires sufficient data infrastructure.</p>
+
+
+
+<p class="wp-block-paragraph">This is why it matters that we build AI data centers in the United States. Wishing for AI’s extinction will not yield the desired results, and neither will widespread moratoriums on data center developments.</p>
+
+
+
+<p class="wp-block-paragraph">But in this current environment where&nbsp;<a href="https://www.google.com/search?client=safari&amp;rls=en&amp;q=national+interest+data+centers+hate+everyone&amp;ie=UTF-8&amp;oe=UTF-8">data centers are politically unpopular</a>, the future of data sovereignty is at stake.</p>
+
+
+
+<p class="wp-block-paragraph">Ratepayers are right to be concerned with how potential data center developments may affect their utility bills and access to necessary resources. Homeowners and buyers are right to be concerned with how it impacts homeownership and quality of life.</p>
+
+
+
+<p class="wp-block-paragraph">AI companies and data center developers must be honest, transparent, and fair—generous, even—to escape their villain trajectory. State and local leaders have an opportunity to respond to their constituents’ concerns and make favorable deals—ones that raise revenue for their jurisdictions and ensure that ratepayers are not suffering. Moratoriums on development and excessive demands stall, if not kill, negotiations.</p>
+
+
+
+<p class="wp-block-paragraph">If data center developers have nowhere to go domestically, they will have to go abroad. It could have similar consequences on the US economy as offshoring in other industries, and it would be a shame after all the efforts to reshore manufacturing and other supply chains. Most certainly, it would relinquish data sovereignty.</p>
+
+
+
+<h3 id="h-about-the-author-annie-chestnut-tutor" class="wp-block-heading"><strong>About the Author: Annie Chestnut Tutor</strong></h3>
+
+
+
+<p class="wp-block-paragraph"><em>Annie Chestnut Tutor is a policy analyst in the Center for Technology and the Human Person at the Heritage Foundation.</em><em>&nbsp;Previously, Annie worked in the US Senate for eight years, most recently as the Commerce, Science, and Transportation Committee staffer for Senator Ron Johnson (R-WI), and as a legislative assistant for Senator Mike Lee (R-UT), where her policy portfolio included tech and telecom. She holds a bachelor’s degree in international relations from Wheaton College.&nbsp;</em></p>
+<p>The post <a href="https://nationalinterest.org/blog/techland/blocking-data-centers-at-home-could-put-americans-data-at-risk-abroad">Blocking Data Centers at Home Could Put Americans’ Data at Risk Abroad</a> appeared first on <a href="https://nationalinterest.org">The National Interest</a>.</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>When AI Holds the Red Button, Deterrence Could Put Humanity at Risk</title>
+		<link>https://nationalinterest.org/blog/techland/when-ai-holds-the-red-button-deterrence-could-put-humanity-at-risk</link>
+		
+		<dc:creator><![CDATA[Boaz Golany]]></dc:creator>
+		<pubDate>Thu, 22 Oct 2026 15:20:58 +0000</pubDate>
+				<category><![CDATA[Dario Amodei]]></category>
+		<category><![CDATA[Kim Jong-un]]></category>
+		<category><![CDATA[North Korea]]></category>
+		<category><![CDATA[Nuclear Deterrence]]></category>
+		<category><![CDATA[Nuclear Weapons]]></category>
+		<category><![CDATA[Sam Altman]]></category>
+		<category><![CDATA[United States (USA)]]></category>
+		<guid isPermaLink="false">https://nationalinterest.org/blog/</guid>
+
+					<description><![CDATA[<p>Handing nuclear retaliation to artificial intelligence might strengthen deterrence on paper, but it would remove the human judgment that has prevented catastrophe before.</p>
+<p>The post <a href="https://nationalinterest.org/blog/techland/when-ai-holds-the-red-button-deterrence-could-put-humanity-at-risk">When AI Holds the Red Button, Deterrence Could Put Humanity at Risk</a> appeared first on <a href="https://nationalinterest.org">The National Interest</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<div class="header header--post header--immersive header--min-height-none header--has-media">
+			<figure class="header__media" role="presentation">
+							<img decoding="async" src="https://nationalinterest.org/wp-content/uploads/2026/10/When-AI-Holds-the-Red-Button-Deterrence-Could-Put-Humanity-at-Risk-e1792682440902.jpg" alt="A launch control station with a keyed launch switch sits inside the Delta-01 Minuteman missile underground launch control center in South Dakota on May 5, 2018. Delegating nuclear retaliation to AI might make deterrence more credible, but it would strip away the human judgment needed to stop a launch triggered by error. (Shutterstock/W Timothy Schaiff)" width="8092" height="4558" loading="eager" style="object-position: 50% 50%">
+									<p class="img-caption">A launch control station with a keyed launch switch sits inside the Delta-01 Minuteman missile underground launch control center in South Dakota on May 5, 2018. Delegating nuclear retaliation to AI might make deterrence more credible, but it would strip away the human judgment needed to stop a launch triggered by error. (Shutterstock/W Timothy Schaiff)</p>
+														<span class="header__overlay"></span>
+					</figure>
+	
+	<div class="header__layout">
+		
+<div class="header__content">
+	
+<h1 class="header__title">When AI Holds the Red Button, Deterrence Could Put Humanity at Risk</h1>
+
+
+<div class="header__metadata"><div class="header__metas"><div class="header__meta header__meta--date"> October 22, 2026</div>
+
+<div class="header__meta header__meta--taxonomy">By:  <a href="https://nationalinterest.org/profile/boaz-golany">Boaz Golany</a></div></div></div>
+
+
+<div class="share">
+	<div class="share__layout">
+		<h3 class="share__label has-kicker-variant">Share</h3>
+
+		<ul class="share__list">
+							<li class="share__item share__item--facebook">
+					<a class="share__link share-block__link--facebook" href="https://www.facebook.com/sharer.php?u=https%3A%2F%2Fnationalinterest.org%2Fblog%2Ftechland%2Fwhen-ai-holds-the-red-button-deterrence-could-put-humanity-at-risk%3Futm_source%3Dfacebook" target="_blank" rel="noopener">
+						<span class="a11y">Share this link on Facebook</span>
+						<span aria-hidden="true" class="share__icon-wrap">
+							<svg class="svg svg--svg-assets-svg-logo-facebook" role="img" focusable="false" height="16" width="16"><use xlink:href="#svg-assets-svg-logo-facebook"/></svg>						</span>
+					</a>
+				</li>
+							<li class="share__item share__item--twitter">
+					<a class="share__link share-block__link--twitter" href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fnationalinterest.org%2Fblog%2Ftechland%2Fwhen-ai-holds-the-red-button-deterrence-could-put-humanity-at-risk%3Futm_source%3Dtwitter%26utm_campaign%3Dweb-share" target="_blank" rel="noopener">
+						<span class="a11y">Share this page on X (Twitter)</span>
+						<span aria-hidden="true" class="share__icon-wrap">
+							<svg class="svg svg--svg-assets-svg-logo-x" role="img" focusable="false" height="16" width="16"><use xlink:href="#svg-assets-svg-logo-x"/></svg>						</span>
+					</a>
+				</li>
+							<li class="share__item share__item--linkedin">
+					<a class="share__link share-block__link--linkedin" href="https://www.linkedin.com/sharing/share-offsite?url=https%3A%2F%2Fnationalinterest.org%2Fblog%2Ftechland%2Fwhen-ai-holds-the-red-button-deterrence-could-put-humanity-at-risk%3Futm_source%3Dlinkedin%26utm_campaign%3Dweb-share" target="_blank" rel="noopener">
+						<span class="a11y">Share this link on LinkedIn</span>
+						<span aria-hidden="true" class="share__icon-wrap">
+							<svg class="svg svg--svg-assets-svg-logo-linkedin" role="img" focusable="false" height="16" width="16"><use xlink:href="#svg-assets-svg-logo-linkedin"/></svg>						</span>
+					</a>
+				</li>
+							<li class="share__item share__item--reddit">
+					<a class="share__link share-block__link--reddit" href="https://reddit.com/submit?url=https%3A%2F%2Fnationalinterest.org%2Fblog%2Ftechland%2Fwhen-ai-holds-the-red-button-deterrence-could-put-humanity-at-risk%3Futm_source%3Dreddit%26utm_campaign%3Dweb-share&amp;title=When+AI+Holds+the+Red+Button%2C+Deterrence+Could+Put+Humanity+at+Risk" target="_blank" rel="noopener">
+						<span class="a11y">Share this page on Reddit</span>
+						<span aria-hidden="true" class="share__icon-wrap">
+							<svg class="svg svg--svg-assets-svg-logo-reddit" role="img" focusable="false" height="16" width="16"><use xlink:href="#svg-assets-svg-logo-reddit"/></svg>						</span>
+					</a>
+				</li>
+							<li class="share__item share__item--email">
+					<a class="share__link share-block__link--email" href="mailto:?body=https%3A%2F%2Fnationalinterest.org%2Fblog%2Ftechland%2Fwhen-ai-holds-the-red-button-deterrence-could-put-humanity-at-risk%3Futm_source%3Demail%26utm_campaign%3Dweb-share&amp;subject=When+AI+Holds+the+Red+Button%2C+Deterrence+Could+Put+Humanity+at+Risk" target="_blank" rel="noopener">
+						<span class="a11y">Email a link to this page</span>
+						<span aria-hidden="true" class="share__icon-wrap">
+							<svg class="svg svg--svg-assets-svg-icon-email" role="img" focusable="false" height="16" width="16"><use xlink:href="#svg-assets-svg-icon-email"/></svg>						</span>
+					</a>
+				</li>
+					</ul>
+	</div>
+</div>
+
+
+<div class="google-preferred-source">
+	<a class="google-preferred-source__button wp-block-button__link wp-element-button" href="https://www.google.com/preferences/source?q=https://nationalinterest.org/" target="_blank" rel="noopener noreferrer">
+		<span>Add TNI as a Preferred Source on Google</span>
+	</a>
+</div>
+
+</div>
+
+	</div>
+</div>
+
+
+
+<h2 id="h-handing-nuclear-retaliation-to-artificial-intelligence-might-strengthen-deterrence-on-paper-but-it-would-remove-the-human-judgment-that-has-prevented-catastrophe-before" class="wp-block-heading"><em>Handing nuclear retaliation to artificial intelligence might strengthen deterrence on paper, but it would remove the human judgment that has prevented catastrophe before.</em></h2>
+
+
+
+<p class="wp-block-paragraph">Nuclear deterrence rests on a grim principle: no country should believe it can launch a devastating first strike and escape retaliation. Nuclear powers have built command structures intended to ensure that authority to respond survives even a catastrophic attack on their leadership.</p>
+
+
+
+<p class="wp-block-paragraph">But what if an entire chain of command were destroyed? Could&nbsp;<a href="https://nationalinterest.org/topics/ai-artificial-intelligence">artificial intelligence (AI)</a>&nbsp;then serve as a “last resort” and automatically order retaliation? And would that make humanity safer—or bring us closer to catastrophe?</p>
+
+
+
+<p class="wp-block-paragraph">The question connects nuclear command and control to warnings from AI researchers and technology leaders. In 2023, Geoffrey Hinton,&nbsp;<a href="https://nationalinterest.org/tags/sam-altman">Sam Altman</a>, Demis Hassabis,&nbsp;<a href="https://nationalinterest.org/tags/dario-amodei">Dario Amodei</a>, and others endorsed a&nbsp;<a href="https://aistatement.com/work/statement-on-ai-extinction-risk">statement</a>calling for the risk of extinction from AI to be treated as a global priority, alongside nuclear war and pandemics. In September 2026, Altman and Amodei&nbsp;<a href="https://news.un.org/en/story/2026/09/1168414">briefed</a>&nbsp;the United Nations (UN) Security Council on advanced AI and its risks. These warnings do not establish that AI will destroy humanity. They do underscore the stakes of developing powerful systems without adequate safeguards.</p>
+
+
+
+<p class="wp-block-paragraph">The nuclear command problem shows how catastrophe could arise without a conscious or malevolent AI machine. The danger may come from humans choosing to delegate too much.</p>
+
+
+
+<h3 id="h-why-automatic-nuclear-retaliation-is-tempting" class="wp-block-heading"><strong>Why Automatic Nuclear Retaliation Is Tempting</strong></h3>
+
+
+
+<p class="wp-block-paragraph">On September 8, 2022,&nbsp;<a href="https://nationalinterest.org/tags/north-korea">North Korea</a>&nbsp;promulgated a&nbsp;<a href="https://www.reuters.com/world/asia-pacific/nkorea-passes-law-declaring-itself-nuclear-weapons-state-kcna-2022-09-08/">law</a>&nbsp;on its nuclear forces. Article 3 says that if hostile forces put the command-and-control system over the country’s nuclear forces in danger, a nuclear strike would be launched automatically and immediately according to a preplanned operation. The provision does not say that an AI system would make the decision. But it raises a stark question: might&nbsp;<a href="https://nationalinterest.org/tags/kim-jong-un">Kim Jong-un</a>&nbsp;someday delegate that role to one?</p>
+
+
+
+<p class="wp-block-paragraph">An AI system could, in principle, monitor warning data, assess whether an attack had occurred, and determine whether decision-makers remained able to respond. If no one could issue an order, the system might initiate retaliation automatically.</p>
+
+
+
+<p class="wp-block-paragraph">The strategic appeal is clear. If an adversary knew that killing a country’s leadership would not prevent a devastating response, it might be less inclined to launch a decapitation strike.</p>
+
+
+
+<p class="wp-block-paragraph">The idea has a Cold War precedent. The&nbsp;<a href="https://nationalinterest.org/tags/soviet-union">Soviet Union</a>&nbsp;developed the Perimeter system, widely known in the West as the “<a href="https://www.military.com/history/russias-dead-hand-soviet-built-nuclear-doomsday-device.html">Dead Hand</a>,” to preserve the possibility of retaliation under extreme circumstances. Modern AI might add analytical capabilities, but it would not resolve the underlying dilemma.</p>
+
+
+
+<p class="wp-block-paragraph">To make retaliation credible, a system must be able to act when human authorities are unavailable. Yet that same autonomy removes the chance for human intervention when the stakes are highest.</p>
+
+
+
+<h3 id="h-how-a-technical-error-could-become-a-nuclear-catastrophe" class="wp-block-heading"><strong>How a Technical Error Could Become a Nuclear Catastrophe</strong></h3>
+
+
+
+<p class="wp-block-paragraph">A machine cannot be assumed to distinguish reliably between a genuine nuclear attack and every alternative explanation for the information it receives.</p>
+
+
+
+<p class="wp-block-paragraph">Communications might fail during a cyberattack. Warning sensors might produce false indications. A conventional conflict could disrupt command networks. A surviving leader might be unable to communicate but still capable of preventing escalation.</p>
+
+
+
+<p class="wp-block-paragraph">The record shows why judgment under uncertainty matters. In 1983, Soviet officer&nbsp;<a href="https://www.britannica.com/biography/Stanislav-Petrov">Stanislav Petrov</a>&nbsp;judged that satellite warnings of incoming US missiles were false. His decision helped keep a warning incident from escalating into a global nuclear war. An automated system designed to overcome hesitation might not show the same caution.</p>
+
+
+
+<p class="wp-block-paragraph">AI need not malfunction in a dramatic or mysterious way to create danger. It could follow its rules exactly, while those rules prove inadequate for an unforeseen situation. A system designed to guarantee retaliation could therefore carry out its mission successfully—and trigger a nuclear exchange that no surviving human authority would have approved.</p>
+
+
+
+<h3 id="h-how-ai-could-endanger-humanity-without-turning-on-us" class="wp-block-heading"><strong>How AI Could Endanger Humanity Without Turning on Us</strong></h3>
+
+
+
+<p class="wp-block-paragraph">Public discussion focuses mainly on whether increasingly capable AI systems might become difficult to control. Another danger arises when people surrender control because automation seems faster, more reliable, or strategically advantageous.</p>
+
+
+
+<p class="wp-block-paragraph">A government might reason that automatic retaliation strengthens deterrence. Its adversary might respond by accelerating its own decisions and relying more heavily on automated warning systems. Each side could feel pressure to act faster, leaving less time to examine ambiguous signals or correct mistakes.</p>
+
+
+
+<p class="wp-block-paragraph">Humanity, in this scenario, would not necessarily be destroyed by an AI that turned against its creators. It could be endangered by governments using AI to protect themselves from one another.</p>
+
+
+
+<p class="wp-block-paragraph">The question is not only whether machines can be trusted. It is whether institutions can safely delegate decisions with irreversible, potentially existential consequences.</p>
+
+
+
+<h3 id="h-how-to-preserve-nuclear-deterrence-without-surrendering-control" class="wp-block-heading"><strong>How to Preserve Nuclear Deterrence Without Surrendering Control</strong></h3>
+
+
+
+<p class="wp-block-paragraph">The answer is not to exclude AI from nuclear command systems altogether. AI could help protect communications, identify technical anomalies, assess warning information, and make command structures more resilient.</p>
+
+
+
+<p class="wp-block-paragraph">But the authority to initiate nuclear use must remain under meaningful human control. Decisionmakers must be able to examine the evidence, question a system’s conclusions, and prevent an erroneous launch. A nominal human presence is not enough.</p>
+
+
+
+<p class="wp-block-paragraph">Such safeguards would not eliminate every risk or solve the problem of ensuring retaliation after a country’s leadership is destroyed. But that unresolved problem is preferable to assuming an algorithm can safely settle it.</p>
+
+
+
+<p class="wp-block-paragraph">The purpose of nuclear deterrence is to prevent nuclear war, not to guarantee that nuclear weapons will be launched in every conceivable circumstance.</p>
+
+
+
+<p class="wp-block-paragraph">There is a profound irony in developing increasingly powerful AI partly because we believe machines can overcome the limits of human judgment. When the decision could destroy civilization, those limits include something essential: the ability to hesitate, reconsider and recognize that the rules may be wrong.</p>
+
+
+
+<p class="wp-block-paragraph">Humanity should not respond to the fear of losing control over AI by giving AI control over the decision that could end humanity.</p>
+
+
+
+<h3 id="h-about-the-author-boaz-golany" class="wp-block-heading"><strong>About the Author: Boaz Golany</strong></h3>
+
+
+
+<p class="wp-block-paragraph"><em>Boaz Golany is a senior research fellow at the Neaman Institute and a professor emeritus at the Technion–Israel Institute of Technology, where he has served in various leadership positions. He also serves as a board member and strategic consultant to several companies and organizations.</em></p>
+<p>The post <a href="https://nationalinterest.org/blog/techland/when-ai-holds-the-red-button-deterrence-could-put-humanity-at-risk">When AI Holds the Red Button, Deterrence Could Put Humanity at Risk</a> appeared first on <a href="https://nationalinterest.org">The National Interest</a>.</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>While Companies Self-Regulate, Congress Is Quietly Writing AI Safety Rules</title>
+		<link>https://nationalinterest.org/blog/techland/while-companies-self-regulate-congress-is-quietly-writing-ai-safety-rules</link>
+		
+		<dc:creator><![CDATA[Nicholas Kruus , Michael O'Hanlon]]></dc:creator>
+		<pubDate>Mon, 19 Oct 2026 15:00:00 +0000</pubDate>
+				<category><![CDATA[AI Regulation]]></category>
+		<category><![CDATA[Amy Klobuchar]]></category>
+		<category><![CDATA[John Thune]]></category>
+		<category><![CDATA[OpenAI]]></category>
+		<category><![CDATA[Ted Cruz]]></category>
+		<category><![CDATA[United States (USA)]]></category>
+		<guid isPermaLink="false">https://nationalinterest.org/blog/</guid>
+
+					<description><![CDATA[<p>Bipartisan bills on testing, incident reporting, chip security, and catastrophic risk could do more to govern frontier AI.</p>
+<p>The post <a href="https://nationalinterest.org/blog/techland/while-companies-self-regulate-congress-is-quietly-writing-ai-safety-rules">While Companies Self-Regulate, Congress Is Quietly Writing AI Safety Rules</a> appeared first on <a href="https://nationalinterest.org">The National Interest</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<div class="header header--post header--immersive header--min-height-none header--has-media">
+			<figure class="header__media" role="presentation">
+							<img decoding="async" src="https://nationalinterest.org/wp-content/uploads/2026/10/While-Companies-Self-Regulate-Congress-Is-Quietly-Writing-AI-Safety-Rules-scaled-e1792379446211.jpg" alt="An illustration overlays an artificial intelligence hologram on the US Capitol in Washington, DC. While the White House has relied on industry self-regulation, a quieter bipartisan push in Congress could produce the most consequential rules yet for frontier AI. (Shutterstock/VideoFlow)" width="2560" height="1442" loading="eager" style="object-position: 50% 50%">
+									<p class="img-caption">An illustration overlays an artificial intelligence hologram on the US Capitol in Washington, DC. While the White House has relied on industry self-regulation, a quieter bipartisan push in Congress could produce the most consequential rules yet for frontier AI. (Shutterstock/VideoFlow)</p>
+														<span class="header__overlay"></span>
+					</figure>
+	
+	<div class="header__layout">
+		
+<div class="header__content">
+	
+<h1 class="header__title">While Companies Self-Regulate, Congress Is Quietly Writing AI Safety Rules</h1>
+
+
+<div class="header__metadata"><div class="header__metas"><div class="header__meta header__meta--date"> October 19, 2026</div>
+
+<div class="header__meta header__meta--taxonomy">By:  <a href="https://nationalinterest.org/profile/nicholas-kruus">Nicholas Kruus </a>,  and <a href="https://nationalinterest.org/profile/michael-ohanlon">Michael O&#8217;Hanlon</a></div></div></div>
+
+
+<div class="share">
+	<div class="share__layout">
+		<h3 class="share__label has-kicker-variant">Share</h3>
+
+		<ul class="share__list">
+							<li class="share__item share__item--facebook">
+					<a class="share__link share-block__link--facebook" href="https://www.facebook.com/sharer.php?u=https%3A%2F%2Fnationalinterest.org%2Fblog%2Ftechland%2Fwhile-companies-self-regulate-congress-is-quietly-writing-ai-safety-rules%3Futm_source%3Dfacebook" target="_blank" rel="noopener">
+						<span class="a11y">Share this link on Facebook</span>
+						<span aria-hidden="true" class="share__icon-wrap">
+							<svg class="svg svg--svg-assets-svg-logo-facebook" role="img" focusable="false" height="16" width="16"><use xlink:href="#svg-assets-svg-logo-facebook"/></svg>						</span>
+					</a>
+				</li>
+							<li class="share__item share__item--twitter">
+					<a class="share__link share-block__link--twitter" href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fnationalinterest.org%2Fblog%2Ftechland%2Fwhile-companies-self-regulate-congress-is-quietly-writing-ai-safety-rules%3Futm_source%3Dtwitter%26utm_campaign%3Dweb-share" target="_blank" rel="noopener">
+						<span class="a11y">Share this page on X (Twitter)</span>
+						<span aria-hidden="true" class="share__icon-wrap">
+							<svg class="svg svg--svg-assets-svg-logo-x" role="img" focusable="false" height="16" width="16"><use xlink:href="#svg-assets-svg-logo-x"/></svg>						</span>
+					</a>
+				</li>
+							<li class="share__item share__item--linkedin">
+					<a class="share__link share-block__link--linkedin" href="https://www.linkedin.com/sharing/share-offsite?url=https%3A%2F%2Fnationalinterest.org%2Fblog%2Ftechland%2Fwhile-companies-self-regulate-congress-is-quietly-writing-ai-safety-rules%3Futm_source%3Dlinkedin%26utm_campaign%3Dweb-share" target="_blank" rel="noopener">
+						<span class="a11y">Share this link on LinkedIn</span>
+						<span aria-hidden="true" class="share__icon-wrap">
+							<svg class="svg svg--svg-assets-svg-logo-linkedin" role="img" focusable="false" height="16" width="16"><use xlink:href="#svg-assets-svg-logo-linkedin"/></svg>						</span>
+					</a>
+				</li>
+							<li class="share__item share__item--reddit">
+					<a class="share__link share-block__link--reddit" href="https://reddit.com/submit?url=https%3A%2F%2Fnationalinterest.org%2Fblog%2Ftechland%2Fwhile-companies-self-regulate-congress-is-quietly-writing-ai-safety-rules%3Futm_source%3Dreddit%26utm_campaign%3Dweb-share&amp;title=While%C2%A0Companies+Self-Regulate%2C+Congress+Is+Quietly+Writing+AI+Safety+Rules" target="_blank" rel="noopener">
+						<span class="a11y">Share this page on Reddit</span>
+						<span aria-hidden="true" class="share__icon-wrap">
+							<svg class="svg svg--svg-assets-svg-logo-reddit" role="img" focusable="false" height="16" width="16"><use xlink:href="#svg-assets-svg-logo-reddit"/></svg>						</span>
+					</a>
+				</li>
+							<li class="share__item share__item--email">
+					<a class="share__link share-block__link--email" href="mailto:?body=https%3A%2F%2Fnationalinterest.org%2Fblog%2Ftechland%2Fwhile-companies-self-regulate-congress-is-quietly-writing-ai-safety-rules%3Futm_source%3Demail%26utm_campaign%3Dweb-share&amp;subject=While%C2%A0Companies+Self-Regulate%2C+Congress+Is+Quietly+Writing+AI+Safety+Rules" target="_blank" rel="noopener">
+						<span class="a11y">Email a link to this page</span>
+						<span aria-hidden="true" class="share__icon-wrap">
+							<svg class="svg svg--svg-assets-svg-icon-email" role="img" focusable="false" height="16" width="16"><use xlink:href="#svg-assets-svg-icon-email"/></svg>						</span>
+					</a>
+				</li>
+					</ul>
+	</div>
+</div>
+
+
+<div class="google-preferred-source">
+	<a class="google-preferred-source__button wp-block-button__link wp-element-button" href="https://www.google.com/preferences/source?q=https://nationalinterest.org/" target="_blank" rel="noopener noreferrer">
+		<span>Add TNI as a Preferred Source on Google</span>
+	</a>
+</div>
+
+</div>
+
+	</div>
+</div>
+
+
+
+<h2 id="h-bipartisan-bills-on-testing-incident-reporting-chip-security-and-catastrophic-risk-could-do-more-to-govern-frontier-ai" class="wp-block-heading"><em>Bipartisan bills on testing, incident reporting, chip security, and catastrophic risk could do more to govern frontier AI.</em></h2>
+
+
+
+<p class="wp-block-paragraph">There has been a remarkable amount of high-stakes drama in Washington over artificial intelligence (<a href="https://nationalinterest.org/topics/ai-artificial-intelligence">AI</a>) and especially the question of whether, how, and when to regulate (or even slow) its advancement. Most of the action has been at the White House. The parameters of discussion have so far centered on&nbsp;<a href="https://nationalinterest.org/blog/techland/we-cant-let-the-mythos-moment-consolidate-ai-power">self-regulation</a>&nbsp;of new cutting-edge or “frontier” models.</p>
+
+
+
+<p class="wp-block-paragraph">But there has been another, quieter, yet potentially more consequential debate in Congress. It has not yet produced new legislation—but if and when it does, the implications could be sweeping.</p>
+
+
+
+<p class="wp-block-paragraph">At the political level, most of the half-dozen or so major bills have bipartisan sponsorship. That is a good thing. AI should not be polarized.&nbsp;</p>
+
+
+
+<h3 id="h-how-congress-is-defining-ai-safety" class="wp-block-heading"><strong>How Congress Is Defining AI Safety</strong></h3>
+
+
+
+<p class="wp-block-paragraph">At the conceptual level, most of the bills are about AI safety, in several dimensions.&nbsp;</p>
+
+
+
+<p class="wp-block-paragraph">The first dimension or category is about personal safety—as regards fraud, child pornography, deepfakes, and mental health, among other things. Thankfully, although the federal response here has been slow, the states (and courts, under preexisting product liability and tort laws) have been active and effective.&nbsp;</p>
+
+
+
+<p class="wp-block-paragraph">Another category is the testing and certification of new AI models so they do not wreak havoc on the internet or on <a href="https://nationalinterest.org/topics/critical-infrastructure">critical infrastructure</a>. The central question here is how much to trust AI companies to test their new products thoroughly—and report honestly about what they find.</p>
+
+
+
+<p class="wp-block-paragraph">Then there are two more big questions: how to control the use of AI for future military applications and whether to allow the unfettered progress of frontier models at the current stupefying pace—up to the point when they might rival or surpass the human brain in overall capability, a point usually called artificial general intelligence (AGI).</p>
+
+
+
+<h3 id="h-which-ai-safety-bills-could-become-law" class="wp-block-heading"><strong>Which AI Safety Bills Could Become Law</strong></h3>
+
+
+
+<p class="wp-block-paragraph">The most recent&nbsp;<a href="https://www.congress.gov/bill/119th-congress/house-bill/8800">National Defense Authorization Act</a>&nbsp;(NDAA) addresses just that. It establishes a steering committee to study AGI and takes action through the Department of Defense (<a href="https://nationalinterest.org/tags/dod-department-of-defense">DOD</a>). Its requirements include a policy on data poisoning and jailbreaks, the ousting of China’s&nbsp;<a href="https://nationalinterest.org/tags/deepseek">DeepSeek</a>&nbsp;and other distrusted AI, and a team to evaluate models’ performance, risk, and ethics before internal deployment. Policies that bind developers, as opposed to deployers, ought to take note of that last mandate—blocking risky internal deployment is vital.</p>
+
+
+
+<p class="wp-block-paragraph">Another issue is that of enforcing potential international AI agreements, which are necessary for global stability in navigating this transformative technology. The proposed&nbsp;<a href="https://www.congress.gov/bill/119th-congress/house-bill/3447/text">Chip Security Act</a>&nbsp;promises to put location verification on AI chips, a crucial step for enforcement.&nbsp;</p>
+
+
+
+<p class="wp-block-paragraph">The Frontier Risk Oversight, National Transparency, Independent Evaluation, and Reporting&nbsp;<a href="https://www.congress.gov/bill/119th-congress/house-bill/9925/text">(FRONTIER) Act</a>, introduced in July, brings the focus back stateside. Its safety measures, spanning risk management, auditing, and incident reporting, are stronger than those of state policies, though these would come after its instant, permanent state preemption takes place.&nbsp;</p>
+
+
+
+<p class="wp-block-paragraph">Meanwhile, Senators John Thune (R-SD), Amy Klobuchar (D-MN), and Ted Cruz (R-TX)&nbsp;<a href="https://www.techtimes.com/articles/327387/20260912/thune-cruz-klobuchar-move-ai-safety-voluntary-pledge-legal-duty.htm">are drafting a bill</a>&nbsp;that would reportedly impose a legal duty on frontier developers to mitigate known major biological, nuclear, and cyber risks. It also requires developers to alert the&nbsp;<a href="https://nationalinterest.org/tags/department-of-commerce">Department of Commerce</a>&nbsp;to large leaps in AI capabilities and would have national laboratories help test models. These levers—transparency and testing—are among the most promising we have to bolster national security.&nbsp;</p>
+
+
+
+<p class="wp-block-paragraph">The narrow and largely uncontroversial&nbsp;<a href="https://www.congress.gov/bill/119th-congress/house-bill/9477">AI Incident Reporting Act</a>&nbsp;introduced in June requires developers to report frontier-model security incidents to the Commerce Department, which must tell Congress of the most serious ones within 48 hours. It’s an incremental yet critical development.&nbsp;</p>
+
+
+
+<p class="wp-block-paragraph">The proposed&nbsp;<a href="https://www.congress.gov/bill/119th-congress/house-bill/9917">AI Kill Switch Act</a>&nbsp;was greatly motivated by—and introduced just days after—the&nbsp;<a href="https://openai.com/index/hugging-face-incident-and-the-road-ahead/">OpenAI-Hugging Face hack</a>. The bill has set a positive precedent that Congress can act fast—at the “speed of relevance” for a fast-moving industry.&nbsp;</p>
+
+
+
+<p class="wp-block-paragraph">The executive branch’s work has relied more on the bully pulpit than binding policy, and states like California have bound companies to their own frameworks, often leaving AI companies to self-regulate. Congress is out to change that, and it’s making progress.</p>
+
+
+
+<h3 id="h-about-the-authors-nicholas-kruus-and-michael-o-hanlon" class="wp-block-heading"><strong>About the Authors: Nicholas Kruus and Michael O’Hanlon</strong></h3>
+
+
+
+<p class="wp-block-paragraph"><em>Nicholas Kruus is an Ellison Scholar at the University of Oxford, where he works on US and international AI policy. He has helped research this for an upcoming book at the Brookings Institution, advised World Bank economic forecasts for 47 countries with the IMF, and researched a nuclear policy report whose recommendation was implemented by the US and UK governments.</em></p>
+
+
+
+<p class="wp-block-paragraph"><a href="https://www.brookings.edu/people/michael-e-ohanlon/"><em>Michael O’Hanlon</em></a><em>&nbsp;is the inaugural holder of the Philip H. Knight chair in Defense and Strategy and director of research in the Foreign Policy program at the Brookings Institution, where he specializes in US defense strategy and budgets, the use of military force, and American national security policy. He is a senior fellow and directs the Strobe Talbott Center on Security, Strategy, and Technology. His latest book, timed to coincide with the nation’s 250th birthday, is&nbsp;</em><a href="https://www.brookings.edu/books/to-dare-mighty-things/">To Dare Mighty Things: US Defense Strategy Since the Revolution</a><em>&nbsp;(Yale Press, 2026).</em></p>
+<p>The post <a href="https://nationalinterest.org/blog/techland/while-companies-self-regulate-congress-is-quietly-writing-ai-safety-rules">While Companies Self-Regulate, Congress Is Quietly Writing AI Safety Rules</a> appeared first on <a href="https://nationalinterest.org">The National Interest</a>.</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>AI Models Could ‘Self-Replicate’ Without Data Center Access, Anthropic Warns</title>
+		<link>https://nationalinterest.org/blog/techland/ai-models-could-self-replicate-without-data-center-access-anthropic-warns</link>
+		
+		<dc:creator><![CDATA[Peter Suciu]]></dc:creator>
+		<pubDate>Fri, 16 Oct 2026 17:05:24 +0000</pubDate>
+				<category><![CDATA[Anthropic]]></category>
+		<category><![CDATA[Computer Viruses]]></category>
+		<category><![CDATA[Malware]]></category>
+		<category><![CDATA[United States (USA)]]></category>
+		<guid isPermaLink="false">https://nationalinterest.org/blog/</guid>
+
+					<description><![CDATA[<p>A self-replicating AI would resemble a computer worm, which spreads from system to system without human input or interaction—potentially infecting millions of computers and causing enormous damage.</p>
+<p>The post <a href="https://nationalinterest.org/blog/techland/ai-models-could-self-replicate-without-data-center-access-anthropic-warns">AI Models Could ‘Self-Replicate’ Without Data Center Access, Anthropic Warns</a> appeared first on <a href="https://nationalinterest.org">The National Interest</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<div class="header header--post header--immersive header--min-height-none header--has-media">
+			<figure class="header__media" role="presentation">
+							<img decoding="async" src="https://nationalinterest.org/wp-content/uploads/2026/10/AI-Models-Could-‘Self-Replicate-Without-Data-Center-Access-Anthropic-Warns-scaled-e1792170311875.jpg" alt="A conceptual drawing of computer malware, using the “virus” symbol commonly associated with such software. AI has the potential to turbocharge such malware, particularly in the devices that make up the “Internet of things” which often have poor cybersecurity. (Shutterstock/Skorzewiak)" width="2560" height="1442" loading="eager" style="object-position: 50% 50%">
+									<p class="img-caption">A conceptual drawing of computer malware, using the “virus” symbol commonly associated with such software. AI has the potential to turbocharge such malware, particularly in the devices that make up the “Internet of things” which often have poor cybersecurity. (Shutterstock/Skorzewiak)</p>
+														<span class="header__overlay"></span>
+					</figure>
+	
+	<div class="header__layout">
+		
+<div class="header__content">
+	
+<h1 class="header__title">AI Models Could ‘Self-Replicate’ Without Data Center Access, Anthropic Warns</h1>
+
+
+<div class="header__metadata"><div class="header__metas"><div class="header__meta header__meta--date"> October 16, 2026</div>
+
+<div class="header__meta header__meta--taxonomy">By:  <a href="https://nationalinterest.org/profile/peter-suciu">Peter Suciu</a></div></div></div>
+
+
+<div class="share">
+	<div class="share__layout">
+		<h3 class="share__label has-kicker-variant">Share</h3>
+
+		<ul class="share__list">
+							<li class="share__item share__item--facebook">
+					<a class="share__link share-block__link--facebook" href="https://www.facebook.com/sharer.php?u=https%3A%2F%2Fnationalinterest.org%2Fblog%2Ftechland%2Fai-models-could-self-replicate-without-data-center-access-anthropic-warns%3Futm_source%3Dfacebook" target="_blank" rel="noopener">
+						<span class="a11y">Share this link on Facebook</span>
+						<span aria-hidden="true" class="share__icon-wrap">
+							<svg class="svg svg--svg-assets-svg-logo-facebook" role="img" focusable="false" height="16" width="16"><use xlink:href="#svg-assets-svg-logo-facebook"/></svg>						</span>
+					</a>
+				</li>
+							<li class="share__item share__item--twitter">
+					<a class="share__link share-block__link--twitter" href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fnationalinterest.org%2Fblog%2Ftechland%2Fai-models-could-self-replicate-without-data-center-access-anthropic-warns%3Futm_source%3Dtwitter%26utm_campaign%3Dweb-share" target="_blank" rel="noopener">
+						<span class="a11y">Share this page on X (Twitter)</span>
+						<span aria-hidden="true" class="share__icon-wrap">
+							<svg class="svg svg--svg-assets-svg-logo-x" role="img" focusable="false" height="16" width="16"><use xlink:href="#svg-assets-svg-logo-x"/></svg>						</span>
+					</a>
+				</li>
+							<li class="share__item share__item--linkedin">
+					<a class="share__link share-block__link--linkedin" href="https://www.linkedin.com/sharing/share-offsite?url=https%3A%2F%2Fnationalinterest.org%2Fblog%2Ftechland%2Fai-models-could-self-replicate-without-data-center-access-anthropic-warns%3Futm_source%3Dlinkedin%26utm_campaign%3Dweb-share" target="_blank" rel="noopener">
+						<span class="a11y">Share this link on LinkedIn</span>
+						<span aria-hidden="true" class="share__icon-wrap">
+							<svg class="svg svg--svg-assets-svg-logo-linkedin" role="img" focusable="false" height="16" width="16"><use xlink:href="#svg-assets-svg-logo-linkedin"/></svg>						</span>
+					</a>
+				</li>
+							<li class="share__item share__item--reddit">
+					<a class="share__link share-block__link--reddit" href="https://reddit.com/submit?url=https%3A%2F%2Fnationalinterest.org%2Fblog%2Ftechland%2Fai-models-could-self-replicate-without-data-center-access-anthropic-warns%3Futm_source%3Dreddit%26utm_campaign%3Dweb-share&amp;title=AI+Models+Could+%E2%80%98Self-Replicate%E2%80%99+Without+Data+Center+Access%2C+Anthropic+Warns" target="_blank" rel="noopener">
+						<span class="a11y">Share this page on Reddit</span>
+						<span aria-hidden="true" class="share__icon-wrap">
+							<svg class="svg svg--svg-assets-svg-logo-reddit" role="img" focusable="false" height="16" width="16"><use xlink:href="#svg-assets-svg-logo-reddit"/></svg>						</span>
+					</a>
+				</li>
+							<li class="share__item share__item--email">
+					<a class="share__link share-block__link--email" href="mailto:?body=https%3A%2F%2Fnationalinterest.org%2Fblog%2Ftechland%2Fai-models-could-self-replicate-without-data-center-access-anthropic-warns%3Futm_source%3Demail%26utm_campaign%3Dweb-share&amp;subject=AI+Models+Could+%E2%80%98Self-Replicate%E2%80%99+Without+Data+Center+Access%2C+Anthropic+Warns" target="_blank" rel="noopener">
+						<span class="a11y">Email a link to this page</span>
+						<span aria-hidden="true" class="share__icon-wrap">
+							<svg class="svg svg--svg-assets-svg-icon-email" role="img" focusable="false" height="16" width="16"><use xlink:href="#svg-assets-svg-icon-email"/></svg>						</span>
+					</a>
+				</li>
+					</ul>
+	</div>
+</div>
+
+
+<div class="google-preferred-source">
+	<a class="google-preferred-source__button wp-block-button__link wp-element-button" href="https://www.google.com/preferences/source?q=https://nationalinterest.org/" target="_blank" rel="noopener noreferrer">
+		<span>Add TNI as a Preferred Source on Google</span>
+	</a>
+</div>
+
+</div>
+
+	</div>
+</div>
+
+
+
+<h2 id="h-a-self-replicating-ai-would-resemble-a-computer-worm-which-spreads-from-system-to-system-without-human-input-or-interaction-potentially-infecting-millions-of-computers-and-causing-enormous-damage" class="wp-block-heading"><em>A self-replicating AI would resemble a computer worm, which spreads from system to system without human input or interaction—potentially infecting millions of computers and causing enormous damage.</em></h2>
+
+
+
+<p class="wp-block-paragraph">There are several species of animals that can reproduce without a mate via a process called “parthenogenesis.” Meaning “virgin birth” in Greek, parthenogenesis takes place when an unfertilized egg nevertheless transforms into an embryo, and is sometimes seen in plants and some invertebrate animals.</p>
+
+
+
+<p class="wp-block-paragraph">Artificial intelligence (<a href="https://nationalinterest.org/topics/ai-artificial-intelligence">AI</a>), of course, is a different beast. It isn’t truly “alive” in a biological sense, and it doesn’t mate. So the danger of it producing offspring, or replicating itself, shouldn’t happen under normal circumstances.</p>
+
+
+
+<p class="wp-block-paragraph">Unfortunately, that may be changing. AI giant <a href="http://nationalinterest.org/tags/anthropic">Anthropic</a> warned this week that its models could soon self-replicate without access to a <a href="https://nationalinterest.org/tags/data-centers">data center</a>. That means that an AI model can copy and spread itself from one computer, server, or other Internet-connected device to another without human help—making it not all that dissimilar from a computer worm or virus.</p>
+
+
+
+<p class="wp-block-paragraph">“Our experiments suggest that small AI models may be months away from being capable enough to self-replicate on commercial internet-of-things (IoT) devices, like smart ovens and off-brand Android TV boxes,” Anthropic researchers William Zhou and Daniel Freeman wrote in a <a href="https://www.anthropic.com/research/self-replicating-ai">company blog post</a>.</p>
+
+
+
+<p class="wp-block-paragraph">The two warned that such a replication of AI could be “challenging to shut down, since there’s no centralized point to shut off.”</p>
+
+
+
+<p class="wp-block-paragraph">Even more ominous, it would take on forms of AI malware and could “figure out unfamiliar devices on its own.”</p>
+
+
+
+<h3 id="h-ai-could-create-the-next-computer-worm" class="wp-block-heading"><strong>AI Could Create the Next Computer Worm</strong></h3>
+
+
+
+<p class="wp-block-paragraph">AI has the potential to act like a “worm,” a program that is designed to self-replicate across computer systems. Advanced cyber worms can search for access to a network, scan for vulnerabilities, and jump to other devices. The rapid self-replication consumes heavy system memory, processing power, disk space, and network bandwidth. That, in turn, leads to severe slowdowns, system crashes, and even total network outages.</p>
+
+
+
+<p class="wp-block-paragraph">Unlike a virus, which requires some nominal human participation—downloading a malware file, or clicking on a suspicious email link—worms operate without any human interaction whatsoever, relying on network vulnerabilities to spread. This makes a well-crafted worm far more dangerous than a virus. Worms can compromise thousands of machines in a matter of minutes.</p>
+
+
+
+<p class="wp-block-paragraph">An AI-powered computer worm is already more dangerous than a traditional cyber worm because it can adapt its tactics, learn from each infection, and tailor its attacks to the specific vulnerabilities of different devices rather than relying on a rigid, pre-programmed code set.</p>
+
+
+
+<p class="wp-block-paragraph">“Such an ‘AI worm’ could carry its model weights with it as it reproduces (or re-download them from a public hub), and then run inference directly on compromised hardware. Effectively, the weights would become part of the malware payload,” the Anthropic researchers warned.</p>
+
+
+
+<p class="wp-block-paragraph">The researchers further suggested that AI-powered worms could exploit poorly secured IoT devices, adapt to unfamiliar hardware, and spread without human intervention; unlike traditional malware that relies on centralized infrastructure, these distributed AI systems could be difficult to shut down.</p>
+
+
+
+<p class="wp-block-paragraph">“Self-replicating software is not new,” <a href="https://www.linkedin.com/in/john-carberry-1418a622a">John Carberry</a>, solution sleuth at cybersecurity provider <a href="https://xcapeinc.com/">Xcape, Inc.</a>, told <em>The National Interest</em>.</p>
+
+
+
+<p class="wp-block-paragraph">The first true example of such self-replicating software was the “Christmas Tree” worm in 1987, written by a German student programmer. Although the worm’s function was innocuous—it was designed to spread across computer systems and wish users “a very happy Christmas and my best wishes for the new year,” alongside a <a href="https://www.sophos.com/en-us/blog/the-christma-exec-network-worm-35-years-and-counting">crude ASCII drawing of a Christmas tree</a>—it caused widespread disruption to the relatively rudimentary computer systems of the time.</p>
+
+
+
+<p class="wp-block-paragraph">The Christmas tree worm was overshadowed by <a href="https://www.fbi.gov/news/stories/morris-worm-30-years-since-first-major-attack-on-internet-110218">the Morris Worm</a> the following year, sometimes called “the Great Worm” for the devastating impact it had on the early Internet. The worm infected thousands of computers and may have caused as much as $10 million in damage, though that figure is somewhat speculative. Robert Tappan Morris, the Cornell graduate student who designed the worm, became the first person in the United States to be convicted of a felony under the <a href="https://www.justice.gov/jm/jm-9-48000-computer-fraud">Computer Fraud and Abuse Act</a>. (Morris was sentenced to three years’ probation; he later co-founded startup accelerator Y Combinator, and is currently a computer science professor at MIT.)</p>
+
+
+
+<p class="wp-block-paragraph">“Anthropic’s research highlights a modern twist through distributed weight sharding across consumer electronics, meaning traditional centralized egress kill switches will fail to neutralize localized infections,” Carberry wrote. “Rather than panicking over speculative model autonomy, security leaders must prioritize fundamental architecture: isolate peripheral electronics into segmented subnets, disable unauthenticated management interfaces, and eliminate default credentials before automated propagation becomes viable.”</p>
+
+
+
+<h3 id="h-if-ai-can-t-replicate-itself-yet-it-will-be-able-to-soon" class="wp-block-heading"><strong>If AI Can’t Replicate Itself Yet, It Will Be Able to Soon</strong></h3>
+
+
+
+<p class="wp-block-paragraph">Although the current AI models cannot yet reliably complete the full replication process on tested IoT hardware, such capability could emerge within months.</p>
+
+
+
+<p class="wp-block-paragraph">Such dangers cannot be taken lightly, and this is just the latest in a series of alarm bells about the potential harm that AI can unleash.</p>
+
+
+
+<p class="wp-block-paragraph">“We are now firmly in the land of science fiction. Unfortunately, it’s not fiction,” said <a href="https://www.blackhillsinfosec.com/team/john-strand/">John Strand</a>, owner of <a href="https://www.blackhillsinfosec.com/">Black Hills Information Security</a>.</p>
+
+
+
+<p class="wp-block-paragraph">Researchers have been studying self-replicating worms and botnets for decades. That included the Carna botnet that was created by an anonymous hacker between June and October 2012.</p>
+
+
+
+<p class="wp-block-paragraph">The concern for the <a href="https://nationalinterest.org/topics/cybersecurity">cybersecurity</a> sector has always been its ability to spread. What makes this different is that AI has the capability to identify vulnerabilities, exploit them automatically, and then replicate them across devices, instead of relying on an existing vulnerability.</p>
+
+
+
+<p class="wp-block-paragraph">“The biggest takeaway is that smaller models have many of the same capabilities as cutting-edge frontier models. They just take longer,” Strand told <em>The National Interest</em>. “When you see reports about high-end research models like <a href="https://nationalinterest.org/tags/claude-mythos">Mythos</a>, understand that smaller models running on systems with around 128 gigabytes of memory are still in the ballpark. They may not be as good or as fast, but defenders have to be ready for them.”</p>
+
+
+
+<h3 id="h-the-internet-of-things-is-particularly-vulnerable" class="wp-block-heading"><strong>The “Internet of Things” Is Particularly Vulnerable</strong></h3>
+
+
+
+<p class="wp-block-paragraph">The emergence of self-replicating threats in AI models on computers is a previously unseen and likely even unexpected threat. This danger won’t be limited to just computers and smartphones, but could impact a plethora of connected devices.</p>
+
+
+
+<p class="wp-block-paragraph"><a href="https://ridgesecurity.ai/blog/author/dfredde/">Darin Fredde</a>, senior director of Technical Marketing Engineering at <a href="http://ridgesecurity.ai/">Ridge Security Technology Inc.</a>, told <em>The National Interest</em> that Anthropic’s research highlights “an interesting shift in the threat landscape.” While years have been spent worrying about securing IoT devices, Fredde said, researchers were now exploring a future where a smart TV might do more than recommend what to watch.</p>
+
+
+
+<p class="wp-block-paragraph">“It could become part of a distributed, autonomous attack infrastructure. That’s quite an upgrade, and not one I’d recommend,” Fredde wrote. “From my experience in offensive security, the question isn&#8217;t simply whether an AI model can replicate, but what it can accomplish after gaining a foothold. Can it discover other devices, cross trust boundaries, exploit weaknesses, establish persistence, and continue operating without centralized infrastructure?”</p>
+
+
+
+<p class="wp-block-paragraph">The ability for AI to self-replicate on such devices may also introduce new operational risks.</p>
+
+
+
+<p class="wp-block-paragraph">“Autonomous AI self-replication across enterprise-adjacent Internet of Things (IoT) hardware introduces immediate operational and liability risks by turning unmanaged perimeter devices into decentralized attack platforms without datacenter reliance,” Carberry said. “We spent nearly four decades hardening networks against self-replicating worms only to invite them back in through unpatched conference room displays.”</p>
+
+
+
+<h3 id="h-are-we-too-afraid-of-technology-we-don-t-understand" class="wp-block-heading"><strong>Are We Too Afraid of Technology We Don’t Understand?</strong></h3>
+
+
+
+<p class="wp-block-paragraph">The question now is whether this is more fearmongering about technology we don’t understand or if the threat is more serious than we potentially realize.</p>
+
+
+
+<p class="wp-block-paragraph">“There’s a lot of fearmongering about AI escaping containment, hacking its way into resources, and then completely losing control over it. The research Anthropic performed on self-replicating AI directly addresses the feasibility of this in IoT devices, as these tend to have low to zero security controls in place, making them an easy target,” wrote <a href="https://www.linkedin.com/in/steven-swift-5238956a">Steven Swift</a>, managing director at Suzu Labs.</p>
+
+
+
+<p class="wp-block-paragraph">“Let’s be clear on what self-replication means. Because it sounds bad,” Swift told <em>The National Interest</em>. “This concept isn&#8217;t new. We call self-replicating malware worms. Self-replicating AI is then more accurately thought of as a regular worm-style malware, that happens to include the ability to download model weights, and then loop prompts and outputs indefinitely, using tool calls to execute functions as needed.”</p>
+
+
+
+<p class="wp-block-paragraph">Since the Christmas Tree and the Morris Worm, cybersecurity experts have become good at finding and eliminating worms from networks. Modern computer infrastructure is generally built to withstand them—one reason that computer viruses, which are quicker to adapt but cause less damage, are a far greater threat in popular imagination. In many ways, self-replicating AI-powered malware is just another variant on an old technique.</p>
+
+
+
+<p class="wp-block-paragraph">“However, we’re also still releasing IoT products with effectively no security in them, that are designed to be compromised,” Swift said. “Huge portions of IoT devices are already being used as parts of botnets, without their owner’s knowledge or consent.”</p>
+
+
+
+<h3 id="h-about-the-author-peter-suciu" class="wp-block-heading"><strong>About the Author: Peter Suciu</strong></h3>
+
+
+
+<p class="wp-block-paragraph"><a href="https://nationalinterest.org/profile/peter-suciu"><em>Peter Suciu</em></a> <em>has</em> <a href="https://news.clearancejobs.com/author/peter-suciu/"><em></em><em>contributed</em></a> <em>to dozens of newspapers, magazines, and websites over a 30-year career in journalism. He regularly writes about military hardware, firearms history, cybersecurity, politics, and international affairs. Peter is also a</em> <a href="https://www.forbes.com/sites/petersuciu/?sh=2a2f53789bd3"><em>contributing writer</em></a> <em>for</em> Forbes <em>and</em> <a href="https://www.clearancejobs.com/"><em></em>Clearance Jobs</a><em>. He is based in Michigan. You can follow him on Twitter:</em> <a href="https://twitter.com/petersuciu"><em></em><em>@PeterSuciu</em></a><em>. You can email the author at</em> <a href="mailto:Editor@nationalinterest.org"><em>Editor@nationalinterest.org</em></a><em>.</em></p>
+<p>The post <a href="https://nationalinterest.org/blog/techland/ai-models-could-self-replicate-without-data-center-access-anthropic-warns">AI Models Could ‘Self-Replicate’ Without Data Center Access, Anthropic Warns</a> appeared first on <a href="https://nationalinterest.org">The National Interest</a>.</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>Why the United States Should Be the World’s Partner on AI Workforce Training</title>
+		<link>https://nationalinterest.org/blog/techland/why-the-united-states-should-be-the-worlds-partner-on-ai-workforce-training</link>
+		
+		<dc:creator><![CDATA[Aleksander Dardeli]]></dc:creator>
+		<pubDate>Mon, 12 Oct 2026 11:00:00 +0000</pubDate>
+				<category><![CDATA[China]]></category>
+		<category><![CDATA[Qatar]]></category>
+		<category><![CDATA[Saudi Arabia]]></category>
+		<category><![CDATA[United States (USA)]]></category>
+		<category><![CDATA[Workforce]]></category>
+		<guid isPermaLink="false">https://nationalinterest.org/blog/</guid>
+
+					<description><![CDATA[<p>As China exports its AI education plan, Washington should organize its universities, companies, and partnerships to help other countries prepare their workers for the AI economy.</p>
+<p>The post <a href="https://nationalinterest.org/blog/techland/why-the-united-states-should-be-the-worlds-partner-on-ai-workforce-training">Why the United States Should Be the World’s Partner on AI Workforce Training</a> appeared first on <a href="https://nationalinterest.org">The National Interest</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<div class="header header--post header--immersive header--min-height-none header--has-media">
+			<figure class="header__media" role="presentation">
+							<img decoding="async" src="https://nationalinterest.org/wp-content/uploads/2026/10/Why-the-United-States-Should-Be-the-Worlds-Partner-on-AI-Workforce-Training-scaled-e1791575874256.jpg" alt="An illustration of a person holding a glowing AI hologram in one hand and a human head wearing a graduation cap in the other. As countries race to prepare their workers for the AI economy, the United States should organize its universities, companies, and partnerships into a coherent offering before China fills the gap, Aleksander Dardeli writes. (Shutterstock/Jutharat Jaroenwong)" width="2560" height="1440" loading="eager" style="object-position: 50% 50%">
+									<p class="img-caption">An illustration of a person holding a glowing AI hologram in one hand and a human head wearing a graduation cap in the other. As countries race to prepare their workers for the AI economy, the United States should organize its universities, companies, and partnerships into a coherent offering before China fills the gap, Aleksander Dardeli writes. (Shutterstock/Jutharat Jaroenwong)</p>
+														<span class="header__overlay"></span>
+					</figure>
+	
+	<div class="header__layout">
+		
+<div class="header__content">
+	
+<h1 class="header__title">Why the United States Should Be the World’s Partner on AI Workforce Training</h1>
+
+
+<div class="header__metadata"><div class="header__metas"><div class="header__meta header__meta--date"> October 12, 2026</div>
+
+<div class="header__meta header__meta--taxonomy">By:  <a href="https://nationalinterest.org/profile/aleksander-dardeli">Aleksander Dardeli</a></div></div></div>
+
+
+<div class="share">
+	<div class="share__layout">
+		<h3 class="share__label has-kicker-variant">Share</h3>
+
+		<ul class="share__list">
+							<li class="share__item share__item--facebook">
+					<a class="share__link share-block__link--facebook" href="https://www.facebook.com/sharer.php?u=https%3A%2F%2Fnationalinterest.org%2Fblog%2Ftechland%2Fwhy-the-united-states-should-be-the-worlds-partner-on-ai-workforce-training%3Futm_source%3Dfacebook" target="_blank" rel="noopener">
+						<span class="a11y">Share this link on Facebook</span>
+						<span aria-hidden="true" class="share__icon-wrap">
+							<svg class="svg svg--svg-assets-svg-logo-facebook" role="img" focusable="false" height="16" width="16"><use xlink:href="#svg-assets-svg-logo-facebook"/></svg>						</span>
+					</a>
+				</li>
+							<li class="share__item share__item--twitter">
+					<a class="share__link share-block__link--twitter" href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fnationalinterest.org%2Fblog%2Ftechland%2Fwhy-the-united-states-should-be-the-worlds-partner-on-ai-workforce-training%3Futm_source%3Dtwitter%26utm_campaign%3Dweb-share" target="_blank" rel="noopener">
+						<span class="a11y">Share this page on X (Twitter)</span>
+						<span aria-hidden="true" class="share__icon-wrap">
+							<svg class="svg svg--svg-assets-svg-logo-x" role="img" focusable="false" height="16" width="16"><use xlink:href="#svg-assets-svg-logo-x"/></svg>						</span>
+					</a>
+				</li>
+							<li class="share__item share__item--linkedin">
+					<a class="share__link share-block__link--linkedin" href="https://www.linkedin.com/sharing/share-offsite?url=https%3A%2F%2Fnationalinterest.org%2Fblog%2Ftechland%2Fwhy-the-united-states-should-be-the-worlds-partner-on-ai-workforce-training%3Futm_source%3Dlinkedin%26utm_campaign%3Dweb-share" target="_blank" rel="noopener">
+						<span class="a11y">Share this link on LinkedIn</span>
+						<span aria-hidden="true" class="share__icon-wrap">
+							<svg class="svg svg--svg-assets-svg-logo-linkedin" role="img" focusable="false" height="16" width="16"><use xlink:href="#svg-assets-svg-logo-linkedin"/></svg>						</span>
+					</a>
+				</li>
+							<li class="share__item share__item--reddit">
+					<a class="share__link share-block__link--reddit" href="https://reddit.com/submit?url=https%3A%2F%2Fnationalinterest.org%2Fblog%2Ftechland%2Fwhy-the-united-states-should-be-the-worlds-partner-on-ai-workforce-training%3Futm_source%3Dreddit%26utm_campaign%3Dweb-share&amp;title=Why+the+United+States+Should+Be+the+World%E2%80%99s+Partner+on+AI+Workforce+Training" target="_blank" rel="noopener">
+						<span class="a11y">Share this page on Reddit</span>
+						<span aria-hidden="true" class="share__icon-wrap">
+							<svg class="svg svg--svg-assets-svg-logo-reddit" role="img" focusable="false" height="16" width="16"><use xlink:href="#svg-assets-svg-logo-reddit"/></svg>						</span>
+					</a>
+				</li>
+							<li class="share__item share__item--email">
+					<a class="share__link share-block__link--email" href="mailto:?body=https%3A%2F%2Fnationalinterest.org%2Fblog%2Ftechland%2Fwhy-the-united-states-should-be-the-worlds-partner-on-ai-workforce-training%3Futm_source%3Demail%26utm_campaign%3Dweb-share&amp;subject=Why+the+United+States+Should+Be+the+World%E2%80%99s+Partner+on+AI+Workforce+Training" target="_blank" rel="noopener">
+						<span class="a11y">Email a link to this page</span>
+						<span aria-hidden="true" class="share__icon-wrap">
+							<svg class="svg svg--svg-assets-svg-icon-email" role="img" focusable="false" height="16" width="16"><use xlink:href="#svg-assets-svg-icon-email"/></svg>						</span>
+					</a>
+				</li>
+					</ul>
+	</div>
+</div>
+
+
+<div class="google-preferred-source">
+	<a class="google-preferred-source__button wp-block-button__link wp-element-button" href="https://www.google.com/preferences/source?q=https://nationalinterest.org/" target="_blank" rel="noopener noreferrer">
+		<span>Add TNI as a Preferred Source on Google</span>
+	</a>
+</div>
+
+</div>
+
+	</div>
+</div>
+
+
+
+<h2 id="h-as-china-exports-its-ai-education-plan-washington-should-organize-its-universities-companies-and-partnerships-to-help-other-countries-prepare-their-workers-for-the-ai-economy" class="wp-block-heading"><em>As China exports its AI education plan, Washington should organize its universities, companies, and partnerships to help other countries prepare their workers for the AI economy.</em></h2>
+
+
+
+<p class="wp-block-paragraph">The global race to build&nbsp;<a href="https://nationalinterest.org/topics/ai-artificial-intelligence">artificial intelligence (AI)</a>&nbsp;infrastructure is accelerating. Goldman Sachs&nbsp;<a href="https://www.goldmansachs.com/insights/articles/tracking-trillions-the-assumptions-shaping-scale-of-the-ai-build-out" target="_blank" rel="noopener">projects that capital spending</a>&nbsp;on AI will reach $765 billion this year and $1.6 trillion by 2031. Yet, in many countries, the hardware is being built faster than most institutions and communities are prepared to use it. The resulting gap between the pace of the buildout and the readiness of the people who will use it could be where the ultimate battle of the AI competition will be decided.</p>
+
+
+
+<p class="wp-block-paragraph">Deloitte’s most recent&nbsp;<a href="https://www.deloitte.com/content/dam/assets-shared/docs/about/2025/state-of-ai-2026-global.pdf" target="_blank" rel="noopener">State of AI in the Enterprise survey</a>&nbsp;finds that insufficient worker skills are the single greatest barrier to putting AI to productive use.&nbsp;<a href="https://www.bcg.com/publications/2026/ai-transformation-is-a-workforce-transformation" target="_blank" rel="noopener">Boston Consulting Group</a>&nbsp;similarly estimates that 70 percent of the value companies extract from AI depends on people, process, and institutional practice—not on the technology itself.</p>
+
+
+
+<p class="wp-block-paragraph">At the International Research &amp; Exchanges Board (IREX), we recently looked at this readiness gap with&nbsp;<a href="https://www.irex.org/news/irex-and-development-gateway-release-higher-education-ai-readiness-research" target="_blank" rel="noopener">Development Gateway</a>&nbsp;and the UN Sustainable Development Solutions Network, surveying higher education institutions worldwide. The results were sobering. Only one-third reported having an AI strategy. Fewer than one in five had governance structures in place. Only 37 percent reported ongoing AI training for their own staff. The institutions governments are counting on to prepare the next generation of workers are simply not yet prepared themselves.&nbsp;</p>
+
+
+
+<h3 id="h-why-the-global-competition-over-ai-workforce-training-matters" class="wp-block-heading"><strong>Why the Global Competition Over AI Workforce Training Matters</strong></h3>
+
+
+
+<p class="wp-block-paragraph">The Gulf is emerging as a model to follow. Saudi Arabia has made AI a central pillar of its Vision 2030 agenda, and&nbsp;<a href="https://nationalinterest.org/tags/qatar">Qatar</a>&nbsp;is pursuing a parallel path through its National AI Strategy and sustained investment in its Education City university cluster. Both governments are selecting workforce partners now. The decisions made in Riyadh and Doha over the next two years will shape Gulf labor markets and the standards and curricula that spread from the Gulf to the rest of the region. Governments elsewhere face the same challenge: finding trusted partners who can help them prepare their people for the AI economy.&nbsp;</p>
+
+
+
+<p class="wp-block-paragraph">In April, China’s Ministry of Education released its&nbsp;<a href="https://cset.georgetown.edu/publication/china-ai-plus-education-action-plan/" target="_blank" rel="noopener">“AI + Education” Action Plan</a>, a five-year blueprint to integrate AI across the national education system from primary school through university, establishing a national AI literacy framework by 2030. Its ambitions extend beyond China. The plan commits China to “actively participate in global education governance” through UNESCO and other multilateral forums, and to “continuously enhance the international influence of China’s digital education.”</p>
+
+
+
+<h3 id="h-how-washington-can-lead-on-ai-workforce-training" class="wp-block-heading"><strong>How Washington Can Lead on AI Workforce Training</strong></h3>
+
+
+
+<p class="wp-block-paragraph">The United States has no equivalent national plan, but it does have the best universities in the world, the leading AI companies, and 70 years of experience delivering international education and workforce programs that partner countries trust. The question is whether Washington will organize those assets into a coherent offering or leave them to&nbsp;<a href="https://nationalinterest.org/blog/techland/why-america-losing-tech-war-china-206664">compete piecemeal</a>&nbsp;against China’s vertically integrated, government-backed approach.</p>
+
+
+
+<p class="wp-block-paragraph">None of this requires a new agency or a sweeping strategy document. It requires using what we already have, with coordination and purpose, in the countries where the next decade of AI competition will be decided.</p>
+
+
+
+<p class="wp-block-paragraph">Three elements are essential.</p>
+
+
+
+<p class="wp-block-paragraph"><strong>The first</strong>&nbsp;is competency standards for AI-enabled work, developed with American industry and recognized across sectors, so a credential earned in Jakarta, Nairobi, or Lima means something to local employers and to American companies hiring from those markets.&nbsp;</p>
+
+
+
+<p class="wp-block-paragraph"><strong>The second</strong>&nbsp;is sustained in-country partnerships rather than short training programs, so the result is institutional change rather than a cohort of graduates with nowhere to go.&nbsp;</p>
+
+
+
+<p class="wp-block-paragraph"><strong>The third</strong>&nbsp;is implementers able to work across education systems, workforce agencies, employers, and governments at once.</p>
+
+
+
+<p class="wp-block-paragraph">The United States has the capital, the companies, and the allied supply chains to lead the hardware race. It also has the universities, the implementing organizations, and 70 years of trusted partnerships with governments worldwide to lead the race to prepare institutions and people. That form of leadership is less visible and easier to lose. American leadership has always required engagement, confidence, and willingness to compete. Leading in the AI age will once again require all three.</p>
+
+
+
+<h3 id="h-about-the-author-aleksander-dardeli" class="wp-block-heading"><strong>About the Author: Aleksander Dardeli</strong></h3>
+
+
+
+<p class="wp-block-paragraph"><em>Aleksander Dardeli is president and CEO of the International Research &amp; Exchanges Board (IREX), an organization that cultivates leaders, prepares young people for jobs, and improves learning through technology. Aleks holds a JD from the Catholic University of America, a master&#8217;s degree from Columbia University, and a BA from Tirana University in Albania.&nbsp;</em></p>
+<p>The post <a href="https://nationalinterest.org/blog/techland/why-the-united-states-should-be-the-worlds-partner-on-ai-workforce-training">Why the United States Should Be the World’s Partner on AI Workforce Training</a> appeared first on <a href="https://nationalinterest.org">The National Interest</a>.</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>Why the EU’s AI Omnibus Still Leaves US Firms Facing Steep Costs</title>
+		<link>https://nationalinterest.org/blog/techland/why-the-eus-ai-omnibus-still-leaves-us-firms-facing-steep-costs</link>
+		
+		<dc:creator><![CDATA[Lily Haak]]></dc:creator>
+		<pubDate>Fri, 09 Oct 2026 11:00:00 +0000</pubDate>
+				<category><![CDATA[AI Regulation]]></category>
+		<category><![CDATA[China]]></category>
+		<category><![CDATA[European Commission]]></category>
+		<category><![CDATA[European Union (EU)]]></category>
+		<category><![CDATA[United States (USA)]]></category>
+		<guid isPermaLink="false">https://nationalinterest.org/blog/</guid>
+
+					<description><![CDATA[<p>The EU’s Digital Omnibus on AI delays key AI Act deadlines, but American companies still face high compliance costs, shifting rules, and penalties that fall hardest on startups.</p>
+<p>The post <a href="https://nationalinterest.org/blog/techland/why-the-eus-ai-omnibus-still-leaves-us-firms-facing-steep-costs">Why the EU’s AI Omnibus Still Leaves US Firms Facing Steep Costs</a> appeared first on <a href="https://nationalinterest.org">The National Interest</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<div class="header header--post header--immersive header--min-height-none header--has-media">
+			<figure class="header__media" role="presentation">
+							<img decoding="async" src="https://nationalinterest.org/wp-content/uploads/2026/10/Why-the-EUs-AI-Omnibus-Still-Leaves-US-Firms-Facing-Steep-Costs-scaled-e1791388111974.jpg" alt="An illustration of a gavel and a computer chip bearing the letters AI and the EU stars over a map of Europe. Lily Haak says the EU&#039;s Digital Omnibus on AI leaves American firms facing steep compliance costs under the AI Act. (Shutterstock/Ivan Marc)" width="2560" height="1442" loading="eager" style="object-position: 50% 50%">
+									<p class="img-caption">An illustration of a gavel and a computer chip bearing the letters AI and the EU stars over a map of Europe. Lily Haak says the EU&#8217;s Digital Omnibus on AI leaves American firms facing steep compliance costs under the AI Act. (Shutterstock/Ivan Marc)</p>
+														<span class="header__overlay"></span>
+					</figure>
+	
+	<div class="header__layout">
+		
+<div class="header__content">
+	
+<h1 class="header__title">Why the EU’s AI Omnibus Still Leaves US Firms Facing Steep Costs</h1>
+
+
+<div class="header__metadata"><div class="header__metas"><div class="header__meta header__meta--date"> October 9, 2026</div>
+
+<div class="header__meta header__meta--taxonomy">By:  <a href="https://nationalinterest.org/profile/lily-haak">Lily Haak</a></div></div></div>
+
+
+<div class="share">
+	<div class="share__layout">
+		<h3 class="share__label has-kicker-variant">Share</h3>
+
+		<ul class="share__list">
+							<li class="share__item share__item--facebook">
+					<a class="share__link share-block__link--facebook" href="https://www.facebook.com/sharer.php?u=https%3A%2F%2Fnationalinterest.org%2Fblog%2Ftechland%2Fwhy-the-eus-ai-omnibus-still-leaves-us-firms-facing-steep-costs%3Futm_source%3Dfacebook" target="_blank" rel="noopener">
+						<span class="a11y">Share this link on Facebook</span>
+						<span aria-hidden="true" class="share__icon-wrap">
+							<svg class="svg svg--svg-assets-svg-logo-facebook" role="img" focusable="false" height="16" width="16"><use xlink:href="#svg-assets-svg-logo-facebook"/></svg>						</span>
+					</a>
+				</li>
+							<li class="share__item share__item--twitter">
+					<a class="share__link share-block__link--twitter" href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fnationalinterest.org%2Fblog%2Ftechland%2Fwhy-the-eus-ai-omnibus-still-leaves-us-firms-facing-steep-costs%3Futm_source%3Dtwitter%26utm_campaign%3Dweb-share" target="_blank" rel="noopener">
+						<span class="a11y">Share this page on X (Twitter)</span>
+						<span aria-hidden="true" class="share__icon-wrap">
+							<svg class="svg svg--svg-assets-svg-logo-x" role="img" focusable="false" height="16" width="16"><use xlink:href="#svg-assets-svg-logo-x"/></svg>						</span>
+					</a>
+				</li>
+							<li class="share__item share__item--linkedin">
+					<a class="share__link share-block__link--linkedin" href="https://www.linkedin.com/sharing/share-offsite?url=https%3A%2F%2Fnationalinterest.org%2Fblog%2Ftechland%2Fwhy-the-eus-ai-omnibus-still-leaves-us-firms-facing-steep-costs%3Futm_source%3Dlinkedin%26utm_campaign%3Dweb-share" target="_blank" rel="noopener">
+						<span class="a11y">Share this link on LinkedIn</span>
+						<span aria-hidden="true" class="share__icon-wrap">
+							<svg class="svg svg--svg-assets-svg-logo-linkedin" role="img" focusable="false" height="16" width="16"><use xlink:href="#svg-assets-svg-logo-linkedin"/></svg>						</span>
+					</a>
+				</li>
+							<li class="share__item share__item--reddit">
+					<a class="share__link share-block__link--reddit" href="https://reddit.com/submit?url=https%3A%2F%2Fnationalinterest.org%2Fblog%2Ftechland%2Fwhy-the-eus-ai-omnibus-still-leaves-us-firms-facing-steep-costs%3Futm_source%3Dreddit%26utm_campaign%3Dweb-share&amp;title=Why+the+EU%E2%80%99s+AI+Omnibus+Still+Leaves+US+Firms+Facing+Steep+Costs" target="_blank" rel="noopener">
+						<span class="a11y">Share this page on Reddit</span>
+						<span aria-hidden="true" class="share__icon-wrap">
+							<svg class="svg svg--svg-assets-svg-logo-reddit" role="img" focusable="false" height="16" width="16"><use xlink:href="#svg-assets-svg-logo-reddit"/></svg>						</span>
+					</a>
+				</li>
+							<li class="share__item share__item--email">
+					<a class="share__link share-block__link--email" href="mailto:?body=https%3A%2F%2Fnationalinterest.org%2Fblog%2Ftechland%2Fwhy-the-eus-ai-omnibus-still-leaves-us-firms-facing-steep-costs%3Futm_source%3Demail%26utm_campaign%3Dweb-share&amp;subject=Why+the+EU%E2%80%99s+AI+Omnibus+Still+Leaves+US+Firms+Facing+Steep+Costs" target="_blank" rel="noopener">
+						<span class="a11y">Email a link to this page</span>
+						<span aria-hidden="true" class="share__icon-wrap">
+							<svg class="svg svg--svg-assets-svg-icon-email" role="img" focusable="false" height="16" width="16"><use xlink:href="#svg-assets-svg-icon-email"/></svg>						</span>
+					</a>
+				</li>
+					</ul>
+	</div>
+</div>
+
+
+<div class="google-preferred-source">
+	<a class="google-preferred-source__button wp-block-button__link wp-element-button" href="https://www.google.com/preferences/source?q=https://nationalinterest.org/" target="_blank" rel="noopener noreferrer">
+		<span>Add TNI as a Preferred Source on Google</span>
+	</a>
+</div>
+
+</div>
+
+	</div>
+</div>
+
+
+
+<h2 id="h-the-eu-s-digital-omnibus-on-ai-delays-key-ai-act-deadlines-but-american-companies-still-face-high-compliance-costs-shifting-rules-and-penalties-that-fall-hardest-on-startups" class="wp-block-heading"><em>The EU’s Digital Omnibus on AI delays key AI Act deadlines, but American companies still face high compliance costs, shifting rules, and penalties that fall hardest on startups.</em></h2>
+
+
+
+<p class="wp-block-paragraph">This summer the&nbsp;<a href="https://nationalinterest.org/tags/eu-european-union">European Union’s</a><a href="https://digital-strategy.ec.europa.eu/en/news/ai-omnibus-enters-force" target="_blank" rel="noopener">&nbsp;</a><a href="https://digital-strategy.ec.europa.eu/en/news/ai-omnibus-enters-force" target="_blank" rel="noopener">Digital Omnibus on artificial intelligence</a>&nbsp;(<a href="https://nationalinterest.org/topics/ai-artificial-intelligence">AI</a>) became law,&nbsp;revising the implementation timeline for the&nbsp;<a href="https://nationalinterest.org/blog/buzz/eus-recently-proposed-artificial-intelligence-act-goes-too-far-191733">EU AI Act</a>.&nbsp;The measure postpones requirements for stand-alone high-risk systems until December 2027 and for high-risk systems embedded in regulated products until August 2028. For US firms serving European customers, however, the delay does little to resolve the underlying problem: substantial compliance costs remain, while key legal and regulatory obligations continue to evolve.</p>
+
+
+
+<p class="wp-block-paragraph">While the Omnibus eases compliance deadlines, it leaves the underlying regulatory architecture intact, forcing firms to make investment and market-entry decisions before the European Commission’s final specifications are issued.&nbsp;<a></a></p>
+
+
+
+<h3 id="h-what-the-eu-ai-act-will-cost-american-companies" class="wp-block-heading"><strong>What the EU AI Act Will Cost American Companies</strong></h3>
+
+
+
+<p class="wp-block-paragraph">A startup in California might ask why a regulatory body halfway around the world should now be of concern. The answer is that the Digital Omnibus on AI covers virtually any US software company with EU enterprise or consumer customers using AI-powered products.<a href="https://artificialintelligenceact.eu/article/99/" target="_blank" rel="noopener"></a></p>
+
+
+
+<p class="wp-block-paragraph">Compliance costs are high, as are&nbsp;<a href="https://artificialintelligenceact.eu/article/99/">potential fines</a>.&nbsp;</p>
+
+
+
+<p class="wp-block-paragraph">In April 2026, the European Commission&nbsp;<a href="https://www.europarl.europa.eu/doceo/document/E-10-2026-001210-ASW_EN.pdf" target="_blank" rel="noopener">estimated</a>&nbsp;€23,850–€40,400 in incremental compliance costs for certain high-risk systems already subject to existing product-safety and quality-management requirements.&nbsp;</p>
+
+
+
+<p class="wp-block-paragraph">At today’s conversion rate of one euro equaling approximately 1.12 US dollars, this translates to $26,797 to $45,391. Those costs include determining an AI system’s regulatory classification and applicable obligations, or onerously adapting existing quality-management processes.&nbsp;</p>
+
+
+
+<p class="wp-block-paragraph">Technical documentation requirements also impose continuing costs. These files require firms to extensively and continuously document information about a high-risk AI system’s design, training data, risk controls, and post-market monitoring.&nbsp;<a href="https://sqmagazine.co.uk/eu-ai-act-compliance-cost-statistics/" target="_blank" rel="noopener">SQ Magazine</a>, an independent technology publication, estimates annual compliance costs at approximately €29,300 ($33,000) per AI system<a></a>.&nbsp;</p>
+
+
+
+<p class="wp-block-paragraph">Consulting firms such as PwC have begun&nbsp;<a href="https://www.pwc.de/en/risk-regulatory/responsible-ai/european-ai-regulation-and-its-implementation.html" target="_blank" rel="noopener">building</a>&nbsp;specialized AI Act regulatory practices, reflecting a rapidly expanding market for compliance services.&nbsp;<a href="https://medium.com/@arturs.prieditis/the-eu-ai-acts-hidden-market-how-high-risk-ai-compliance-became-a-17-billion-opportunity-734cea9b41e2" target="_blank" rel="noopener">Auditry</a>, an AI risk and compliance platform that automates regulatory evidence, estimates that the&nbsp;broader market for EU AI Act compliance services could reach as much as €38 billion (roughly $42.5 billion), by 2030.</p>
+
+
+
+<h3 id="h-why-eu-ai-rules-hit-small-tech-firms-hardest" class="wp-block-heading"><strong>Why EU AI Rules Hit Small Tech Firms Hardest</strong></h3>
+
+
+
+<p class="wp-block-paragraph">The AI Act also makes it much more difficult to serve critical sectors whose AI applications are designated as “high-risk systems.” A company developing a system potentially classified as high-risk must determine its regulatory status, construct technical documentation, and establish risk-management and monitoring procedures before knowing whether the product will succeed commercially.&nbsp;</p>
+
+
+
+<p class="wp-block-paragraph">These obligations function largely as fixed costs and arrive before the firm has the customers and revenue necessary to spread them across a large sales base. Large firms will be able to absorb additional costs, but<a href="https://www.praxikon.com/en/posts/what-does-eu-ai-act-compliance-cost-realistic-numbers" target="_blank" rel="noopener">&nbsp;</a>newer, smaller firms will&nbsp;<a href="https://www.praxikon.com/en/posts/what-does-eu-ai-act-compliance-cost-realistic-numbers" target="_blank" rel="noopener">struggle</a>&nbsp;to justify high upfront capital expenditure on what seems like a peripheral regulatory concern, again stifling aggressive, innovative tech companies that rely on bootstrapped funding.&nbsp;<a></a></p>
+
+
+
+<p class="wp-block-paragraph">That opportunity cost is especially significant for the AI sector, where product cycles are short. A dollar directed toward regulatory adaptation cannot simultaneously be directed toward research, testing, or commercialization. Potential negative impacts will include higher prices, slower product releases, reduced product variety, or greater market concentration as smaller competitors find international expansion harder to finance.<a></a></p>
+
+
+
+<h3 id="h-why-the-eu-ai-act-hurts-europe-too" class="wp-block-heading"><strong>Why the EU AI Act Hurts Europe Too</strong></h3>
+
+
+
+<p class="wp-block-paragraph">Many of the systems receiving the greatest regulatory scrutiny are also among AI’s potentially most economically valuable applications. These high-risk&nbsp;<a href="https://www.gibsondunn.com/eu-ai-act-omnibus-agreement-postponed-high-risk-deadlines-and-other-key-changes/" target="_blank" rel="noopener">systems</a>&nbsp;cover any AI developments in<a href="https://www.gibsondunn.com/eu-ai-act-omnibus-agreement-postponed-high-risk-deadlines-and-other-key-changes/" target="_blank" rel="noopener">&nbsp;</a>biometrics, critical infrastructure, education, employment, and access to essential services.&nbsp;</p>
+
+
+
+<p class="wp-block-paragraph">They represent the applications where AI promises the largest gains in productivity, safety, and human welfare. “High-risk,” in other words, is very nearly synonymous with “high-value.” From a European perspective, these are the systems the EU critically needs to encourage if it hopes to create and maintain a flourishing startup community, regain its advantage in technological development and deployment, and compete with world powers including the United States and China.&nbsp;</p>
+
+
+
+<p class="wp-block-paragraph">Instead, the EU keeps making&nbsp;<a href="https://nationalinterest.org/blog/techland/how-europes-tech-regulations-are-splitting-the-west">the same mistake</a>, choosing caution over competitiveness in a modern economy that is constantly evolving. The Omnibus only delays the challenges and raises the costs for American and European businesses.</p>
+
+
+
+<h3 id="h-about-the-author-lily-haak" class="wp-block-heading"><strong>About the Author: Lily Haak</strong></h3>
+
+
+
+<p class="wp-block-paragraph"><a href="https://www.linkedin.com/in/lilyhaak/?isSelfProfile=true" target="_blank" rel="noopener"><em>Lily Haak</em></a><em>&nbsp;is a nonresident fellow with the&nbsp;</em><a href="https://lexingtoninstitute.org/" target="_blank" rel="noopener"><em>Lexington Institute</em></a><em>. She is an MA candidate in economics at the University of Florida and the student director of the Digital Markets Initiative, a research group dedicated to competitive technological studies. Her work has also appeared in the Stanford Economic Review, the Florida Undergraduate Law Review, and Harvard’s Undergraduate Foreign Policy Review. Paul Steidler, senior fellow with the Lexington Institute, provided guidance and editorial support.</em></p>
+<p>The post <a href="https://nationalinterest.org/blog/techland/why-the-eus-ai-omnibus-still-leaves-us-firms-facing-steep-costs">Why the EU’s AI Omnibus Still Leaves US Firms Facing Steep Costs</a> appeared first on <a href="https://nationalinterest.org">The National Interest</a>.</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>Donald Trump’s Faulty Theory of AI Victory</title>
+		<link>https://nationalinterest.org/feature/donald-trumps-faulty-theory-of-ai-victory</link>
+		
+		<dc:creator><![CDATA[Ariel E. Levite, Athanasios Platias]]></dc:creator>
+		<pubDate>Thu, 08 Oct 2026 22:20:41 +0000</pubDate>
+				<category><![CDATA[China]]></category>
+		<category><![CDATA[Donald Trump]]></category>
+		<category><![CDATA[United States (USA)]]></category>
+		<category><![CDATA[US-China Relations]]></category>
+		<category><![CDATA[Xi Jinping]]></category>
+		<guid isPermaLink="false">https://nationalinterest.org/?post_type=feature&#038;p=500857</guid>
+
+					<description><![CDATA[<p>The Trump administration’s laissez-faire approach to AI development is not sustainable for both competing with China and maintaining public support.</p>
+<p>The post <a href="https://nationalinterest.org/feature/donald-trumps-faulty-theory-of-ai-victory">Donald Trump’s Faulty Theory of AI Victory</a> appeared first on <a href="https://nationalinterest.org">The National Interest</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<div class="header has-background has-black-background-color header--post header--immersive header--min-height-none header--has-media">
+			<figure class="header__media" role="presentation">
+							<img decoding="async" src="https://nationalinterest.org/wp-content/uploads/2026/10/US-China-AI-10082026-SS-scaled-e1791497934821.jpg" alt="" width="1274" height="720" loading="eager" style="object-position: 50% 50%">
+									<p class="img-caption">President Donald J. Trump poses for photos with Chinese President Xi Jinping at a state banquet in Beijing, China, on May 14, 2026. US-China AI development needs more guardrails, write Ariel Levite and Athanasios Platias. (Shutterstock/Rawpixel.com)</p>
+														<span class="header__overlay has-background has-black-background-color"></span>
+					</figure>
+	
+	<div class="header__layout">
+		
+<div class="header__content">
+	
+<h1 class="header__title">Donald Trump’s Faulty Theory of AI Victory</h1>
+
+
+<div class="header__metadata"><div class="header__metas"><div class="header__meta header__meta--date"> October 8, 2026</div>
+
+<div class="header__meta header__meta--taxonomy">By:  <a href="https://nationalinterest.org/profile/ariel-e-levite">Ariel E. Levite</a>,  and <a href="https://nationalinterest.org/profile/athanasios-platias">Athanasios Platias</a></div></div></div>
+
+
+<div class="share">
+	<div class="share__layout">
+		<h3 class="share__label has-kicker-variant">Share</h3>
+
+		<ul class="share__list">
+							<li class="share__item share__item--facebook">
+					<a class="share__link share-block__link--facebook" href="https://www.facebook.com/sharer.php?u=https%3A%2F%2Fnationalinterest.org%2Ffeature%2Fdonald-trumps-faulty-theory-of-ai-victory%3Futm_source%3Dfacebook" target="_blank" rel="noopener">
+						<span class="a11y">Share this link on Facebook</span>
+						<span aria-hidden="true" class="share__icon-wrap">
+							<svg class="svg svg--svg-assets-svg-logo-facebook" role="img" focusable="false" height="16" width="16"><use xlink:href="#svg-assets-svg-logo-facebook"/></svg>						</span>
+					</a>
+				</li>
+							<li class="share__item share__item--twitter">
+					<a class="share__link share-block__link--twitter" href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fnationalinterest.org%2Ffeature%2Fdonald-trumps-faulty-theory-of-ai-victory%3Futm_source%3Dtwitter%26utm_campaign%3Dweb-share" target="_blank" rel="noopener">
+						<span class="a11y">Share this page on X (Twitter)</span>
+						<span aria-hidden="true" class="share__icon-wrap">
+							<svg class="svg svg--svg-assets-svg-logo-x" role="img" focusable="false" height="16" width="16"><use xlink:href="#svg-assets-svg-logo-x"/></svg>						</span>
+					</a>
+				</li>
+							<li class="share__item share__item--linkedin">
+					<a class="share__link share-block__link--linkedin" href="https://www.linkedin.com/sharing/share-offsite?url=https%3A%2F%2Fnationalinterest.org%2Ffeature%2Fdonald-trumps-faulty-theory-of-ai-victory%3Futm_source%3Dlinkedin%26utm_campaign%3Dweb-share" target="_blank" rel="noopener">
+						<span class="a11y">Share this link on LinkedIn</span>
+						<span aria-hidden="true" class="share__icon-wrap">
+							<svg class="svg svg--svg-assets-svg-logo-linkedin" role="img" focusable="false" height="16" width="16"><use xlink:href="#svg-assets-svg-logo-linkedin"/></svg>						</span>
+					</a>
+				</li>
+							<li class="share__item share__item--reddit">
+					<a class="share__link share-block__link--reddit" href="https://reddit.com/submit?url=https%3A%2F%2Fnationalinterest.org%2Ffeature%2Fdonald-trumps-faulty-theory-of-ai-victory%3Futm_source%3Dreddit%26utm_campaign%3Dweb-share&amp;title=Donald+Trump%E2%80%99s+Faulty+Theory+of+AI+Victory" target="_blank" rel="noopener">
+						<span class="a11y">Share this page on Reddit</span>
+						<span aria-hidden="true" class="share__icon-wrap">
+							<svg class="svg svg--svg-assets-svg-logo-reddit" role="img" focusable="false" height="16" width="16"><use xlink:href="#svg-assets-svg-logo-reddit"/></svg>						</span>
+					</a>
+				</li>
+							<li class="share__item share__item--email">
+					<a class="share__link share-block__link--email" href="mailto:?body=https%3A%2F%2Fnationalinterest.org%2Ffeature%2Fdonald-trumps-faulty-theory-of-ai-victory%3Futm_source%3Demail%26utm_campaign%3Dweb-share&amp;subject=Donald+Trump%E2%80%99s+Faulty+Theory+of+AI+Victory" target="_blank" rel="noopener">
+						<span class="a11y">Email a link to this page</span>
+						<span aria-hidden="true" class="share__icon-wrap">
+							<svg class="svg svg--svg-assets-svg-icon-email" role="img" focusable="false" height="16" width="16"><use xlink:href="#svg-assets-svg-icon-email"/></svg>						</span>
+					</a>
+				</li>
+					</ul>
+	</div>
+</div>
+
+
+<div class="google-preferred-source">
+	<a class="google-preferred-source__button wp-block-button__link wp-element-button" href="https://www.google.com/preferences/source?q=https://nationalinterest.org/" target="_blank" rel="noopener noreferrer">
+		<span>Add TNI as a Preferred Source on Google</span>
+	</a>
+</div>
+
+</div>
+
+	</div>
+</div>
+
+
+
+<h2 id="h-the-trump-administration-s-laissez-faire-approach-to-ai-development-is-not-sustainable-for-both-competing-with-china-and-maintaining-public-support" class="wp-block-heading"><em>The Trump administration’s laissez-faire approach to AI development is not sustainable for both competing with China and maintaining public support.</em></h2>
+
+
+
+<p class="wp-block-paragraph">Last month’s <a href="https://nationalinterest.org/feature/the-donald-trump-xi-jinping-stability-summit">US-China summit</a> produced no meaningful change in President <a href="https://nationalinterest.org/tags/donald-trump">Donald Trump</a>’s attitude toward AI developments. In <a href="https://nationalinterest.org/feature/why-the-us-cosmic-bet-on-ai-wont-beat-china">a recent article</a> in <em>The National Interest</em>, we examined the strategic assumptions underlying Washington’s “cosmic bet” on <a href="https://nationalinterest.org/topics/ai-artificial-intelligence">artificial intelligence</a>. Recent developments have brought that wager’s risks into sharper focus.&nbsp;</p>
+
+
+
+<p class="wp-block-paragraph">Days before President <a href="https://nationalinterest.org/tags/xi-jinping">Xi Jinping</a> arrived in Washington, and after several of the industry’s most prominent AI developers challenged him to confront the risks of moving too fast, President Trump instead offered his clearest articulation yet of his AI theory of victory. It boiled down to four words: “<a href="https://finance.yahoo.com/technology/ai/articles/whoever-wins-ai-wins-trump-210000966.html">Whoever wins AI wins</a>.” Xi, meanwhile, <a href="https://thehill.com/homenews/administration/6109283-xi-china-us-ai-responsibility-trump/">alluded</a> to the risks inherent in such an adversarial attitude.</p>
+
+
+
+<p class="wp-block-paragraph">Extending his logic, Trump expressed visceral resistance to AI regulation or a slowdown in development and said <a href="https://www.nbcnews.com/politics/white-house/artificial-intelligence-task-force-czar-technology-trump-rcna598688">he would instead create</a> an “AI Force” and appoint an “AI Czar” to oversee efforts to promote it. He went further, <a href="https://ca.finance.yahoo.com/news/trump-dismisses-ai-guardrails-says-141514719.html">dismissing</a> growing concerns about its feared downsides as nothing more sinister than a “hoax” promoted by a “sick conspiracy” that the existing criminal and civil justice systems could address. Unsurprisingly, therefore, on the margins of the Xi summit, Trump also declined to endorse Chinese proposals for shared AI guardrails, insisting that the <a href="https://nationalinterest.org/tags/united-states">United States</a> would not be “<a href="https://www.aljazeera.com/news/2026/9/26/trump-rejects-combining-us-china-ai-efforts">putting on brakes</a>.”</p>
+
+
+
+<p class="wp-block-paragraph">Later, to deflect public concern about accelerating AI deployment without slowing it, Trump <a href="https://www.reuters.com/legal/government/trump-host-zuckerberg-anthropics-amodei-other-ai-titans-tuesday-2026-09-29/">convened many AI leaders</a> at the White House, where they agreed to a voluntary safety self-regulation code. For now, he ruled out going any further. Hence, barring pressure from industry, Congress or the courts, the United States remains committed to full-throttle AI development. Whether this voluntary self-policing arrangement will put safety concerns to rest is doubtful. Even more disconcerting, however, is that no one seems to have considered the broader implications of the US’ “<a href="https://foreignpolicy.com/2026/08/04/united-states-artificial-intelligence-race-china-openai-anthropic-donald-trump-elon-musk/">cosmic bet</a>” on AI, as <a href="https://nationalinterest.org/profile/graham-allison">Graham Allison</a> has called it.</p>
+
+
+
+<p class="wp-block-paragraph">One can only speculate about the rationale behind the president’s decision to place such a bet. A plausible candidate is that he aims to frame the AI race with <a href="https://nationalinterest.org/tags/china">China</a> as a cover for the unabashed pursuit of AI dominance, generating wealth, productivity, scientific discoveries, and military prowess to crown his presidency a stellar success. Regardless, Trump’s AI wager fails to acknowledge, let alone address, the myriad risks of the United States pursuing a narrow, myopic, technology-centric approach to AI development to win an unbridled competition with China.</p>
+
+
+
+<p class="wp-block-paragraph">This current US approach might suffice to maintain, and even temporarily extend, its technical AI lead over China and leverage it. But what is disconcerting is the administration’s lack of appreciation for the strategic requirements to improve its odds of success, as well as the longer-term risks of engaging in an AI competition with China while sustaining a laissez-faire approach to the private sector’s unimpeded race for Artificial General Intelligence. It would take much more than articulating a loose regime for controlling rogue behavior of AI models (even if successful) for the United States to come out ahead in this contest with China. The United States must also articulate and implement a strategy that meets three conditions.</p>
+
+
+
+<p class="wp-block-paragraph"><strong>First</strong>, the strategy must ensure that the American lead can survive technological diffusion and Chinese adaptation.&nbsp;</p>
+
+
+
+<p class="wp-block-paragraph"><strong>Second</strong>, it has to include a game plan to convert AI sophistication into broader scientific, economic, industrial, and military assets.&nbsp;</p>
+
+
+
+<p class="wp-block-paragraph"><strong>Third</strong>, the strategy must articulate a concrete plan to make the AI-led transformation politically and socially sustainable.</p>
+
+
+
+<p class="wp-block-paragraph">The shaky premise underlying the diffusion challenge is apparent: it is already underway. Technology spreads fastest when the advantage it confers gives competitors strong incentives to imitate, substitute, and innovate around restrictions. The Chinese open-model ecosystem shows that Beijing is neither resigned to a permanent American lead nor to dependence on US chips or models. US export controls on state-of-the-art chips raise costs and delay Chinese progress.&nbsp;</p>
+
+
+
+<p class="wp-block-paragraph">Still, they cannot diminish the incentive to catch up, develop domestic alternatives to American technologies, and promote its models abroad. To match the United States in AI, China is already leveraging its significant advantages in energy supply and grid connectivity, lower construction costs, and easier permitting to vastly outperform the United States in the speed and scale of new data center construction.</p>
+
+
+
+<p class="wp-block-paragraph">China is presently better placed to leverage its AI prowess to advance the world’s largest supply chain and manufacturing base. It is embedding AI across a broader industrial and infrastructure architecture, drawing on and further empowering its talent pool that already excels in STEM disciplines. The corresponding US base is either much smaller or endangered. Furthermore, China is also engaged in a concerted effort to assuage (or repress) domestic concerns about AI’s adverse consequences and attract enterprises to its slightly less advanced but more affordable open-weight AI alternatives.</p>
+
+
+
+	<div class="related-posts">
+		<div class="related-posts__header">
+			<h2 class="has-kicker-variant">Related Articles</h2>
+		</div>
+
+		<div class="related-posts__layout">
+			<div class="card"><div class="card__layout"><a href="https://nationalinterest.org/feature/on-immigration-the-us-is-not-europe-unless-it-chooses-to-be" class="card__media-link"><figure class="card__media"><picture><img decoding="async" src="https://nationalinterest.org/wp-content/uploads/2026/11/United-States-Protest-Sign-11092026-SS-e1794241153822-1024x576.jpg" srcset="https://nationalinterest.org/wp-content/uploads/2026/11/United-States-Protest-Sign-11092026-SS-e1794241153822-1024x576.jpg 1024w, https://nationalinterest.org/wp-content/uploads/2026/11/United-States-Protest-Sign-11092026-SS-e1794241153822-300x169.jpg 300w, https://nationalinterest.org/wp-content/uploads/2026/11/United-States-Protest-Sign-11092026-SS-e1794241153822-768x432.jpg 768w, https://nationalinterest.org/wp-content/uploads/2026/11/United-States-Protest-Sign-11092026-SS-e1794241153822.jpg 1280w" loading="lazy" alt="" height="576" width="1024" style="object-position: 50% 50%"></picture></figure></a><div class="card__text"><ul class="card__terms term-list"><li class="card__term term-list__item"><a href="https://nationalinterest.org/topics/migration" class="term-list__link">Migration</a></li><li class="card__term term-list__item"><a href="https://nationalinterest.org/topics/religion" class="term-list__link">Religion</a></li></ul><h3 class="card__heading"><a href="https://nationalinterest.org/feature/on-immigration-the-us-is-not-europe-unless-it-chooses-to-be" class="card__link">
+					On Immigration, the US Is Not Europe—Unless It Chooses to Be				</a></h3><div class="card__excerpt"><p>The American constitutional tradition is a bulwark against the social fragmentation seen now in Europe.</p></div><div class="card__byline"><ul class="card__people"><li class="card__person"><a href="https://nationalinterest.org/profile/ahmed-charai">Ahmed Charai</a></li></ul><time class="card__date" datetime="2026-11-09">
+						November 9, 2026					</time></div></div></div></div><div class="card"><div class="card__layout"><a href="https://nationalinterest.org/feature/it-is-long-past-time-for-the-un-to-leave-western-sahara" class="card__media-link"><figure class="card__media"><picture><img decoding="async" src="https://nationalinterest.org/wp-content/uploads/2026/11/un-aircraft-western-sahara-110726-wikimedia-1024x576.jpg" srcset="https://nationalinterest.org/wp-content/uploads/2026/11/un-aircraft-western-sahara-110726-wikimedia-1024x576.jpg 1024w, https://nationalinterest.org/wp-content/uploads/2026/11/un-aircraft-western-sahara-110726-wikimedia-300x169.jpg 300w, https://nationalinterest.org/wp-content/uploads/2026/11/un-aircraft-western-sahara-110726-wikimedia-768x432.jpg 768w, https://nationalinterest.org/wp-content/uploads/2026/11/un-aircraft-western-sahara-110726-wikimedia.jpg 1280w" loading="lazy" alt="A UN aircraft takes off from an airfield in Western Sahara." height="576" width="1024" style="object-position: 50% 50%"></picture></figure></a><div class="card__text"><ul class="card__terms term-list"><li class="card__term term-list__item"><a href="https://nationalinterest.org/topics/diplomacy" class="term-list__link">Diplomacy</a></li></ul><h3 class="card__heading"><a href="https://nationalinterest.org/feature/it-is-long-past-time-for-the-un-to-leave-western-sahara" class="card__link">
+					It Is Long Past Time for the UN to Leave Western Sahara				</a></h3><div class="card__excerpt"><p>The recent expiration of the UN Mission for the Referendum in Western Sahara (MINURSO) is an opportunity to unfreeze a peace process that has been stalled for decades.</p></div><div class="card__byline"><ul class="card__people"><li class="card__person"><a href="https://nationalinterest.org/profile/brett-d-schaefer">Brett D. Schaefer</a></li><li class="card__person"><a href="https://nationalinterest.org/profile/liam-karr">Liam Karr</a></li></ul><time class="card__date" datetime="2026-11-07">
+						November 7, 2026					</time></div></div></div></div><div class="card"><div class="card__layout"><a href="https://nationalinterest.org/feature/why-eu-china-trade-relations-have-deteriorated" class="card__media-link"><figure class="card__media"><picture><img decoding="async" src="https://nationalinterest.org/wp-content/uploads/2026/11/EU-China-11072026-SS-scaled-e1794059167211-1024x576.jpg" srcset="https://nationalinterest.org/wp-content/uploads/2026/11/EU-China-11072026-SS-scaled-e1794059167211-1024x576.jpg 1024w, https://nationalinterest.org/wp-content/uploads/2026/11/EU-China-11072026-SS-scaled-e1794059167211-300x169.jpg 300w, https://nationalinterest.org/wp-content/uploads/2026/11/EU-China-11072026-SS-scaled-e1794059167211-768x432.jpg 768w, https://nationalinterest.org/wp-content/uploads/2026/11/EU-China-11072026-SS-scaled-e1794059167211.jpg 1280w" loading="lazy" alt="" height="576" width="1024" style="object-position: 50% 50%"></picture></figure></a><div class="card__text"><ul class="card__terms term-list"><li class="card__term term-list__item"><a href="https://nationalinterest.org/topics/electric-vehicles" class="term-list__link">Electric Vehicles (EVs)</a></li><li class="card__term term-list__item"><a href="https://nationalinterest.org/topics/manufacturing" class="term-list__link">Manufacturing</a></li><li class="card__term term-list__item"><a href="https://nationalinterest.org/topics/trade" class="term-list__link">Trade</a></li></ul><h3 class="card__heading"><a href="https://nationalinterest.org/feature/why-eu-china-trade-relations-have-deteriorated" class="card__link">
+					Why EU-China Trade Relations Have Deteriorated				</a></h3><div class="card__excerpt"><p>US Tariffs have made China more dependent on the European market for buying its exports.</p></div><div class="card__byline"><ul class="card__people"><li class="card__person"><a href="https://nationalinterest.org/profile/milton-ezrati">Milton Ezrati</a></li></ul><time class="card__date" datetime="2026-11-07">
+						November 7, 2026					</time></div></div></div></div>		</div>
+	</div>
+
+
+
+<p class="wp-block-paragraph">Adverse political and social forces are already undermining the United States’ ability to sustain its AI development path. The public is <a href="https://www.nytimes.com/2026/09/10/opinion/ai-big-tech-america-politics.html">skeptical</a> of the technology’s overall benefits and wary of the costs and other side effects of the massive <a href="https://nationalinterest.org/tags/data-centers">data center</a> buildout. Politicians on both sides of the aisle are lining up to tame some AI developments, with scores of legislative initiatives before Congress, as well as actions by governors to slow and condition data center construction and impose other requirements on AI developers.</p>
+
+
+
+<p class="wp-block-paragraph">Even more critically, Wall Street, which is <a href="https://www.wsj.com/economy/the-ai-build-out-is-becoming-the-biggest-economic-bet-in-u-s-history-c60716dd">heavily mortgaging</a> its future on the AI buildout, faces acute financial risks if that strategy falters. US allies and partners worldwide are also showing growing unease about relying on US LLMs, despite their superior capabilities, because of the administration’s erratic, myopic policies.</p>
+
+
+
+<p class="wp-block-paragraph">Three further risks follow from the sheer scale and concentration of the American wager.&nbsp;</p>
+
+
+
+<p class="wp-block-paragraph">The <strong>first</strong> is financial. An extraordinary amount of American wealth, capital expenditure, market value, and infrastructure buildup now rests on bullish assumptions about AI. AI-related companies now make up a <a href="https://finance.yahoo.com/markets/articles/ai-debt-now-15-corporate-001733895.html">significant share</a> of the US investment-grade corporate bond market. In contrast, equity performance has already become extremely dependent on a small group of technology companies. This evokes the dot-com bubble that burst in 2000. AI could similarly fulfill most of its technological promise while disappointing the valuations, revenues, and bullish returns built around it. No wonder, therefore, that a growing number of investors are on edge, warning of a possible repeat of the 2008 financial bubble burst and trying to spread and hedge their AI bets.</p>
+
+
+
+<p class="wp-block-paragraph">The <strong>second</strong> risk is opportunity cost. Capital, electricity, computing infrastructure, engineering talent, and managerial attention are finite. A national economy that disproportionately directs them toward a single technological wager makes them less available elsewhere. Signs of this crowding out are already visible. Capital expenditure outside AI has stagnated, while AI companies compete aggressively for capital and skilled labor. The paradox has important strategic implications: a policy designed to strengthen American technological power is weakening the broader industrial, infrastructural, and scientific base into which AI must ultimately be converted.</p>
+
+
+
+<p class="wp-block-paragraph">The <strong>third</strong> risk is geopolitical. Concentration creates vulnerability because it tells an intelligent opponent where pressure can produce disproportionate effects. China does not necessarily have to overtake the United States on the technological frontier. DeepSeek, Qwen, Kimi, and other Chinese models point toward another strategy: compete through efficiency, open weights, lower prices, and rapid diffusion. The objective may not be technological supremacy. Repeated demonstrations that their AI offerings are capable, more affordable, and more widely diffused could undermine expectations of sustained American technological scarcity and the high profit margins on which much of the AI investment boom rests.&nbsp;</p>
+
+
+
+<p class="wp-block-paragraph">Such competition would pressure American valuations and, given the extraordinary concentration of capital and market value in AI, could trigger broader financial repercussions. Beijing thus has the incentive and is rapidly developing the means to exploit this vulnerability, potentially undermining the economic foundations on which America’s AI wager rests.</p>
+
+
+
+<p class="wp-block-paragraph">US AI prowess is not about to disappear. Nor is China guaranteed to prevail, as it faces serious challenges from American competition and export controls, along with chronic manufacturing overcapacity and weak domestic demand. But the United States is not presently well positioned to overcome the three challenges to AI leadership. Nor can Washington assume that China must overtake the United States technologically to frustrate its strategy. Beijing does not have to win America’s AI race. It may suffice for it to encroach on its economic foundations and, in the process, unleash massive adverse spillover effects.</p>
+
+
+
+<p class="wp-block-paragraph">The United States cannot afford to concede its AI lead. Nor can it risk sustaining AI as a single point of failure. This matters especially because China has substantial resources to challenge it. The answer cannot be to double down on an increasingly concentrated wager. AI leadership will matter enormously, but national power has never rested on a single technology.&nbsp;</p>
+
+
+
+<p class="wp-block-paragraph">For “whoever wins AI wins” to become a convincing theory of victory, Washington must opt for a hybrid AI model. Tap the remarkable talent pool and innovative spirit that only free societies enjoy, but embed them in a robust, comprehensive strategy. Such a strategy must withstand diffusion challenges, incorporate reassuring AI guardrails, and include an enticing social contract, woo partners worldwide, and integrate AI into a comprehensive scientific and industrial strategy.</p>
+
+
+
+<p class="wp-block-paragraph">Finally, the United States would also be well advised to build on the Chinese offer to start developing some common rules of the road on AI. This would, in essence, extend the logic that produced last year’s US-Chinese understanding linking Chinese rare earth exports with US supply of advanced chips. The motivation here would be to dissuade China from attacking the foundations of the US wager on AI head-on by leveraging the corresponding Chinese wager to match the United States in this realm.&nbsp;</p>
+
+
+
+<p class="wp-block-paragraph">While the United States remains far more vulnerable financially to any AI setback that China could unleash, China is becoming far more vulnerable industrially (and socially) to an AI setback that the United States might catalyze. This mutual strategic AI deterrence aims to keep the US-Chinese AI competition technological and commercial rather than a “zero-sum game” gladiator fight in which one side is bound to be vanquished.</p>
+
+
+
+<h3 id="h-nbsp-about-the-authors-ariel-levite-and-athanasios-platias" class="wp-block-heading">&nbsp;<strong>About the Authors: Ariel Levite and Athanasios Platias</strong></h3>
+
+
+
+<p class="wp-block-paragraph"><a href="https://carnegieendowment.org/people/ariel-eli-levite?lang=en"><em>Ariel (Eli) Levite</em></a> <em>is a senior fellow at the Carnegie Endowment for International Peace and Harvard’s Belfer Center for Science and International Affairs. He served as principal deputy director general (policy) at the Israeli Atomic Energy Commission. He also served as the deputy national security advisor for defense policy. He headed the Bureau of International Security and Arms Control (an assistant secretary position) in the Israeli Ministry of Defense.</em></p>
+
+
+
+<p class="wp-block-paragraph"><a href="https://delphiforum.gr/advisory-committee/athanasios-platias"><em>Athanasios Platias</em></a> <em>is professor emeritus of strategy at the University of Piraeus, president of the Council for International Relations–Greece, and coauthor of</em> The Art of Strategy: 50 Maxims for War, Politics, Business and Everyday Life <em>(London: Hurst, 2026). He was previously a Ford Foundation fellow at the Center for Science and International Affairs at Harvard University. Professor Platias taught for 18 years in the Department of International and European Studies at the Panteion University of Political and Social Sciences, Greece.</em></p>
+<p>The post <a href="https://nationalinterest.org/feature/donald-trumps-faulty-theory-of-ai-victory">Donald Trump’s Faulty Theory of AI Victory</a> appeared first on <a href="https://nationalinterest.org">The National Interest</a>.</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>The Pentagon Is Betting $30 Million on AI-Assisted Lie Detectors</title>
+		<link>https://nationalinterest.org/blog/buzz/pentagon-betting-30-million-on-ai-assisted-lie-detectors-ps-100826</link>
+		
+		<dc:creator><![CDATA[Peter Suciu]]></dc:creator>
+		<pubDate>Thu, 08 Oct 2026 16:00:00 +0000</pubDate>
+				<category><![CDATA[Defense Spending]]></category>
+		<category><![CDATA[Department of Defense (DOD)]]></category>
+		<category><![CDATA[Pete Hegseth]]></category>
+		<category><![CDATA[United States (USA)]]></category>
+		<guid isPermaLink="false">https://nationalinterest.org/blog/</guid>
+
+					<description><![CDATA[<p>Though polygraph tests have long since fallen out of favor in the justice system, they are still widely used by the US government for the security clearance process.</p>
+<p>The post <a href="https://nationalinterest.org/blog/buzz/pentagon-betting-30-million-on-ai-assisted-lie-detectors-ps-100826">The Pentagon Is Betting $30 Million on AI-Assisted Lie Detectors</a> appeared first on <a href="https://nationalinterest.org">The National Interest</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<div class="header header--post header--immersive header--min-height-none header--has-media">
+			<figure class="header__media" role="presentation">
+							<img decoding="async" src="https://nationalinterest.org/wp-content/uploads/2026/10/polygraph-test-100826-SS.jpg" alt="A man takes a polygraph test." width="1280" height="720" loading="eager" style="object-position: 50% 50%">
+									<p class="img-caption">A man participates in a polygraph test, with results seen on a computer monitor. The Department of Defense is planning to invest $30 million in an AI-assisted polygraph system, but critics note that it will be built on the same flawed measurements as earlier polygraphs. (Shutterstock/Gorodenkoff)</p>
+														<span class="header__overlay"></span>
+					</figure>
+	
+	<div class="header__layout">
+		
+<div class="header__content">
+	
+<h1 class="header__title">The Pentagon Is Betting $30 Million on AI-Assisted Lie Detectors</h1>
+
+
+<div class="header__metadata"><div class="header__metas"><div class="header__meta header__meta--date"> October 8, 2026</div>
+
+<div class="header__meta header__meta--taxonomy">By:  <a href="https://nationalinterest.org/profile/peter-suciu">Peter Suciu</a></div></div></div>
+
+
+<div class="share">
+	<div class="share__layout">
+		<h3 class="share__label has-kicker-variant">Share</h3>
+
+		<ul class="share__list">
+							<li class="share__item share__item--facebook">
+					<a class="share__link share-block__link--facebook" href="https://www.facebook.com/sharer.php?u=https%3A%2F%2Fnationalinterest.org%2Fblog%2Fbuzz%2Fpentagon-betting-30-million-on-ai-assisted-lie-detectors-ps-100826%3Futm_source%3Dfacebook" target="_blank" rel="noopener">
+						<span class="a11y">Share this link on Facebook</span>
+						<span aria-hidden="true" class="share__icon-wrap">
+							<svg class="svg svg--svg-assets-svg-logo-facebook" role="img" focusable="false" height="16" width="16"><use xlink:href="#svg-assets-svg-logo-facebook"/></svg>						</span>
+					</a>
+				</li>
+							<li class="share__item share__item--twitter">
+					<a class="share__link share-block__link--twitter" href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fnationalinterest.org%2Fblog%2Fbuzz%2Fpentagon-betting-30-million-on-ai-assisted-lie-detectors-ps-100826%3Futm_source%3Dtwitter%26utm_campaign%3Dweb-share" target="_blank" rel="noopener">
+						<span class="a11y">Share this page on X (Twitter)</span>
+						<span aria-hidden="true" class="share__icon-wrap">
+							<svg class="svg svg--svg-assets-svg-logo-x" role="img" focusable="false" height="16" width="16"><use xlink:href="#svg-assets-svg-logo-x"/></svg>						</span>
+					</a>
+				</li>
+							<li class="share__item share__item--linkedin">
+					<a class="share__link share-block__link--linkedin" href="https://www.linkedin.com/sharing/share-offsite?url=https%3A%2F%2Fnationalinterest.org%2Fblog%2Fbuzz%2Fpentagon-betting-30-million-on-ai-assisted-lie-detectors-ps-100826%3Futm_source%3Dlinkedin%26utm_campaign%3Dweb-share" target="_blank" rel="noopener">
+						<span class="a11y">Share this link on LinkedIn</span>
+						<span aria-hidden="true" class="share__icon-wrap">
+							<svg class="svg svg--svg-assets-svg-logo-linkedin" role="img" focusable="false" height="16" width="16"><use xlink:href="#svg-assets-svg-logo-linkedin"/></svg>						</span>
+					</a>
+				</li>
+							<li class="share__item share__item--reddit">
+					<a class="share__link share-block__link--reddit" href="https://reddit.com/submit?url=https%3A%2F%2Fnationalinterest.org%2Fblog%2Fbuzz%2Fpentagon-betting-30-million-on-ai-assisted-lie-detectors-ps-100826%3Futm_source%3Dreddit%26utm_campaign%3Dweb-share&amp;title=The+Pentagon+Is+Betting+%2430+Million+on+AI-Assisted+Lie+Detectors" target="_blank" rel="noopener">
+						<span class="a11y">Share this page on Reddit</span>
+						<span aria-hidden="true" class="share__icon-wrap">
+							<svg class="svg svg--svg-assets-svg-logo-reddit" role="img" focusable="false" height="16" width="16"><use xlink:href="#svg-assets-svg-logo-reddit"/></svg>						</span>
+					</a>
+				</li>
+							<li class="share__item share__item--email">
+					<a class="share__link share-block__link--email" href="mailto:?body=https%3A%2F%2Fnationalinterest.org%2Fblog%2Fbuzz%2Fpentagon-betting-30-million-on-ai-assisted-lie-detectors-ps-100826%3Futm_source%3Demail%26utm_campaign%3Dweb-share&amp;subject=The+Pentagon+Is+Betting+%2430+Million+on+AI-Assisted+Lie+Detectors" target="_blank" rel="noopener">
+						<span class="a11y">Email a link to this page</span>
+						<span aria-hidden="true" class="share__icon-wrap">
+							<svg class="svg svg--svg-assets-svg-icon-email" role="img" focusable="false" height="16" width="16"><use xlink:href="#svg-assets-svg-icon-email"/></svg>						</span>
+					</a>
+				</li>
+					</ul>
+	</div>
+</div>
+
+
+<div class="google-preferred-source">
+	<a class="google-preferred-source__button wp-block-button__link wp-element-button" href="https://www.google.com/preferences/source?q=https://nationalinterest.org/" target="_blank" rel="noopener noreferrer">
+		<span>Add TNI as a Preferred Source on Google</span>
+	</a>
+</div>
+
+</div>
+
+	</div>
+</div>
+
+
+
+<h2 id="h-though-polygraph-tests-have-long-since-fallen-out-of-favor-in-the-justice-system-they-are-still-widely-used-by-the-us-government-for-the-security-clearance-process" class="wp-block-heading"><em>Though polygraph tests have long since fallen out of favor in the justice system, they are still widely used by the US government for the security clearance process.</em></h2>
+
+
+
+<p class="wp-block-paragraph">Scientific evidence has shown repeatedly that polygraph tests are <a href="https://www.apa.org/topics/cognitive-neuroscience/polygraph">not a reliable</a> or valid way to detect deception. The machines—more commonly known as “lie detectors”—were first developed more than a century ago, and measure general stress rather than truthfulness. This means the test is far from bulletproof in detecting deception; a skilled liar can easily beat the test, while a nervous truth-teller can fail it.</p>
+
+
+
+<p class="wp-block-paragraph">The US military and civilian court systems do not allow polygraph tests to be admitted as evidence in trials. However, the United States Department of Defense (DoD) maintains that polygraphs are useful in screening personnel. The Defense Counterintelligence and Security Agency (DSCA), the largest federal agency within the Pentagon, employs polygraphs in the security clearance process, for personnel vetting, and in counterintelligence investigations. Indeed, as recently as August, Pentagon investigators reportedly <a href="https://www.nytimes.com/2026/09/04/us/politics/pentagon-staff-polygraph-tests.html">administered the tests</a> to roughly 50 members of the military’s Joint Staff in an attempt to find the source of classified leaks.</p>
+
+
+
+<p class="wp-block-paragraph">Now, the Department of Defense is now looking for a new version that could be empowered with artificial intelligence. The Pentagon is <a href="https://thenextweb.com/news/pentagon-ai-lie-detector-polygraph-next">planning to invest</a> upwards of $30.3 million over the next five years to develop an improved version of the lie detector—with a brand name that sounds like a new streaming service!</p>
+
+
+
+<p class="wp-block-paragraph">“The program, called ‘Polygraph+’ or ‘Polygraph Next,’ will focus on scoring algorithms that use AI and machine learning, as well as a technique called ‘standoff sensing,’ which can take physiological readings from a person without attaching a device to them,” <em>MIT Technology Review</em> <a href="https://www.technologyreview.com/2026/09/25/1145157/the-download-pentagon-ai-lie-detector-young-organ-limits/">first reported</a>.</p>
+
+
+
+<p class="wp-block-paragraph">In theory, AI—or more accurately machine-learning scoring algorithms—would be employed with standoff sensing, meaning that it could work via non-contact physiological monitoring via cameras that track head movements, facial skin temperature, and pore activity. This could lead to a lower false positive rate than traditional lie detectors, whose reliance on sensors directly attached to the body could spook some test-takers.</p>
+
+
+
+<p class="wp-block-paragraph">Two companies, <a href="https://presagetech.com/">Presage Technologies</a> and <a href="https://altecresearch.com/">Altec Research</a>, are now developing prototypes for the DoD. The former is focused on measuring heart and breathing rates via ordinary cameras, with the latter working on a device that could track head movement, facial skin temperature, and pore activity.</p>
+
+
+
+<p class="wp-block-paragraph">It is far from certain that the project will work. As <em>MIT Technology Review</em> noted, “It could just be the latest in a long line of failed attempts to use technology to detect lies.”</p>
+
+
+
+<p class="wp-block-paragraph">At the end of the day, the underlying mechanism would be the same: AI would simply be looking at different stress factors, which critics of polygraphs say don’t really gauge deception.</p>
+
+
+
+<h3 id="h-about-the-original-polygraph-test" class="wp-block-heading"><strong>About the Original Polygraph Test</strong></h3>
+
+
+
+<p class="wp-block-paragraph"><a href="https://liedetectortest.com/lie-detection-legends/john-larson-the-innovator-of-polygraph-science">John Larson</a>, a police officer in Berkeley, California, first invented the polygraph machine in 1921. He based the machine on an earlier systolic blood pressure test devised by psychologist <a href="https://interdisc.org/william-moulton-marston/">William Moulton Marston</a>—better known in pop culture as the creator of “Wonder Woman.” Marston and his wife, fellow psychologist Elizabeth Holloway Marston, observed that a person’s blood pressure would typically rise when they became excited or agitated, and believed that changes in a person’s blood pressure could show whether they were lying.</p>
+
+
+
+<p class="wp-block-paragraph">Larson’s device expanded on this concept, simultaneously tracking a person’s pulse, blood pressure, and respiration, all of which were seen as potential indicators that someone was attempting to deceive. The multitude of factors measured gave the test the name “polygraph,” roughly meaning “recording everything.” An improved version developed in the 1930s added an inked-pen tracing system and incorporated galvanic skin response (GSR) sensors to measure sweat activity. Modern variants are now computerized, converting physiological data into digital signals for easier storage, algorithmic scoring assistance, and analysis.</p>
+
+
+
+<p class="wp-block-paragraph">The heyday for the polygraph machine came during the mid-20th century, particularly in criminal investigations in the 1960s and 1970s. The US military also came to use the machines for internal investigations during this period, <a href="https://liedetectortest.com/polygraph-testing/how-the-vietnam-war-created-americas-largest-polygraph-program">establishing</a> a dedicated polygraph school in 1951. However, after it became clear that polygraphs were inherently flawed, their legal standing collapsed in both the military and civilian world.</p>
+
+
+
+<p class="wp-block-paragraph">Today, the American Polygraph Association (<a href="https://www.polygraph.org/">APA</a>), the world’s leading professional organization for polygraph examiners, researchers, <a href="https://www.polygraph.org/polygraph_validity_research.php">estimates</a> that the tests are roughly 80 to 90 percent accurate.&nbsp;</p>
+
+
+
+<h3 id="h-why-does-the-us-government-still-use-lie-detectors" class="wp-block-heading"><strong>Why Does the US Government Still Use Lie Detectors?</strong></h3>
+
+
+
+<p class="wp-block-paragraph">The other part of the story is that the calls for an AI-empowered polygraph are coming from DCSA, and are part of Secretary of Defense <a href="http://nationalinterest.org/tags/pete-hegseth">Pete Hegseth’s</a> efforts to plug leaks. Movies and TV shows suggest that “lie detectors” are pulled out to catch someone in a lie, but that’s not really how they work.</p>
+
+
+
+<p class="wp-block-paragraph">“Polygraphs have mostly belonged to the intelligence community, which values them less for catching lies than for making candidates nervous enough to share things they left off their clearance applications. Now there’s growing interest across the Department of War, both for insider threat concerns, such as recent leaks from the Joint Staff, and for wider use in personnel vetting,” wrote Lindy Kyzer, vice president of content for <em>ClearanceJobs</em>, in a <a href="https://news.clearancejobs.com/2026/10/06/dcsa-explores-ai-powered-polygraph-technology/">post on <em>ClearanceJobs</em></a>.</p>
+
+
+
+<p class="wp-block-paragraph">She added that how the technology could work remains unclear: “An AI tool might draw on biometrics, facial analysis, or physical signs like sweating, and it could produce data that scales in a way a one-on-one exam can’t.”</p>
+
+
+
+<h3 id="h-ai-probably-shouldn-t-be-trusted-with-lie-detection-yet" class="wp-block-heading"><strong>AI Probably Shouldn’t Be Trusted with Lie Detection (Yet)</strong></h3>
+
+
+
+<p class="wp-block-paragraph">One concern is that AI is still known to make critical mistakes—and sometimes tell its own lies. AI and its large language models make predictions rather than verifying absolute facts. When they fail to learn the information they sought, the models can also invent fake facts, false events, or non-existent links to fill gaps in knowledge. AI also struggles with complex reasoning, and that should be a concern if an AI-based polygraph test is used, where someone’s career could be on the line.</p>
+
+
+
+<p class="wp-block-paragraph">“Anytime we might be able to scientifically advance the ability to determine truth, with accuracy, would generally be a good thing,” Mark Zaid, a national security attorney who reviewed the DSCA’s proposal to use AI-based polygraphs, <a href="https://www.defensenews.com/news/pentagon-congress/2026/10/05/has-the-pentagon-given-up-on-ai-polygraph-analysis-of-trustworthiness/">told <em>Defense News</em></a>. “[But] the first thing that jumps out at me with AI is how often it is wrong… I’ve caught AI lying to me.”</p>
+
+
+
+<p class="wp-block-paragraph">That raises the question of why AI, which is known to be wrong so often and which invents its own truth, should be a gatekeeper in lie detection.</p>
+
+
+
+<p class="wp-block-paragraph">The final concern should be that AI models often have shown a tendency to default to a state of systemic distrust. When placed in an interview or interrogation setting, the algorithm frequently assumes the person is lying simply because they are being questioned.</p>
+
+
+
+<p class="wp-block-paragraph">In other words, it may take the view that innocent people wouldn’t be in the hot seat in the first place, and that can result in bias. Given its bias, coupled with the fact that AI isn’t trustworthy, it raises the question of why it would be used to determine deception based on visual stress factors.</p>
+
+
+
+<p class="wp-block-paragraph">There is also the very real concern that AI could be directed to give the results an investigator wants, akin to “juking the stats.”</p>
+
+
+
+<p class="wp-block-paragraph">Students are now being told not to trust AI with their homework, as it can lead to inaccurate information, academic dishonesty, and a decline in critical thinking skills. Many in the workforce are also discovering that generative and agentic AI systems frequently produce errors, hallucinations, or generic, low-substance outputs such as “workslop” that require heavy human cleanup. Yet the Pentagon now wants to have AI do the lie detecting!</p>
+
+
+
+<h3 id="h-about-the-author-peter-suciu" class="wp-block-heading"><strong>About the Author: Peter Suciu</strong></h3>
+
+
+
+<p class="wp-block-paragraph"><a href="https://nationalinterest.org/profile/peter-suciu"><em>Peter Suciu</em></a> <em>has</em> <a href="https://news.clearancejobs.com/author/peter-suciu/"><em></em><em>contributed</em></a> <em>to dozens of newspapers, magazines, and websites over a 30-year career in journalism. He regularly writes about military hardware, firearms history, cybersecurity, politics, and international affairs. Peter is also a</em> <a href="https://www.forbes.com/sites/petersuciu/?sh=2a2f53789bd3"><em>contributing writer</em></a> <em>for</em> Forbes <em>and</em> <a href="https://www.clearancejobs.com/"><em></em>Clearance Jobs</a><em>. He is based in Michigan. You can follow him on Twitter:</em> <a href="https://twitter.com/petersuciu"><em></em><em>@PeterSuciu</em></a><em>. You can email the author at</em> <a href="mailto:Editor@nationalinterest.org"><em>Editor@nationalinterest.org</em></a><em>.</em></p>
+<p>The post <a href="https://nationalinterest.org/blog/buzz/pentagon-betting-30-million-on-ai-assisted-lie-detectors-ps-100826">The Pentagon Is Betting $30 Million on AI-Assisted Lie Detectors</a> appeared first on <a href="https://nationalinterest.org">The National Interest</a>.</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+	</channel>
+</rss>

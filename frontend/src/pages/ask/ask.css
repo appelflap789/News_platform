@@ -1,0 +1,233 @@
+/* Ask the library's styles. They live with it (pages/ask) and go when it goes; they build on the tokens of
+   styles/app.css. Every class is prefixed ask- so nothing else is touched. */
+
+.ask {
+  max-width: 860px;
+}
+
+.ask-warn {
+  color: var(--warn);
+}
+
+.ask-link {
+  background: none;
+  border: 0;
+  padding: 0;
+  color: var(--accent);
+  cursor: pointer;
+  text-align: left;
+}
+
+.ask-link:hover {
+  text-decoration: underline;
+}
+
+.ask-preparing {
+  margin-bottom: 14px;
+}
+
+.ask-preparing p {
+  margin-bottom: 8px;
+}
+
+.ask-composer textarea {
+  font-size: 15.5px;
+  min-height: 84px;
+  padding: 12px 14px;
+}
+
+.ask-composer__row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.ask-composer__row select {
+  max-width: 240px;
+}
+
+.ask-composer__plan {
+  flex: 1;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 200px;
+  color: var(--text-2);
+  font-size: 13px;
+}
+
+.ask-composer__titles {
+  margin-top: 10px;
+  font-size: 12.5px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.ask-hint {
+  max-width: 640px;
+}
+
+.ask-history h2,
+.ask-sources h2 {
+  font-size: 15px;
+  margin: 26px 0 10px;
+}
+
+.ask-row {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding: 11px 14px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+  color: var(--text);
+  text-decoration: none;
+  margin-bottom: 8px;
+}
+
+.ask-row:hover {
+  background: var(--hover);
+  border-color: var(--line-strong);
+}
+
+.ask-row__question {
+  font-weight: 560;
+}
+
+.ask-row__meta {
+  font-size: 12.5px;
+  color: var(--text-3);
+}
+
+.ask-row__meta span + span::before {
+  content: ' · ';
+}
+
+.ask-answer__back {
+  font-size: 13px;
+  margin-bottom: 10px;
+}
+
+.ask-answer h1 {
+  font-size: 24px;
+  line-height: 1.3;
+  margin-bottom: 4px;
+}
+
+.ask-answer__byline {
+  font-size: 13px;
+  margin-bottom: 18px;
+}
+
+.ask-answer__text {
+  font-size: 15.5px;
+  line-height: 1.65;
+  margin-bottom: 8px;
+}
+
+.ask-answer__text .citation {
+  font-size: 0.78em;
+  vertical-align: super;
+  margin-left: 1px;
+  text-decoration: none;
+}
+
+.ask-source {
+  display: flex;
+  gap: 12px;
+  padding: 12px 0;
+  border-top: 1px solid var(--line);
+}
+
+.ask-source.is-gone {
+  opacity: 0.6;
+}
+
+.ask-source__n {
+  flex: none;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-size: 12px;
+  font-weight: 650;
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+.ask-source__body {
+  min-width: 0;
+  flex: 1;
+}
+
+.ask-source__title {
+  background: none;
+  border: 0;
+  padding: 0;
+  font-weight: 600;
+  color: var(--text);
+  cursor: pointer;
+  text-align: left;
+}
+
+.ask-source__title:hover {
+  color: var(--accent);
+}
+
+.ask-source__meta {
+  display: block;
+  font-size: 12.5px;
+  margin-top: 1px;
+}
+
+.ask-quotes blockquote {
+  margin: 8px 0 4px;
+  padding: 6px 12px;
+  border-left: 2px solid var(--line-strong);
+  color: var(--text-2);
+  font-size: 13.5px;
+}
+
+.ask-quotes .ask-link {
+  font-size: 12.5px;
+}
+
+.ask-read {
+  margin-top: 18px;
+  color: var(--text-2);
+  font-size: 13.5px;
+}
+
+.ask-read summary {
+  cursor: pointer;
+}
+
+.ask-read ul {
+  margin: 8px 0 0;
+  padding-left: 18px;
+}
+
+.ask-read li {
+  margin-bottom: 4px;
+}
+
+.ask-answer__foot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin-top: 26px;
+  padding-top: 14px;
+  border-top: 1px solid var(--line);
+}
+
+.ask-answer__foot > span {
+  flex: 1;
+  font-size: 12.5px;
+  min-width: 200px;
+}

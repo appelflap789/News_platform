@@ -128,11 +128,11 @@ def test_the_platform_finds_the_add_on_and_its_setting(api):
 
 
 def test_without_its_folder_or_with_a_broken_add_on_the_platform_still_works(tmp_path):
-    """The proof that the add-on can be taken out: a copy of the backend without its folder, and with an
-    add-on that fails to import, starts and answers."""
+    """The proof that the add-ons can be taken out: a copy of the backend without their folders (foresight, ask),
+    and with an add-on that fails to import, starts and answers."""
     root = Path(__file__).resolve().parent.parent
     shutil.copytree(root / "backend", tmp_path / "backend",
-                    ignore=shutil.ignore_patterns("__pycache__", "foresight"))
+                    ignore=shutil.ignore_patterns("__pycache__", "foresight", "ask"))
     broken = tmp_path / "backend" / "addons" / "broken"
     broken.mkdir()
     (broken / "__init__.py").write_text("raise RuntimeError('this add-on is broken')\n")
@@ -147,6 +147,7 @@ def test_without_its_folder_or_with_a_broken_add_on_the_platform_still_works(tmp
             assert client.get("/api/topics").status_code == 200
             assert client.get("/api/stats").status_code == 200
             assert client.get("/api/foresights").status_code == 404
+            assert client.get("/api/ask/status").status_code == 404
             assert not any(spec["key"] == "model_foresight" for spec in client.get("/api/settings").json()["spec"])
         print("ok")
     """)
@@ -311,14 +312,14 @@ def test_new_items_that_match_a_signpost_are_seen_after_a_scrape(api, monkeypatc
                "Diesel shortage in Europe deepened as refined products stayed blocked.", published=days_ago(400))
     save("Wind farm output rises", "A wind farm off the Dutch coast produced more power.", published=days_ago(0.1))
     embed.embed_pending()
-    assert addons.after_scrape(job) == {"foresight": {"signposts_seen": 1}}
+    assert addons.after_scrape(job)["foresight"] == {"signposts_seen": 1}
     assert "Foresight: 1 new item matched a signpost (Strait of Hormuz)." in job.text()
     found = page(api, foresight_id)
     diesel = ring(found, 1)[0]
     assert diesel["signs"] == {"for": 1, "against": 0} and found["seen"] == 1 and found["fresh"] == 1
     assert [hit["article_id"] for hit in diesel["signposts"][0]["seen"]] == [new, already]  # newest first
     assert old not in {hit["article_id"] for hit in diesel["signposts"][0]["seen"]}  # an old story is not news
-    assert addons.after_scrape(job) == {"foresight": {"signposts_seen": 0}}  # each item is seen once
+    assert addons.after_scrape(job)["foresight"] == {"signposts_seen": 0}  # each item is seen once
     api.post(f"/api/foresights/{foresight_id}/visit")
     assert page(api, foresight_id)["fresh"] == 0
     assert watch.matches({"text": "zebra crossing", "terms": []}, [new]) == []

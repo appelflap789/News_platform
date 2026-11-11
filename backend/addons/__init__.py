@@ -5,6 +5,9 @@ uses these names from it, when the add-on has them:
 
 * `router` - an `APIRouter` with the add-on's routes, mounted next to the platform's own;
 * `init()` - called once on start, after the database is ready (for the add-on's own tables);
+* `started()` - called once the platform runs (after `init`, with the job queue ready), to start background
+  work of its own, such as preparing what it needs for the items already in the library. It must return quickly:
+  long work goes in a job;
 * `after_scrape(job)` - called at the end of every scrape, after the new items are embedded. It must be free
   (no Claude) and quick. What it returns is kept in the scrape's result, under the add-on's name;
 * `meta()` - what the dashboard needs to know about it, sent as `meta.addons.<name>`. The dashboard shows an
@@ -62,6 +65,16 @@ def init() -> None:
                 module.init()
             except Exception as error:  # its routes stay mounted, but the dashboard no longer offers it
                 _leave_out(name, error)
+
+
+def started() -> None:
+    for name, module in list(discover().items()):
+        if name in failed or not hasattr(module, "started"):
+            continue
+        try:
+            module.started()
+        except Exception as error:  # the platform runs on; the add-on's background work did not start
+            log.warning("The add-on '%s' could not start its work: %s: %s", name, type(error).__name__, error)
 
 
 def after_scrape(job) -> dict:

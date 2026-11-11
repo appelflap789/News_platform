@@ -600,7 +600,8 @@ def test_starting_the_platform_embeds_what_was_stored_without_embeddings():
     config.update({"meaning_enabled": False})
     store("Wind turbines in the North Sea", "A new wind farm opens.")
     with TestClient(app) as started:  # switched off: nothing is started, and nothing is embedded
-        assert [job for job in started.get("/api/jobs").json() if job["status"] in ("queued", "running")] == []
+        assert [job for job in started.get("/api/jobs").json() if job["status"] in ("queued", "running")
+                and job["kind"] == "embed"] == []
     assert db.scalar("SELECT COUNT(*) FROM embeddings") == 1
 
 
