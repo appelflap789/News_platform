@@ -1,10 +1,11 @@
-// Home, as shelves: your topics (all of them), the shelves other pages bring (Foresight), your favorites (two
-// rows) and the latest items (two rows; "Show more" opens the whole feed), all on cards of the same size.
+// Home, as shelves: the latest items first (two rows; "Show more" opens the whole feed), then your topics (two
+// rows, the ones with something new first; "Show all" opens the rest), the shelves other pages bring
+// (Foresight) and your favorites (two rows), all on cards of the same size.
 // Searching or picking a kind of item turns the page into the results. The star on a card adds it to
 // Favorites, the bin removes it from the library.
 
-import { useCallback, useEffect, useState } from 'react'
-import ArticleGrid from '../../components/ArticleGrid.jsx'
+import { useCallback, useEffect, useRef, useState } from 'react'
+import ArticleGrid, { useColumns } from '../../components/ArticleGrid.jsx'
 import Icon from '../../components/Icon.jsx'
 import TopicCard from '../../components/TopicCard.jsx'
 import { Chip, Empty, PageHeader } from '../../components/ui.jsx'
@@ -43,24 +44,34 @@ function Welcome() {
 const SHELF_ROWS = 2 // the favorites and the latest items: two rows each, however wide the screen
 
 /**
- * The topics, as cards above the items, the same size as theirs: all of them, the ones with something new
- * first, then the ones that moved last. While you search, only the topics whose name or description has one
- * of your words.
+ * The topics, on cards the same size as the items': the ones with something new since you last opened them
+ * first, then the ones that moved last. On plain Home a shelf of two rows like the others, with "Show all" for
+ * the rest; while you search, every topic whose name or description has one of your words.
  */
 function Topics({ topics, search }) {
+  const grid = useRef(null)
+  const columns = useColumns(grid)
+  const [all, setAll] = useState(false)
   const words = search.toLowerCase().split(/\s+/).filter((word) => word.length > 2)
   const found = topics
     .filter((topic) => !words.length || words.some((word) => `${topic.name} ${topic.description}`.toLowerCase().includes(word)))
     .sort((a, b) => (b.new || 0) - (a.new || 0) || (b.latest || '').localeCompare(a.latest || ''))
   if (!found.length) return null
+  const room = search || all ? found.length : SHELF_ROWS * columns
+  const shown = found.slice(0, room)
   return (
     <section className="shelf">
       <div className="home-section">
         <h2>Topics</h2>
+        {!search && found.length > SHELF_ROWS * columns ? (
+          <button type="button" onClick={() => setAll(!all)}>
+            {all ? 'Show fewer' : `Show all ${found.length}`}
+          </button>
+        ) : null}
         <Link to="/topics/new">New topic</Link>
       </div>
-      <div className="grid grid--topics">
-        {found.map((topic) => (
+      <div className="grid grid--topics" ref={grid}>
+        {shown.map((topic) => (
           <TopicCard key={topic.id} topic={topic} />
         ))}
       </div>
@@ -104,6 +115,37 @@ function HomePage({ query }) {
 
   if (sources.length === 0) return <Welcome />
   const types = stats?.content_types || []
+  const latestItems = (
+    <section className="shelf">
+      <div className="home-section">
+        <h2>{search ? 'Items' : type ? TYPE_LABELS[type] || type : 'Latest items'}</h2>
+        {browsing && wholeFeed ? (
+          <button type="button" onClick={() => setWholeFeed(false)}>
+            Show fewer
+          </button>
+        ) : null}
+      </div>
+      <ArticleGrid
+        load={load}
+        resetKey={`${search}|${type}`}
+        snippets={Boolean(search)}
+        onTotal={setTotal}
+        rows={browsing && !wholeFeed ? SHELF_ROWS : 0}
+        onShowAll={() => setWholeFeed(true)}
+        empty={
+          search || type ? (
+            <Empty icon="search" title="Nothing matches">
+              Nothing in your library contains these words or is about this. Try fewer or different words.
+            </Empty>
+          ) : (
+            <Empty icon="clock" title="Nothing collected yet">
+              Your sources have not been scraped yet. Open a source and press Update.
+            </Empty>
+          )
+        }
+      />
+    </section>
+  )
 
   return (
     <>
@@ -149,39 +191,15 @@ function HomePage({ query }) {
         ) : null}
       </div>
 
+      {/* plain Home: the latest items come first; a search shows the matching topics above its results */}
+      {browsing ? latestItems : null}
       {/* a filter on the kind of item is about items: the topics step aside */}
       {!type ? <Topics topics={topics} search={search} /> : null}
       {/* shelves other pages bring along, such as Foresight (pages/index.js) */}
       {!type ? shelves.map(({ id, component: Shelf }) => <Shelf key={id} search={search} />) : null}
       {browsing ? <Favorites count={stats?.favorites || 0} /> : null}
+      {browsing ? null : latestItems}
 
-      <div className="home-section">
-        <h2>{search ? 'Items' : type ? TYPE_LABELS[type] || type : 'Latest items'}</h2>
-        {browsing && wholeFeed ? (
-          <button type="button" onClick={() => setWholeFeed(false)}>
-            Show fewer
-          </button>
-        ) : null}
-      </div>
-      <ArticleGrid
-        load={load}
-        resetKey={`${search}|${type}`}
-        snippets={Boolean(search)}
-        onTotal={setTotal}
-        rows={browsing && !wholeFeed ? SHELF_ROWS : 0}
-        onShowAll={() => setWholeFeed(true)}
-        empty={
-          search || type ? (
-            <Empty icon="search" title="Nothing matches">
-              Nothing in your library contains these words or is about this. Try fewer or different words.
-            </Empty>
-          ) : (
-            <Empty icon="clock" title="Nothing collected yet">
-              Your sources have not been scraped yet. Open a source and press Update.
-            </Empty>
-          )
-        }
-      />
     </>
   )
 }

@@ -155,6 +155,17 @@ non-browser client with a challenge or a login is not scraped.
   again. Claude's own search terms are deliberately not used to find a foresight's items (they made *Demographic
   ageing* worse), and a signpost's match is shown as "may bear on it", never as a confirmation: meaning cannot tell a
   signpost from its opposite, the re-check says which way an item points.
+- **Ask the library** is the second add-on (asked 7 November 2026, after I listed it as an improvement: "I want to
+  start integrating the 'ask the library' function"). README *Ask the library* is what was built. Decided without
+  asking: its own page in the sidebar, one question at a time (no conversation), Claude Sonnet as its default model,
+  24 passages a question, the passages given to Claude as `search_result` blocks with citations on (the API says
+  which passage each part rests on; do not switch to asking Claude for [n] in the text). It keeps passages in its
+  own tables and, as the rule above says, no foreign key or trigger on `articles`: an item's words are fingerprinted
+  in `ask_done.stamp` (lengths) and swept when gone. Its thresholds (`find.FLOOR`, `find.BELOW_BEST`, `find.WEAK`,
+  `passages.REFERENCE_MARKS`) were measured on a copy of the owner's library with the real model; change them only
+  after measuring again. It added the `started()` hook to `backend/addons` (called after `start_embedding` in
+  `main.lifespan`). Its first run splits the whole library: on 7 November 2026 that was 62,657 passages, 20 minutes
+  on the owner's PC.
 - A new Claude step follows the two on the topic page (`backend/ai/briefing.py`): build the request first, show
   what it will cost before it is sent, and let it count towards `claude_budget_usd` when it runs by itself.
 - The two topic texts are news articles (asked for 30 October 2026): Claude writes a `# headline`, the opening,
@@ -246,6 +257,7 @@ on a throwaway copy, never on the real library.
   section by itself (`pages/settings/page.jsx`, `SECTIONS`). The *Scrape log* section is what they asked for as
   "a menu in the app where it shows what it scraped each day and if it got errors which scraper gave that
   error. The menu does not need to be something big".
+- Home (asked 11 November 2026: "the new articles at the top instead of the topics", "showing the same amount of topics as articles"): the latest items first, then the topics as a two-row shelf like the items (`useColumns` from `ArticleGrid`). The bigger redesign discussed then (a front page led by the newest topic update, a "since you were last here" line, a shelf per topic, shelves by kind) is for a branch of its own.
 - Dark, sleek interface; plain words in it, in the British spelling it already has.
 
 ## Decisions already taken
@@ -297,8 +309,12 @@ on a throwaway copy, never on the real library.
   the centred similarities of another model are not on the same scale. The GTX 1050 in the server works for
   this only with old GPU software (onnxruntime-gpu 1.21, CUDA 12.4, cuDNN 9.1) and has 2 GB; its driver was
   removed again. The owner's PC (RTX 5060 Ti) is the place for one-off bulk embedding, never the daily work.
-- Keeping the PDFs themselves (*Keep PDFs*, proposed 31 October 2026): only their text is stored. Nor passages
-  of long items for search by meaning: one embedding per item, from title and summary.
+- Keeping the PDFs themselves (*Keep PDFs*, proposed 31 October 2026): only their text is stored. Search by
+  meaning, topics and foresight still use one embedding per item (title and summary); only *Ask the library* uses
+  passages.
+- Of Ask the library: follow-up questions in a conversation, asking from a topic page or the reader, and the
+  expertise map of universities (OpenAlex, CORDIS) discussed with the owner on 7 November 2026; they have not said
+  which countries or topics yet.
 - Never run for real: listing a channel through the YouTube Data API (there was no key).
 - Offered and not answered: captions through `youtube-transcript-api`, as the owner's Note-saver project
   uses, as a second way to a video's transcript.

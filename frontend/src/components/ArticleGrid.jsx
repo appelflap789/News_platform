@@ -10,8 +10,8 @@ import { Button, Spinner } from './ui.jsx'
 
 const PAGE_SIZE = 30
 
-/** How many columns a CSS grid has right now, as the browser laid it out. */
-function useColumns(grid) {
+/** How many columns a CSS grid has right now, as the browser laid it out (also used by Home's topic shelf). */
+export function useColumns(grid) {
   const [columns, setColumns] = useState(3)
   useEffect(() => {
     const element = grid.current
