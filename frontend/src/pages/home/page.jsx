@@ -1,4 +1,5 @@
-// Home, as shelves: the latest items first (two rows; "Show more" opens the whole feed), then your topics (two
+// Home: a line with what is new since your last visit and a front page of the newest topic updates
+// (FrontPage.jsx), then shelves: the latest items (two rows; "Show more" opens the whole feed), then your topics (two
 // rows, the ones with something new first; "Show all" opens the rest), the shelves other pages bring
 // (Foresight) and your favorites (two rows), all on cards of the same size.
 // Searching or picking a kind of item turns the page into the results. The star on a card adds it to
@@ -14,6 +15,7 @@ import { useApp } from '../../lib/app.jsx'
 import { TYPE_LABELS, plural } from '../../lib/format.js'
 import { Link, navigate } from '../../lib/router.jsx'
 import { shelves } from '../index.js'
+import { FrontPage, SinceLine, useFrontPage } from './FrontPage.jsx'
 
 function Welcome() {
   const { meta } = useApp()
@@ -102,6 +104,7 @@ function HomePage({ query }) {
   const [total, setTotal] = useState(null)
   const [wholeFeed, setWholeFeed] = useState(false) // the latest items as a shelf, or all of them
   const browsing = !search && !type // plain Home: shelves; otherwise the page is the results
+  const front = useFrontPage()
 
   useEffect(() => {
     const timer = setTimeout(() => setSearch(text.trim()), 350)
@@ -192,6 +195,8 @@ function HomePage({ query }) {
       </div>
 
       {/* plain Home: the latest items come first; a search shows the matching topics above its results */}
+      {browsing && front ? <SinceLine since={front.since} onItems={() => setWholeFeed(true)} /> : null}
+      {browsing && front ? <FrontPage stories={front.stories} /> : null}
       {browsing ? latestItems : null}
       {/* a filter on the kind of item is about items: the topics step aside */}
       {!type ? <Topics topics={topics} search={search} /> : null}

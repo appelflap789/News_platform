@@ -104,6 +104,11 @@ export const api = {
     // { restored, article_id, title }; restored is false when the item could only be let in again
     restore: (id) => post(`/removed/${id}/restore`),
   },
+  home: {
+    // the front page: { stories: [newest topic update per topic], since: { at, items, sources, topics } }
+    get: () => get('/home'),
+    visit: () => post('/home/visit'), // Home was opened; within half an hour it is the same visit
+  },
   topics: {
     list: () => get('/topics'),
     get: (id) => get(`/topics/${id}`),
