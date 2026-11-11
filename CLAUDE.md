@@ -257,7 +257,7 @@ on a throwaway copy, never on the real library.
   section by itself (`pages/settings/page.jsx`, `SECTIONS`). The *Scrape log* section is what they asked for as
   "a menu in the app where it shows what it scraped each day and if it got errors which scraper gave that
   error. The menu does not need to be something big".
-- Home (asked 11 November 2026: "the new articles at the top instead of the topics", "showing the same amount of topics as articles"): the latest items first, then the topics as a two-row shelf like the items (`useColumns` from `ArticleGrid`). Then a front page led by the newest topic update and a "since you were last here" line (`backend/api/home.py`, `pages/home/FrontPage.jsx`), built on a branch, tried on a copy of the library, and merged after the owner saw it ("I like it", 11 November 2026). Also discussed and not built: a shelf per topic, shelves by kind.
+- Home (asked 11 November 2026: "the new articles at the top instead of the topics", "showing the same amount of topics as articles"): the latest items first, then the topics as a two-row shelf like the items (`useColumns` from `ArticleGrid`). Then a front page led by the newest topic update and a "since you were last here" line (`backend/api/home.py`, `pages/home/FrontPage.jsx`), built on a branch, tried on a copy of the library, and merged after the owner saw it ("I like it", 11 November 2026). They open it on a phone browser too: on one column the cards are compact rows and a shelf holds three rows per row asked for (`shelfRoom`), approved 11 November 2026 ("looks good"). Also discussed and not built: a shelf per topic, shelves by kind.
 - Dark, sleek interface; plain words in it, in the British spelling it already has.
 
 ## Decisions already taken
