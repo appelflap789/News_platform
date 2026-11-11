@@ -1,7 +1,8 @@
 // The scrolling wall of cards used by the home, source and topic pages. Every card has a star and a button that
 // removes its item from the library; the wall follows what is starred, removed or put back anywhere in the
 // dashboard. With `rows` it is a shelf instead, as on Home: that many rows of whole cards, however wide the
-// screen, and a button that asks for the rest (`onShowAll`).
+// screen, and a button that asks for the rest (`onShowAll`). On a phone the cards are compact rows (a small
+// picture beside the title, styles/app.css), so a shelf there has three rows for each one asked for.
 
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { cardFor } from '../cards/index.js'
@@ -9,6 +10,12 @@ import { useApp } from '../lib/app.jsx'
 import { Button, Spinner } from './ui.jsx'
 
 const PAGE_SIZE = 30
+const PHONE_ROWS = 3 // compact rows on a one-column screen, per row a shelf asks for
+
+/** How many cards a shelf of `rows` rows has room for in a grid of `columns` columns. */
+export function shelfRoom(rows, columns) {
+  return columns === 1 ? rows * PHONE_ROWS : rows * columns
+}
 
 /** How many columns a CSS grid has right now, as the browser laid it out (also used by Home's topic shelf). */
 export function useColumns(grid) {
@@ -132,7 +139,7 @@ export default function ArticleGrid({
 
   if (!loading && items.length === 0) return empty || null
   const ids = items.map((item) => item.id)
-  const shelf = rows > 0 ? rows * columns : 0 // the number of cards a shelf has room for
+  const shelf = rows > 0 ? shelfRoom(rows, columns) : 0 // the number of cards a shelf has room for
   const shown = shelf ? items.slice(0, shelf) : items
 
   return (

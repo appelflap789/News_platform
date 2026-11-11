@@ -3918,3 +3918,124 @@ mark {
     min-height: 280px;
   }
 }
+
+/* --- phones: compact cards --------------------------------------------------------------- */
+/* Where the grid has one column (a phone), a card is a row: a small picture on the left, the title, source and
+   age beside it, star and bin on the right, a line between the rows. Shelves then hold three rows for each one
+   they ask for (shelfRoom in ArticleGrid.jsx). 631px: below it the 290px columns no longer fit two side by side. */
+@media (max-width: 631px) {
+  .grid {
+    gap: 0;
+  }
+
+  .grid > .card {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 12px 0;
+    border-top: 1px solid var(--line);
+    border-radius: 0;
+  }
+
+  .grid > .card:first-child {
+    border-top: none;
+    padding-top: 2px;
+  }
+
+  .grid > .card .thumb {
+    flex: none;
+    width: 108px;
+    aspect-ratio: 4 / 3;
+    border-radius: 8px;
+  }
+
+  .grid > .card .thumb .badge,
+  .grid > .card .thumb__words p,
+  .grid > .card .thumb__corner .thumb__tag:not(.thumb__tag--new) {
+    display: none;
+  }
+
+  .grid > .card .thumb__words {
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+  }
+
+  .grid > .card .thumb__words .icon {
+    opacity: 0.75;
+  }
+
+  .grid > .card .thumb__corner {
+    right: 4px;
+    bottom: 4px;
+  }
+
+  .grid > .card .thumb__tag {
+    font-size: 10.5px;
+    padding: 1px 5px;
+  }
+
+  .grid > .card .thumb__play {
+    transform: scale(0.6);
+  }
+
+  .grid > .card .card__body {
+    flex: 1;
+    min-width: 0;
+    padding: 0;
+  }
+
+  .grid > .card .card__body > .avatar,
+  .grid > .card .card__body > .topic-mark {
+    display: none; /* the source's name is in the line under the title */
+  }
+
+  .grid > .card .card__title {
+    font-size: 15px;
+    -webkit-line-clamp: 3;
+  }
+
+  .grid > .card .card__snippet {
+    -webkit-line-clamp: 2;
+  }
+
+  .grid > .card .card__meta {
+    font-size: 12.5px;
+  }
+
+  .grid > .card .card__actions {
+    position: static;
+    flex: none;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .grid > .card .card__action {
+    width: 30px;
+    height: 30px;
+    background: transparent;
+    color: var(--text-3);
+    backdrop-filter: none;
+  }
+
+  .grid > .card .card__favorite.is-on {
+    color: var(--mark);
+  }
+
+  .grid > .card--skeleton {
+    padding: 0;
+    border: none;
+    aspect-ratio: auto;
+    height: 81px;
+    margin: 12px 0;
+    border-radius: 8px;
+  }
+
+  .grid__more {
+    padding-top: 18px;
+  }
+
+  .search input {
+    text-overflow: ellipsis;
+  }
+}

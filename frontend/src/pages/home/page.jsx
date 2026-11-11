@@ -6,7 +6,7 @@
 // Favorites, the bin removes it from the library.
 
 import { useCallback, useEffect, useRef, useState } from 'react'
-import ArticleGrid, { useColumns } from '../../components/ArticleGrid.jsx'
+import ArticleGrid, { shelfRoom, useColumns } from '../../components/ArticleGrid.jsx'
 import Icon from '../../components/Icon.jsx'
 import TopicCard from '../../components/TopicCard.jsx'
 import { Chip, Empty, PageHeader } from '../../components/ui.jsx'
@@ -59,13 +59,13 @@ function Topics({ topics, search }) {
     .filter((topic) => !words.length || words.some((word) => `${topic.name} ${topic.description}`.toLowerCase().includes(word)))
     .sort((a, b) => (b.new || 0) - (a.new || 0) || (b.latest || '').localeCompare(a.latest || ''))
   if (!found.length) return null
-  const room = search || all ? found.length : SHELF_ROWS * columns
+  const room = search || all ? found.length : shelfRoom(SHELF_ROWS, columns)
   const shown = found.slice(0, room)
   return (
     <section className="shelf">
       <div className="home-section">
         <h2>Topics</h2>
-        {!search && found.length > SHELF_ROWS * columns ? (
+        {!search && found.length > shelfRoom(SHELF_ROWS, columns) ? (
           <button type="button" onClick={() => setAll(!all)}>
             {all ? 'Show fewer' : `Show all ${found.length}`}
           </button>
